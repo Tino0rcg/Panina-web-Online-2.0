@@ -28,7 +28,6 @@ export function BookingModal({ children }: BookingModalProps) {
 
   const handleOpenChange = (open: boolean) => {
     setIsOpen(open);
-    if (open) setIsLoading(true);
   };
   const CALENDLY_URL = "https://calendly.com/onlinesystemchile/new-meeting?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=117a97&text_color=0f172a";
 
@@ -62,37 +61,17 @@ export function BookingModal({ children }: BookingModalProps) {
 
         {/* Optimized Fixed Container */}
         <div className="flex-grow w-full bg-white relative h-[660px]">
-          {/* Spinner Overlay */}
-          <AnimatePresence>
-            {isLoading && (
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white"
-              >
-                <div className="relative">
-                  <Loader2 className="w-12 h-12 text-primary animate-spin" />
-                  <motion.div 
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute inset-0 bg-primary/20 rounded-full blur-xl"
-                  />
-                </div>
-                <p className="mt-4 text-xs font-bold text-slate-400 uppercase tracking-[0.3em] animate-pulse">
-                  Estableciendo Conexión
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Subtle background loader */}
+          <div className="absolute inset-0 flex items-center justify-center bg-slate-50/50">
+            <Loader2 className="w-8 h-8 text-primary/20 animate-spin" />
+          </div>
 
           <iframe
             src={`${CALENDLY_URL}&hide_landing_page_details=1`}
             width="100%"
             height="100%"
             frameBorder="0"
-            className={cn("w-full h-full bg-white transition-opacity duration-500", isLoading ? "opacity-0" : "opacity-100")}
+            className={cn("w-full h-full bg-white transition-opacity duration-300 relative z-10", isLoading ? "opacity-0" : "opacity-100")}
             style={{ border: 'none' }}
             onLoad={() => setIsLoading(false)}
             title="Calendly Scheduling"

@@ -1,7 +1,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Linkedin, Twitter, ExternalLink, ShieldCheck, Globe } from "lucide-react";
+import { Linkedin, ExternalLink, ShieldCheck, Globe } from "lucide-react";
 
 export function Footer() {
   return (
@@ -28,8 +28,6 @@ export function Footer() {
             <div className="flex gap-6 pt-4">
               {[
                 { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:bg-primary" },
-                { icon: Twitter, href: "#", label: "X / Twitter", color: "hover:bg-accent" },
-                { icon: Github, href: "#", label: "Repositories", color: "hover:bg-slate-800" },
               ].map((social, i) => (
                 <a 
                   key={i} 
@@ -90,7 +88,7 @@ export function Footer() {
         <div className="pt-16 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col md:flex-row items-center gap-10">
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em]">
-              © {new Date().getFullYear()} ONLINE System Ingeniería S.A.
+              © 2026 ONLINE System derechos reservados
             </p>
             <div className="flex gap-4 items-center">
               <ShieldCheck className="w-4 h-4 text-primary/50" />

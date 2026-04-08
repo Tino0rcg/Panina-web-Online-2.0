@@ -35,17 +35,20 @@ function ContactForm() {
     const planParam = searchParams.get("plan");
 
     if (serviceParam) {
-      // Find match by name or slug
+      // Find a match in our data or set it directly for the special "Diagnóstico 360°" case
       const match = servicesData.find(s => 
         s.slug === serviceParam || 
+        s.name.toLowerCase() === serviceParam.toLowerCase() ||
         s.name.toLowerCase().includes(serviceParam.toLowerCase())
       );
+
       if (match) {
         setSelectedService(match.name);
-        
         if (planParam) {
           setInitialMessage(`Hola equipo de ONLINE System,\n\nSolicito una cotización formal para el "${planParam}" del servicio de "${match.name}".\n\nQuedo atento a su respuesta.`);
         }
+      } else if (serviceParam === "Solicitar Diagnóstico 360°" || serviceParam.includes("Diagnóstico")) {
+        setSelectedService("Solicitar Diagnóstico 360°");
       }
     }
   }, [searchParams]);
@@ -95,7 +98,7 @@ function ContactForm() {
               {[
                 { icon: Mail, label: "Canal Ejecutivo", value: "contacto@onlinesystem.cl", href: "mailto:contacto@onlinesystem.cl" },
                 { icon: Phone, label: "Línea Directa", value: "+56 9 9607 0383", href: "tel:+56996070383" },
-                { icon: MapPin, label: "Sede Central", value: "Las Condes, Santiago, Chile" },
+                { icon: MapPin, label: "Casa Matriz", value: "Providencia, Santiago, Chile" },
               ].map((item, i) => (
                 <motion.div 
                   key={i} 
@@ -161,7 +164,6 @@ function ContactForm() {
                   <SelectValue placeholder="Seleccione un servicio profesional" />
                 </SelectTrigger>
                 <SelectContent>
-                  {/* Prioritize the selected service if one exists */}
                   {[...servicesData]
                     .sort((a, b) => (a.name === selectedService ? -1 : b.name === selectedService ? 1 : 0))
                     .map((service) => (
@@ -169,6 +171,7 @@ function ContactForm() {
                         {service.name}
                       </SelectItem>
                     ))}
+                  <SelectItem value="Solicitar Diagnóstico 360°">Solicitar Diagnóstico 360°</SelectItem>
                   <SelectItem value="otros">Otro / Consultoría General</SelectItem>
                 </SelectContent>
               </Select>

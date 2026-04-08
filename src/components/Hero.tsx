@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Network, Shield, ChevronRight, ChevronLeft, Target, BarChart3 } from "lucide-react";
+import { ArrowRight, Network, Shield, ChevronRight, ChevronLeft, Target, BarChart3, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { BookingModal } from "./BookingModal";
@@ -10,6 +10,28 @@ import { BookingModal } from "./BookingModal";
 const SLIDES = [
   {
     id: 1,
+    tag: "Infraestructura & Continuidad",
+    title: "Tecnología para empresas <br /> <span className='text-gradient'>que no pueden detenerse.</span>",
+    subtitle: "<strong>Evita caídas, reduce riesgos y asegura la continuidad de tu operación.</strong>",
+    description: "",
+    features: [
+      "Soporte TI 24/7 con SLA",
+      "Cloud AWS, Azure y Google Cloud",
+      "Integración de sistemas (ERP, APIs)",
+      "Ciberseguridad y continuidad operacional"
+    ],
+    statValue: "99.9%",
+    statLabel: "Target SLA",
+    secondaryStatValue: "24/7",
+    secondaryStatLabel: "Soporte Crítico",
+    primaryButtonText: "Ver Soluciones",
+    primaryButtonHref: "#services",
+    isBooking: false,
+    secondaryButtonText: "Hablar con un Experto",
+    secondaryButtonHref: "/?service=transformacion-digital-y-soluciones#contact"
+  },
+  {
+    id: 2,
     tag: "Optimización Estratégica",
     title: "Diagnóstico <br /> <span className='text-gradient'>TI 360°.</span>",
     description: "Diagnóstico TI Estratégico para Optimizar Costos, Seguridad y Operación de su infraestructura tecnológica.",
@@ -17,55 +39,25 @@ const SLIDES = [
     statLabel: "Visión Operativa",
     secondaryStatValue: "ROI",
     secondaryStatLabel: "Optimización de Costos",
-    primaryButtonText: "Agendar una reunión",
-    primaryButtonHref: "#contact",
-    isBooking: true,
-    secondaryButtonText: "Descubra más",
-    secondaryButtonHref: "#diagnostico"
-  },
-  {
-    id: 2,
-    tag: "Liderazgo Tecnológico Premium",
-    title: "Reinventando la <br /> <span className='text-gradient'>Ingeniería Digital.</span>",
-    description: "ONLINE System es la consultora estratégica líder en Chile, diseñando soluciones críticas que aceleran la evolución de las empresas más exigentes.",
-    statValue: "20+ Años",
-    statLabel: "Trayectoria Local",
-    secondaryStatValue: "100+",
-    secondaryStatLabel: "Clientes Corporativos",
-    primaryButtonText: "Descubra Más",
-    primaryButtonHref: "#services",
-    secondaryButtonText: "Asesoría",
-    secondaryButtonHref: "#contact",
-    isBooking: false
+    primaryButtonText: "Descubre Más",
+    primaryButtonHref: "#diagnostico",
+    isBooking: false,
+    secondaryButtonText: "Hablar con un Experto",
+    secondaryButtonHref: "/?service=Solicitar Diagnóstico 360°#contact"
   },
   {
     id: 3,
-    tag: "Ingeniería, Redes y Telecomunicaciones",
-    title: "Liderazgo en <br /> <span className='text-gradient'>Infraestructura TI.</span>",
-    description: "Diseñamos y operamos ecosistemas digitales de alta disponibilidad para las industrias más complejas de la región.",
-    statValue: "24/7",
-    statLabel: "Soporte Tecnológico",
-    secondaryStatValue: "Chile",
-    secondaryStatLabel: "Respaldo Local",
-    primaryButtonText: "Explorar Soluciones",
-    primaryButtonHref: "#services",
-    secondaryButtonText: "Contacto",
-    secondaryButtonHref: "#contact",
-    isBooking: false
-  },
-  {
-    id: 4,
-    tag: "Transformación Estratégica",
-    title: "Estrategia con <br /> <span className='text-gradient'>Inteligencia de Negocios.</span>",
-    description: "Transformamos la complejidad de sus datos en ventajas competitivas reales mediante modelos predictivos y analítica senior.",
-    statValue: "BI & IA",
-    statLabel: "Modelos Predictivos",
-    secondaryStatValue: "SLA",
-    secondaryStatLabel: "Acuerdos Garantizados",
-    primaryButtonText: "Nuestros Servicios",
-    primaryButtonHref: "#services",
-    secondaryButtonText: "Ver Más",
-    secondaryButtonHref: "#about",
+    tag: "Seguridad Corporativa",
+    title: "Ciberseguridad <br /> <span className='text-gradient'>Proactiva y Resiliente.</span>",
+    description: "Protegemos sus activos digitales más críticos con auditorías de vulnerabilidades, firewalls de última generación y protocolos de respuesta proactiva.",
+    statValue: "SLA",
+    statLabel: "Continuidad",
+    secondaryStatValue: "ISO 27001",
+    secondaryStatLabel: "Concept Compliance",
+    primaryButtonText: "Ver Soluciones",
+    primaryButtonHref: "/servicios/ciberseguridad",
+    secondaryButtonText: "Hablar con un Experto",
+    secondaryButtonHref: "/?service=ciberseguridad#contact",
     isBooking: false
   }
 ];
@@ -107,7 +99,7 @@ export function Hero() {
   if (!isMounted) return <div className="min-h-screen bg-slate-950" />;
 
   return (
-    <section className="relative min-h-screen pt-20 overflow-hidden bg-slate-950">
+    <section className="relative min-h-screen pt-16 md:pt-20 overflow-hidden bg-slate-950">
       {/* Full Background Video */}
       <video
         src="https://cdn.jsdelivr.net/gh/Tino0rcg/imagenes-pagina-online-2.0@main/Video%20para%20pag%20online%20(1).mp4"
@@ -124,8 +116,8 @@ export function Hero() {
       {/* Brand Texture Overlay */}
       <div className="absolute inset-0 z-0 brand-texture opacity-20"></div>
 
-      <div className="container mx-auto px-6 relative z-10 pt-10">
-        <div className="max-w-4xl space-y-10 relative min-h-[450px] flex flex-col justify-center">
+      <div className="container mx-auto px-6 relative z-10 pt-4 md:pt-10">
+        <div className="max-w-4xl space-y-6 md:space-y-10 relative min-h-[400px] md:min-h-[450px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide.id}
@@ -133,7 +125,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-10"
+                className="space-y-6 md:space-y-10"
               >
                 
                 <div className="space-y-6">
@@ -180,30 +172,58 @@ export function Hero() {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.8 }}
-                      className="text-6xl md:text-7xl font-headline font-bold leading-[0.95] tracking-tighter text-white relative z-10"
+                      className="text-4xl sm:text-6xl md:text-7xl font-headline font-bold leading-[0.95] tracking-tighter text-white relative z-10"
                       dangerouslySetInnerHTML={{ __html: currentSlide.title }}
                     />
                   </div>
+                  {currentSlide.subtitle && (
+                    <motion.p 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.45 }}
+                      className="text-primary text-base md:text-xl font-medium"
+                      dangerouslySetInnerHTML={{ __html: currentSlide.subtitle }}
+                    />
+                  )}
+                  
                   <motion.p 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 1 }}
-                    className="text-lg md:text-xl text-slate-200 max-w-2xl leading-relaxed font-light"
+                    className="text-base md:text-xl text-slate-200/80 max-w-2xl leading-relaxed font-light"
                   >
                     {currentSlide.description}
                   </motion.p>
+
+                  {currentSlide.features && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.55 }}
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 sm:gap-y-3 gap-x-6 max-w-3xl pt-2 border-l-2 border-primary/20 pl-4 sm:pl-6"
+                    >
+                      {currentSlide.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-3 text-slate-200/90 text-sm md:text-base">
+                          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+                            <ShieldCheck className="w-3 h-3 text-primary" />
+                          </div>
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
                 </div>
 
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="flex flex-wrap gap-5 pt-2"
+                  className="flex flex-col sm:flex-row gap-4 sm:gap-5 pt-2"
                 >
                   {/* Action 1: Booking or Link */}
                   {currentSlide.isBooking ? (
                     <BookingModal>
-                      <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14 rounded-2xl text-lg font-bold shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group relative overflow-hidden">
+                      <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-8 h-14 rounded-2xl text-lg font-bold shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group relative overflow-hidden">
                         <span className="relative z-10 flex items-center">
                           {currentSlide.primaryButtonText}
                           <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
@@ -222,7 +242,7 @@ export function Hero() {
                     </BookingModal>
                   ) : (
                     <Link href={currentSlide.primaryButtonHref} passHref>
-                      <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 h-14 rounded-2xl text-lg font-bold shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group">
+                      <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-8 h-14 rounded-2xl text-lg font-bold shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group">
                         {currentSlide.primaryButtonText}
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
                       </Button>
@@ -231,7 +251,7 @@ export function Hero() {
 
                   {/* Action 2: Secondary Info */}
                   <Link href={currentSlide.secondaryButtonHref} passHref>
-                    <Button variant="outline" size="lg" className="border-white/20 glass-morphism hover:bg-white/10 text-white px-8 h-14 rounded-2xl text-lg font-bold transition-all hover:scale-105 active:scale-95">
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto border-white/20 glass-morphism hover:bg-white/10 text-white px-8 h-14 rounded-2xl text-lg font-bold transition-all hover:scale-105 active:scale-95">
                       {currentSlide.secondaryButtonText}
                     </Button>
                   </Link>
@@ -242,7 +262,7 @@ export function Hero() {
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
                    transition={{ delay: 0.7 }}
-                   className="flex items-center gap-10 pt-8 border-t border-white/10"
+                   className="flex flex-wrap items-center gap-6 md:gap-10 pt-6 md:pt-8 border-t border-white/10"
                 >
                   <div className="flex flex-col gap-0.5 group">
                     <div className="flex items-center gap-2">
