@@ -34,6 +34,7 @@ export function Navbar() {
     { name: "Inicio", href: "/#diagnostico-banner" },
     { name: "Servicios", href: "/servicios" },
     { name: "Sobre Nosotros", href: "/#about" },
+    { name: "Calculadora ROI", href: "/calculadora-roi" },
     { name: "Contacto", href: "/#contact" },
   ];
 

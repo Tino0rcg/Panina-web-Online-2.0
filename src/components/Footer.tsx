@@ -50,8 +50,9 @@ export function Footer() {
               {[
                 { name: "Soluciones TI para Modernizar y Asegurar tu Operación", href: "#services" },
                 { name: "Diagnóstico TI 360°", href: "#diagnostico" },
-                { name: "Trayectoria", href: "#about" },
-                { name: "Casa Matriz", href: "#contact" },
+                { name: "Trayectoria", href: "/#about" },
+                { name: "Calculadora de ROI", href: "/calculadora-roi" },
+                { name: "Casa Matriz", href: "/#contact" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} className="text-slate-500 hover:text-primary transition-all font-bold uppercase text-[11px] tracking-widest flex items-center group">

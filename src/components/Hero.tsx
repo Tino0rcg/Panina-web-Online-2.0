@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Network, Shield, ChevronRight, ChevronLeft, Target, BarChart3, ShieldCheck } from "lucide-react";
+import { ArrowRight, Network, Shield, ChevronRight, ChevronLeft, Target, BarChart3, ShieldCheck, Calculator } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { BookingModal } from "./BookingModal";
@@ -37,8 +37,9 @@ const SLIDES = [
     description: "Diagnóstico TI Estratégico para Optimizar Costos, Seguridad y Operación de su infraestructura tecnológica.",
     statValue: "360°",
     statLabel: "Visión Operativa",
-    secondaryStatValue: "ROI",
+    secondaryStatValue: "Calcule su ROI",
     secondaryStatLabel: "Optimización de Costos",
+    secondaryStatHref: "/calculadora-roi",
     primaryButtonText: "Descubre Más",
     primaryButtonHref: "#diagnostico",
     isBooking: false,
@@ -273,11 +274,31 @@ export function Hero() {
                   </div>
                   <div className="h-8 w-px bg-white/10 hidden sm:block"></div>
                   <div className="flex flex-col gap-0.5 group">
-                    <div className="flex items-center gap-2">
-                      {currentSlide.id === 4 ? <BarChart3 className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" /> : <Network className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />}
-                      <span className="text-xl font-bold text-white tracking-tight">{currentSlide.secondaryStatValue}</span>
-                    </div>
-                    <span className="text-[9px] font-bold text-slate-300 uppercase tracking-widest">{currentSlide.secondaryStatLabel}</span>
+                    {currentSlide.secondaryStatHref ? (
+                      <Link href={currentSlide.secondaryStatHref} className="flex flex-col gap-0.5 group cursor-pointer">
+                        <div className="flex items-center gap-2">
+                          <motion.div
+                            animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
+                            transition={{ duration: 3, repeat: Infinity }}
+                          >
+                            <Calculator className="w-5 h-5 text-primary" />
+                          </motion.div>
+                          <span className="text-xl font-bold text-white tracking-tight border-b border-dashed border-primary/40 group-hover:border-primary transition-all group-hover:text-primary">
+                            {currentSlide.secondaryStatValue}
+                          </span>
+                          <ArrowRight className="w-3 h-3 text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                        </div>
+                        <span className="text-[9px] font-bold text-slate-300 uppercase tracking-widest">{currentSlide.secondaryStatLabel}</span>
+                      </Link>
+                    ) : (
+                      <>
+                        <div className="flex items-center gap-2">
+                          {currentSlide.id === 4 ? <BarChart3 className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" /> : <Network className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />}
+                          <span className="text-xl font-bold text-white tracking-tight">{currentSlide.secondaryStatValue}</span>
+                        </div>
+                        <span className="text-[9px] font-bold text-slate-300 uppercase tracking-widest">{currentSlide.statLabel}</span>
+                      </>
+                    )}
                   </div>
                 </motion.div>
               </motion.div>

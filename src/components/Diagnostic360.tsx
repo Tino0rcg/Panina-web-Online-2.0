@@ -196,6 +196,26 @@ export function Diagnostic360() {
               </div>
             </motion.div>
 
+            {/* ROI Analysis section */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="p-8 rounded-3xl bg-primary/5 backdrop-blur-md border border-primary/20"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <TrendingDown className="w-5 h-5 text-primary" />
+                <h3 className="text-2xl font-bold text-white">Análisis de ROI</h3>
+              </div>
+              <p className="text-slate-300 text-sm leading-relaxed font-light">
+                Maximice su rentabilidad mediante el análisis de ROI: Un <span className="text-white font-semibold">Diagnóstico TI 360°</span> es una inversión estratégica con retornos medibles. Al transformar gastos reactivos imprevistos en un modelo de mantenimiento preventivo bajo contrato, las empresas logran reducir hasta un <span className="text-primary font-bold">85% los tiempos de inactividad crítica</span>.
+              </p>
+              <p className="mt-4 text-slate-300 text-sm leading-relaxed font-light">
+                La conveniencia es clara: el costo de prevención es significativamente menor al impacto financiero de una falla mayor, asegurando que cada recurso tecnológico esté alineado con la rentabilidad y escalabilidad de su negocio.
+              </p>
+            </motion.div>
+
             {/* Investment & Deliverables */}
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
