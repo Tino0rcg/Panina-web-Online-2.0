@@ -1,0 +1,133 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Precise Professional Light Palette: #117A97, #2DB7C1, #8E8E8E, #FFFFFF */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 210 18% 4%; /* Near Black for high contrast */
+    --card: 0 0% 100%;
+    --card-foreground: 210 18% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 18% 4%;
+    --primary: 193 80% 33%; /* #117A97 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 193 80% 33%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 0 0% 56%; /* #8E8E8E */
+    --accent: 184 62% 47%; /* #2DB7C1 */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 40% 90%;
+    --input: 210 40% 90%;
+    --ring: 193 80% 33%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary/20;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline font-bold text-foreground tracking-tight;
+  }
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(17, 122, 151, 0.1);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.05);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #117A97 0%, #2DB7C1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-brand {
+  background: linear-gradient(135deg, #117A97 0%, #2DB7C1 100%);
+}
+
+  /* Animated Mesh Gradient for Persona */
+  .mesh-gradient {
+    background: radial-gradient(at 0% 0%, hsla(193, 80%, 33%, 0.1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(185, 62%, 46%, 0.1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(193, 80%, 33%, 0.05) 0, transparent 50%);
+    background-size: 200% 200%;
+    animation: mesh 20s ease infinite;
+  }
+
+  @keyframes mesh {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+  }
+
+  .glass-morphism {
+    @apply backdrop-blur-2xl bg-white/70 border border-white/20 shadow-[0_8px_32px_0_rgba(17,122,151,0.1)];
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+  }
+
+  .card-hover-effect {
+    @apply transition-all duration-500 hover:shadow-[0_20px_50px_rgba(45,183,193,0.15)] hover:-translate-y-2;
+  }
+
+  .text-reveal {
+    mask-image: linear-gradient(to bottom, white 0%, white 100%);
+    mask-size: 100% 200%;
+    mask-position: 0% 100%;
+    transition: mask-position 1s ease-out;
+  }
+
+  .text-reveal:hover {
+    mask-position: 0% 0%;
+  }
+
+  .brand-texture {
+    background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+    background-repeat: repeat;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+.card-shadow {
+  box-shadow: 0 10px 40px -20px rgba(17, 122, 151, 0.15);
+}
+
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px -20px rgba(17, 122, 151, 0.2);
+}
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-slide {
+  animation: slide 40s linear infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-fast {
+  background-size: 200% auto;
+  animation: gradient-flow 3s linear infinite;
+}

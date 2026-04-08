@@ -1,0 +1,46 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-bg",
+      "description": "Abstract futuristic digital network background",
+      "imageUrl": "https://picsum.photos/seed/tecnoconecta-hero/1920/1080",
+      "imageHint": "tech network"
+    },
+    {
+      "id": "cloud-service",
+      "description": "Server room with cloud computing visual",
+      "imageUrl": "https://picsum.photos/seed/tecnoconecta-cloud/800/600",
+      "imageHint": "cloud computing"
+    },
+    {
+      "id": "devops-service",
+      "description": "Continuous integration and delivery workflow",
+      "imageUrl": "https://picsum.photos/seed/tecnoconecta-devops/800/600",
+      "imageHint": "software development"
+    },
+    {
+      "id": "cyber-service",
+      "description": "Security shield and digital locks",
+      "imageUrl": "https://picsum.photos/seed/tecnoconecta-cyber/800/600",
+      "imageHint": "cybersecurity"
+    },
+    {
+      "id": "team-member-1",
+      "description": "Professional IT Consultant Portrait",
+      "imageUrl": "https://picsum.photos/seed/tecnoconecta-team1/400/400",
+      "imageHint": "professional man"
+    },
+    {
+      "id": "team-member-2",
+      "description": "Lead Software Engineer Portrait",
+      "imageUrl": "https://picsum.photos/seed/tecnoconecta-team2/400/400",
+      "imageHint": "professional woman"
+    },
+    {
+      "id": "team-member-3",
+      "description": "Data Scientist Portrait",
+      "imageUrl": "https://picsum.photos/seed/tecnoconecta-team3/400/400",
+      "imageHint": "business professional"
+    }
+  ]
+}
