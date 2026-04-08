@@ -51,7 +51,7 @@ export function Footer() {
                 { name: "Soluciones TI para Modernizar y Asegurar tu Operación", href: "#services" },
                 { name: "Diagnóstico TI 360°", href: "#diagnostico" },
                 { name: "Trayectoria", href: "/#about" },
-                { name: "Calculadora de ROI", href: "/calculadora-roi" },
+                { name: "Calcula tu ROI", href: "/calculadora-roi" },
                 { name: "Casa Matriz", href: "/#contact" },
               ].map((link) => (
                 <li key={link.name}>

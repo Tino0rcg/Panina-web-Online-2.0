@@ -34,13 +34,14 @@ export function Navbar() {
     { name: "Inicio", href: "/#diagnostico-banner" },
     { name: "Servicios", href: "/servicios" },
     { name: "Sobre Nosotros", href: "/#about" },
-    { name: "Calculadora ROI", href: "/calculadora-roi" },
+    { name: "Calcula tu ROI", href: "/calculadora-roi" },
     { name: "Contacto", href: "/#contact" },
   ];
 
   // Helper function to determine if we should use white text
   const isHomePage = pathname === "/";
-  const useWhiteText = isHomePage && !isScrolled;
+  const isROIPage = pathname === "/calculadora-roi";
+  const useWhiteText = (isHomePage || isROIPage) && !isScrolled;
 
   return (
     <nav

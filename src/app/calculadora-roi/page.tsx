@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { ROICalculator } from "@/components/ROICalculator";
 import { Footer } from "@/components/Footer";
-import { Diagnostic360 } from "@/components/Diagnostic360";
 
 export const metadata = {
   title: "Calculadora de ROI de Infraestructura TI | ONLINE System",
@@ -15,7 +14,6 @@ export default function ROIPage() {
       <div className="pt-20">
         <ROICalculator />
       </div>
-      <Diagnostic360 />
       <Footer />
     </main>
   );

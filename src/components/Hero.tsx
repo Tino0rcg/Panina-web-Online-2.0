@@ -37,7 +37,7 @@ const SLIDES = [
     description: "Diagnóstico TI Estratégico para Optimizar Costos, Seguridad y Operación de su infraestructura tecnológica.",
     statValue: "360°",
     statLabel: "Visión Operativa",
-    secondaryStatValue: "Calcule su ROI",
+    secondaryStatValue: "Calcula tu ROI",
     secondaryStatLabel: "Optimización de Costos",
     secondaryStatHref: "/calculadora-roi",
     primaryButtonText: "Descubre Más",
