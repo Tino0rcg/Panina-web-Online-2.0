@@ -50,6 +50,11 @@ function ContactForm() {
       } else if (serviceParam === "Solicitar Diagnóstico 360°" || serviceParam.includes("Diagnóstico")) {
         setSelectedService("Solicitar Diagnóstico 360°");
       }
+
+      const messageParam = searchParams.get("message");
+      if (messageParam) {
+        setInitialMessage(messageParam);
+      }
     }
   }, [searchParams]);
 
@@ -154,8 +159,8 @@ function ContactForm() {
 
             <div className="space-y-3">
               <Label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Servicio de Interés</Label>
+              <input type="hidden" name="service" value={selectedService} />
               <Select 
-                name="service" 
                 value={selectedService} 
                 onValueChange={setSelectedService}
                 required

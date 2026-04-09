@@ -8,11 +8,13 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Sparkles, Loader2, CheckCircle2, ArrowRight, RotateCcw, MessageSquareCode } from "lucide-react";
 import { receiveServiceRecommendations, type ReceiveServiceRecommendationsOutput } from "@/ai/flows/receive-service-recommendations";
 import { BookingModal } from "@/components/BookingModal";
+import { useToast } from "@/hooks/use-toast";
 
 export function ServiceMatcher() {
   const [needs, setNeeds] = useState("");
   const [results, setResults] = useState<ReceiveServiceRecommendationsOutput | null>(null);
   const [isPending, startTransition] = useTransition();
+  const { toast } = useToast();
 
   const handleMatch = async () => {
     if (!needs.trim()) return;
@@ -22,6 +24,11 @@ export function ServiceMatcher() {
         setResults(res);
       } catch (error) {
         console.error("Failed to match services:", error);
+        toast({
+          title: "Error de Análisis",
+          description: error instanceof Error ? error.message : "Hubo un problema al procesar su solicitud. Intente nuevamente.",
+          variant: "destructive shadow-2xl",
+        });
       }
     });
   };

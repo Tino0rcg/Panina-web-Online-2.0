@@ -1,23 +1,26 @@
 
 import Image from "next/image";
-import { BadgeCheck, Globe } from "lucide-react";
+import { BadgeCheck, Globe, Mail } from "lucide-react";
 
 const team = [
   {
     name: "Ramiro Contreras G.",
     role: "Ingeniero de Implementación Especialista en IA y Automatización",
+    email: "Rcontreras@onlinesystem.cl",
     image: "https://raw.githubusercontent.com/Tino0rcg/imagenes-pagina-online-2.0/main/mapachito.jpeg",
     bio: "Especialista en integración de soluciones de automatización e Inteligencia Artificial. Enfocado en optimizar la eficiencia operativa y liderar la transformación digital mediante la adopción de tecnologías escalables y orientadas a resultados reales para el negocio."
   },
   {
     name: "Alejandro Contreras D.",
     role: "Fundador y Consultor Senior de Transformación Digital",
+    email: "Acontreras@onlinesystem.cl",
     image: "https://raw.githubusercontent.com/Tino0rcg/imagenes-pagina-online-2.0/main/alejandro%20c.jpeg",
     bio: "Más de 25 años de experiencia liderando la implementación de soluciones tecnológicas críticas en Chile. Como fundador de ONLINE System, se enfoca en la continuidad operativa, modernización estratégica y el desarrollo de relaciones de largo plazo con cada socio corporativo."
   },
   {
     name: "Rodrigo Hernández V.",
     role: "Gerente Comercial de Infraestructura y Data Center",
+    email: "Rhernandez@onlinesystem.cl",
     image: "https://raw.githubusercontent.com/Tino0rcg/imagenes-pagina-online-2.0/main/Rodrigo%20H.jpeg",
     bio: "Especialista en soluciones de infraestructura crítica y Data Center. Con un enfoque estratégico en la continuidad operativa, lidera el desarrollo de negocios de alto impacto alineando la tecnología con los objetivos reales de cada cliente."
   }
@@ -59,6 +62,20 @@ export function TeamSection() {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
                 
+                {/* Email Overlay - Bottom Center */}
+                {member.email && (
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-fit opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 z-20">
+                    <a 
+                      href={`mailto:${member.email}`} 
+                      className="flex items-center gap-3 px-6 py-3 bg-white/40 backdrop-blur-md rounded-2xl border border-white/40 shadow-xl hover:bg-primary transition-all group/email"
+                    >
+                      <Mail className="w-4 h-4 text-primary group-hover/email:text-white" />
+                      <span className="text-[11px] font-bold text-slate-900 group-hover/email:text-white tracking-wider lowercase">
+                        {member.email}
+                      </span>
+                    </a>
+                  </div>
+                )}
               </div>
               
               <div className="space-y-6">

@@ -65,7 +65,7 @@ const receiveServiceRecommendationsFlow = ai.defineFlow(
   async input => {
     const {output} = await serviceMatcherPrompt(input);
     if (!output) {
-      throw new Error('Failed to get service recommendations from the AI model.');
+      throw new Error('No se pudo obtener una recomendación de la IA. Verifique la configuración de la clave de API (GOOGLE_GENAI_API_KEY).');
     }
     return output;
   }

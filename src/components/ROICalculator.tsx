@@ -13,6 +13,7 @@ import { Checkbox } from "./ui/checkbox";
 import { Card, CardContent } from "./ui/card";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
 
 const PAIN_POINTS = [
   { id: "falls", label: "Caídas frecuentes de sistemas", icon: <AlertCircle className="w-4 h-4" /> },
@@ -47,6 +48,13 @@ export function ROICalculator() {
     recoveryTimeMin: 3,
     recoveryTimeMax: 6
   });
+  const router = useRouter();
+
+  const handleGetReport = () => {
+    const message = `Hola equipo de ONLINE System,\n\nHe utilizado la calculadora de ROI y me gustaría recibir el reporte detallado para mi empresa.\n\nDatos ingresados:\n- Empleados: ${employees[0]}\n- Equipos TI: ${equipments[0]}\n- Inactividad: ${downtimeHours[0]}h/mes\n- Pérdida mensual estimada: $${results.monthlyLoss.toLocaleString()}\n- Ahorro potencial: 30%-60%\n\nQuedo atento.`;
+    const encodedMessage = encodeURIComponent(message);
+    router.push(`/#contact?service=Solicitar Diagnóstico 360°&message=${encodedMessage}`);
+  };
 
   useEffect(() => {
     const monthlyLoss = (downtimeHours[0] * costPerHour) + monthlySupportCost;
@@ -292,7 +300,11 @@ export function ROICalculator() {
               </div>
 
               <div className="pt-4">
-                <Button size="lg" className="w-full h-16 bg-primary hover:bg-primary/90 text-white rounded-2xl text-xl font-bold shadow-2xl shadow-primary/30 group transition-all hover:scale-105 active:scale-95">
+                <Button 
+                  size="lg" 
+                  className="w-full h-16 bg-primary hover:bg-primary/90 text-white rounded-2xl text-xl font-bold shadow-2xl shadow-primary/30 group transition-all hover:scale-105 active:scale-95"
+                  onClick={handleGetReport}
+                >
                   Obtener Reporte Detallado
                   <ChevronRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
                 </Button>

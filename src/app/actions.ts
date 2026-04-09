@@ -1,6 +1,5 @@
 "use server";
 
-import 'dotenv/config';
 import { Resend } from 'resend';
 import { z } from 'zod';
 import { Buffer } from 'buffer';
@@ -16,10 +15,16 @@ const contactSchema = z.object({
 
 export async function sendContactEmail(prevState: any, formData: FormData) {
   const apiKey = process.env.RESEND_API_KEY?.trim();
-  console.log("CONTACT ACTION: API Key status:", apiKey ? "Cargada" : "NO ENCONTRADA");
   
-  if (!apiKey || apiKey.includes('your_api_key')) {
-    return { error: "Configuración de correo incompleta. (API Key faltante en .env)" };
+  // Debug log for the user to see in their terminal
+  console.log("CONTACT ACTION: Debug info:", { 
+    hasKey: !!apiKey, 
+    keyLength: apiKey?.length || 0,
+    availableEnvVars: Object.keys(process.env).filter(k => k.includes('API') || k.includes('RESEND'))
+  });
+  
+  if (!apiKey || apiKey === "" || apiKey.includes('your_api_key')) {
+    return { error: "Configuración de correo incompleta. (API Key faltante en .env o el servidor necesita reiniciarse)" };
   }
 
   const resend = new Resend(apiKey);
@@ -32,9 +37,14 @@ export async function sendContactEmail(prevState: any, formData: FormData) {
   });
 
   if (!validatedFields.success) {
+    const flattenErrors = validatedFields.error.flatten();
+    console.error("CONTACT ACTION: Validation failed:", flattenErrors.fieldErrors);
+    
+    // Return a more descriptive error or just the first field error
+    const firstError = Object.values(flattenErrors.fieldErrors)[0]?.[0];
     return { 
-      error: "Por favor complete todos los campos correctamente.",
-      details: validatedFields.error.flatten().fieldErrors 
+      error: firstError || "Por favor complete todos los campos correctamente.",
+      details: flattenErrors.fieldErrors 
     };
   }
 
@@ -74,7 +84,13 @@ export async function sendContactEmail(prevState: any, formData: FormData) {
 
     if (error) {
       console.error('Resend error:', error);
-      return { error: "Hubo un problema de conexión con el servicio de correo." };
+      // Handle known Resend error types or messages
+      const errorMsg = error.message.toLowerCase();
+      if (errorMsg.includes('api key')) return { error: "Error de autenticación: Verifique su RESEND_API_KEY." };
+      if (errorMsg.includes('trial')) return { error: "Límite de prueba: Solo se permite enviar a correos verificados." };
+      if (errorMsg.includes('domain')) return { error: "Dominio no verificado: Configure su dominio en el panel de Resend." };
+      
+      return { error: `Error del servicio: ${error.message || "Hubo un problema de conexión con el servicio de correo."}` };
     }
 
     return { success: true, message: "Su requerimiento ha sido enviado con éxito." };
