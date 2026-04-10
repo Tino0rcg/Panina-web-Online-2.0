@@ -225,4 +225,62 @@ export const servicesData: ServiceData[] = [
     ],
     concludingText: "Acompañamos a nuestros clientes en todo el ciclo de vida de sus sistemas Softland, garantizando una gestión eficiente y escalable."
   },
+  {
+    slug: "integracion-sistemas",
+    name: "Implementación e Integración de Sistemas ERP y APIs",
+    nameHighlight: "Sistemas ERP y APIs",
+    description: "Centralice sus operaciones conectando su ecosistema tecnológico. Nos especializamos en la integración de ERPs como Softland, SAP y Defontana con e-commerce, CRM y software financiero, eliminando la duplicidad de funciones.",
+    cardDescription: "Conectamos sus operaciones, sistemas core y ERPs para lograr una automatización centralizada y segura.",
+    icon: Code2,
+    color: "text-primary",
+    glow: "shadow-[0_0_20px_-10px_rgba(17,122,151,0.5)]",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+    featuresTitle: "Casos de ",
+    featuresTitleHighlight: "Uso",
+    featuresSubtitle: "Escenarios comunes resueltos con nuestra experticia en integraciones.",
+    features: [
+      "Comercio Omnicanal (E-commerce ↔ ERP): Sincronice inventarios, precios y órdenes de compra en tiempo real entre Shopify, VTEX o MercadoLibre y su ERP (Softland, SAP). Evite quiebres de stock y doble digitación al instante.",
+      "Cierre Contable y Financiero Automatizado: Conecte su ERP con pasarelas de pago (Transbank, MercadoPago), facturación electrónica (DTE) y bancos. Reduzca errores humanos en conciliaciones y cierre el mes de forma impecable.",
+      "Gestión de Capital Humano Integrada: Vincule plataformas de RRHH (Buk, Talana) con su ecosistema financiero para automatizar la contabilidad de nóminas, liquidaciones y requerimientos corporativos sin intervención manual.",
+      "Logística y Trazabilidad en la Nube: Conecte su sistema de gestión de bodegas (WMS) o proveedores logísticos a su central para despachar más rápido y tener la información de flujo logístico bajo control.",
+      "Consolidación de Datos (Business Intelligence): Olvídese de cruzar Excels eternos. Unificamos la data de sus múltiples sistemas para que tome decisiones directivas certeras y en tiempo real con tableros interactivos (Power BI, Tableau).",
+      "Rescate de Sistemas Legacy (Heredados): Si tiene sistemas antiguos críticos, construimos una capa de APIs a la medida para extender su vida útil y conectarlos con la nube de forma ágil y 100% segura."
+    ],
+    concludingText: "Nuestros clientes logran un Retorno de Inversión (ROI) en menos de 6 meses al liberar a sus equipos del colapso administrativo.",
+    plans: [
+      {
+        name: "Evaluación Diagnóstica",
+        subtitle: "Para iniciar integraciones",
+        features: [
+          "Mapeo de arquitectura TI",
+          "Revisión de viabilidad técnica",
+          "Propuesta de roadmap"
+        ],
+        summary: "Para entender por dónde empezar"
+      },
+      {
+        name: "Integración Dedicada",
+        subtitle: "Ejecución de procesos",
+        features: [
+          "Desarrollo de conectores API",
+          "Automatización de 2 a 3 sistemas",
+          "Mapeo de procesos",
+          "Soporte post-despliegue"
+        ],
+        summary: "Automatización estándar corporativa",
+        highlight: true
+      },
+      {
+        name: "Arquitectura Enterprise",
+        subtitle: "Agnosticismo total",
+        features: [
+          "Microservicios avanzados",
+          "Migración a Cloud",
+          "Sincronización multi-país/multi-empresa",
+          "Soporte y SLA 24/7"
+        ],
+        summary: "Para operaciones de gran escala"
+      }
+    ]
+  }
 ];

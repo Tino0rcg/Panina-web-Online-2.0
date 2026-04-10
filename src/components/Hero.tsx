@@ -27,7 +27,7 @@ const SLIDES = [
     primaryButtonText: "Ver Soluciones",
     primaryButtonHref: "#services",
     isBooking: false,
-    secondaryButtonText: "Hablar con un Experto",
+    secondaryButtonText: "Agenda Reunión",
     secondaryButtonHref: "/?service=transformacion-digital-y-soluciones#contact"
   },
   {
@@ -43,7 +43,7 @@ const SLIDES = [
     primaryButtonText: "Descubre Más",
     primaryButtonHref: "#diagnostico",
     isBooking: false,
-    secondaryButtonText: "Hablar con un Experto",
+    secondaryButtonText: "Agenda Reunión",
     secondaryButtonHref: "/?service=Solicitar Diagnóstico 360°#contact"
   },
   {
@@ -57,8 +57,29 @@ const SLIDES = [
     secondaryStatLabel: "Concept Compliance",
     primaryButtonText: "Ver Soluciones",
     primaryButtonHref: "/servicios/ciberseguridad",
-    secondaryButtonText: "Hablar con un Experto",
+    secondaryButtonText: "Agenda Reunión",
     secondaryButtonHref: "/?service=ciberseguridad#contact",
+    isBooking: false
+  },
+  {
+    id: 4,
+    tag: "Eficiencia y Control Operativo",
+    title: "Implementación e Integración de <br /> <span className='text-gradient'>sistemas ERP y APIs.</span>",
+    description: "Centralice sus operaciones conectando su ecosistema tecnológico. Experiencia comprobada con plataformas líderes del mercado y soluciones a medida.",
+    features: [
+      "Integración ágil con Softland, SAP, Defontana y más",
+      "Reducción de hasta un 40% en errores operativos",
+      "Dile adiós a los procesos manuales y repetitivos",
+      "Aumento del 30% en productividad general"
+    ],
+    statValue: "+30%",
+    statLabel: "Productividad",
+    secondaryStatValue: "-40%",
+    secondaryStatLabel: "Errores Operativos",
+    primaryButtonText: "Ver Soluciones",
+    primaryButtonHref: "/servicios/integracion-sistemas",
+    secondaryButtonText: "Agenda Reunión",
+    secondaryButtonHref: "/?service=integracion-sistemas#contact",
     isBooking: false
   }
 ];
@@ -252,7 +273,7 @@ export function Hero() {
 
                   {/* Action 2: Secondary Info */}
                   <Link href={currentSlide.secondaryButtonHref} passHref>
-                    <Button variant="outline" size="lg" className="w-full sm:w-auto border-white/20 glass-morphism hover:bg-white/10 text-white px-8 h-14 rounded-2xl text-lg font-bold transition-all hover:scale-105 active:scale-95">
+                    <Button size="lg" className="w-full sm:w-auto bg-white hover:bg-slate-100 text-primary px-8 h-14 rounded-2xl text-lg font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
                       {currentSlide.secondaryButtonText}
                     </Button>
                   </Link>
