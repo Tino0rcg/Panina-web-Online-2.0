@@ -42,7 +42,7 @@ export const servicesData: ServiceData[] = [
     slug: "soporte-especializado",
     name: "Contrato y Soporte de Mantenimiento Preventivo",
     description: "Garantiza la continuidad operativa de tu empresa con un servicio integral de soporte TI y mantenimiento preventivo, diseñado para anticipar fallas, optimizar el rendimiento de tus sistemas y asegurar la estabilidad de tu infraestructura tecnológica.",
-    cardDescription: "Soporte TI integral y mantenimiento proactivo para garantizar la continuidad operativa y estabilidad de su infraestructura tecnológica.",
+    cardDescription: "Soporte TI integral y mantenimiento preventivo para garantizar la continuidad operativa y estabilidad de su infraestructura tecnológica.",
     icon: ShieldCheck,
     color: "text-accent",
     glow: "shadow-[0_0_20px_-10px_rgba(45,183,193,0.5)]",
