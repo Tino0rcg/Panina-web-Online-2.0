@@ -103,7 +103,7 @@ function ContactForm() {
               {[
                 { icon: Mail, label: "Canal Ejecutivo", value: "contacto@onlinesystem.cl", href: "mailto:contacto@onlinesystem.cl" },
                 { icon: Phone, label: "Línea Directa", value: "+56 9 9607 0383", href: "tel:+56996070383" },
-                { icon: MapPin, label: "Casa Matriz", value: "Abel González 0324", subValue: "La Cisterna, Santiago-Chile" },
+                { icon: MapPin, label: "Casa Matriz", value: "Providencia, Santiago, Chile" },
               ].map((item, i) => (
                 <motion.div 
                   key={i} 
@@ -116,14 +116,11 @@ function ContactForm() {
                   <div>
                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="text-lg font-bold text-slate-900 hover:text-primary transition-colors block">
+                      <a href={item.href} className="text-lg font-bold text-slate-900 hover:text-primary transition-colors">
                         {item.value}
                       </a>
                     ) : (
-                      <div className="flex flex-col">
-                        <p className="text-lg font-bold text-slate-900">{item.value}</p>
-                        {item.subValue && <p className="text-sm text-slate-500 font-medium">{item.subValue}</p>}
-                      </div>
+                      <p className="text-lg font-bold text-slate-900">{item.value}</p>
                     )}
                   </div>
                 </motion.div>
