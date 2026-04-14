@@ -103,7 +103,7 @@ function ContactForm() {
               {[
                 { icon: Mail, label: "Canal Ejecutivo", value: "contacto@onlinesystem.cl", href: "mailto:contacto@onlinesystem.cl" },
                 { icon: Phone, label: "Línea Directa", value: "+56 9 9607 0383", href: "tel:+56996070383" },
-                { icon: MapPin, label: "Casa Matriz", value: "Ábel González 0324", subValue: "La Cisterna, Santiago-Chile" },
+                { icon: MapPin, label: "Casa Matriz", value: "Abel González 0324", subValue: "La Cisterna, Santiago-Chile" },
               ].map((item, i) => (
                 <motion.div 
                   key={i} 
