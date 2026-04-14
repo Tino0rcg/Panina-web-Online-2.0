@@ -57,13 +57,12 @@ export function Navbar() {
       />
 
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link href="/#diagnostico-banner" className="flex items-center group relative z-50">
+        <Link href="/#diagnostico-banner" className="flex items-center group relative z-50 mr-8">
           <motion.div 
-            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className={cn(
-            "relative transition-all duration-500",
-            isScrolled ? "scale-90 -translate-y-1" : "scale-110"
+            "relative transition-transform duration-500 origin-left",
+            isScrolled ? "scale-110 md:scale-125 -translate-y-1 hover:scale-[1.15] md:hover:scale-[1.3]" : "scale-[1.5] md:scale-[1.8] hover:scale-[1.55] md:hover:scale-[1.85]"
           )}>
             <Image 
               src="/logo.png" 
