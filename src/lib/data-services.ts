@@ -8,6 +8,7 @@ import {
   BrainCircuit, 
   Rocket,
   Shield,
+  Monitor,
   LucideIcon
 } from "lucide-react";
 
@@ -132,7 +133,7 @@ export const servicesData: ServiceData[] = [
     icon: Settings2,
     color: "text-slate-400",
     glow: "shadow-[0_0_20px_-10px_rgba(148,163,184,0.5)]",
-    image: "https://raw.githubusercontent.com/Tino0rcg/imagenes-pagina-online-2.0/main/data.png",
+    image: "/telecom-biometric.png",
     nameHighlight: "Redes y Telecomunicaciones",
     featuresTitle: "Servicios de Ingeniería en Redes",
     featuresTitleHighlight: "en Redes",
@@ -144,7 +145,8 @@ export const servicesData: ServiceData[] = [
       "Proyectos y Estudios Eléctricos: Diseño de sistemas de potencia eléctrica, Estudios de instalaciones eléctricas, Optimización energética.",
       "Implementación de Data Centers y Salas Técnicas: Diseño de salas de servidores, Instalación de racks, UPS y climatización, Infraestructura crítica para empresas.",
       "Análisis y Optimización de Redes: Evaluación de desempeño LAN/WAN, Diagnóstico de fallas, Mejora de estabilidad y rendimiento.",
-      "Equipamiento y Soluciones de Comunicación: Suministro de equipos de red, Implementación de soluciones de conectividad, Integración tecnológica."
+      "Sistemas de Comunicación Softphone (VoIP): Implementación de telefonía IP multicanal que permite realizar y recibir llamadas desde cualquier dispositivo (PC, móvil) sin depender de hardware físico tradicional. Sus ventajas incluyen reducción de costos, movilidad total para teletrabajo, escalabilidad inmediata de anexos y funciones unificadas (grabación, IVR, e integración con CRM).",
+      "Control de Acceso Biométrico: Diseño e instalación de sistemas de seguridad de alta precisión mediante reconocimiento por huella dactilar y escaneo ocular (iris). Estos sistemas restringen de forma irrefutable el acceso a áreas críticas, generando registros exactos y centralizados."
     ]
   },
   {
@@ -282,5 +284,25 @@ export const servicesData: ServiceData[] = [
         summary: "Para operaciones de gran escala"
       }
     ]
+  },
+  {
+    slug: "oficina-virtual-inteligente",
+    name: "Oficina Virtual Inteligente",
+    description: "Transforme sus oficinas y salas de reunión físicas con tecnología avanzada. Nuestro servicio de Oficina Virtual Inteligente integra sistemas de comunicación de alta calidad, control de acceso y sensores IoT para garantizar seguridad, colaboración y confort.",
+    cardDescription: "Sistemas de videoconferencia, control de acceso biométrico y sensores IoT para espacios de trabajo modernos e inteligentes.",
+    icon: Monitor,
+    color: "text-indigo-400",
+    glow: "shadow-[0_0_20px_-10px_rgba(129,140,248,0.5)]",
+    image: "/smart-office-video-conference.png",
+    featuresTitle: "Características Principales",
+    featuresTitleHighlight: "Principales",
+    features: [
+      "Sistema de Videollamadas Avanzado: Salas de reuniones equipadas con pantallas TV para proyección de imagen, parlantes de alta fidelidad, micrófonos y cámaras de calidad profesional.",
+      "Control de Acceso Privado: Seguridad para ingreso a oficinas mediante sistemas biométricos (como reconocimiento de huella dactilar), garantizando un acceso controlado y exclusivo.",
+      "Sensores Inteligentes IoT: Instalación de sensores detectores de incendios (humo/calor) y medidores de humedad para el monitoreo preventivo de las instalaciones corporativas.",
+      "Alertas y Mensajería de Urgencia: Envíos automatizados de mensajería (SMS, correo o integraciones) que identifican y priorizan el nivel de urgencia o gravedad del evento detectado.",
+      "Integración de Plataformas: Centralización de las alertas y sistemas de videovigilancia para facilitar la reacción rápida de la administración y el área TI."
+    ],
+    concludingText: "Asegure la colaboración efectiva y la protección de su área de trabajo con soluciones inteligentes integradas en tiempo real."
   }
 ];

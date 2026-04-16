@@ -14,6 +14,9 @@ import { Card, CardContent } from "./ui/card";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 const PAIN_POINTS = [
   { id: "falls", label: "Caídas frecuentes de sistemas", icon: <AlertCircle className="w-4 h-4" /> },
@@ -39,6 +42,9 @@ export function ROICalculator() {
   const [costPerHour, setCostPerHour] = useState(150);
   const [monthlySupportCost, setMonthlySupportCost] = useState(500);
   
+  const [costMode, setCostMode] = useState<"manual" | "calculated">("manual");
+  const [averageSalary, setAverageSalary] = useState(15);
+  
   const [results, setResults] = useState({
     monthlyLoss: 0,
     savingsMin: 0,
@@ -46,18 +52,161 @@ export function ROICalculator() {
     roiMin: 0,
     roiMax: 0,
     recoveryTimeMin: 3,
-    recoveryTimeMax: 6
+    recoveryTimeMax: 6,
+    effectiveCostPerHour: 150
   });
   const router = useRouter();
 
-  const handleGetReport = () => {
-    const message = `Hola equipo de ONLINE System,\n\nHe utilizado la calculadora de ROI y me gustaría recibir el reporte detallado para mi empresa.\n\nDatos ingresados:\n- Empleados: ${employees[0]}\n- Equipos TI: ${equipments[0]}\n- Inactividad: ${downtimeHours[0]}h/mes\n- Pérdida mensual estimada: $${results.monthlyLoss.toLocaleString()}\n- Ahorro potencial: 30%-60%\n\nQuedo atento.`;
-    const encodedMessage = encodeURIComponent(message);
-    router.push(`/#contact?service=Solicitar Diagnóstico 360°&message=${encodedMessage}`);
+  const [selectedPainPoints, setSelectedPainPoints] = useState<string[]>([]);
+  const [selectedObjectives, setSelectedObjectives] = useState<string[]>([]);
+
+  const handlePainPointChange = (id: string, checked: boolean) => {
+    setSelectedPainPoints(prev => checked ? [...prev, id] : prev.filter(p => p !== id));
+  };
+
+  const handleObjectiveChange = (id: string, checked: boolean) => {
+    setSelectedObjectives(prev => checked ? [...prev, id] : prev.filter(o => o !== id));
+  };
+
+  const handleGetReport = async () => {
+    const doc = new jsPDF();
+    
+    // Configuración de colores
+    const primaryColor: [number, number, number] = [20, 184, 166];
+    const textColor: [number, number, number] = [40, 40, 40];
+
+    // Cargar e insertar Logo
+    try {
+      const img = new Image();
+      img.src = '/logo.png';
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+      doc.addImage(img, 'PNG', 14, 12, 45, 14);
+    } catch (error) {
+      console.warn("No se pudo cargar el logo para el PDF", error);
+    }
+    
+    // Título
+    doc.setFontSize(22);
+    doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.text("Reporte de Diagnóstico Financiero de TI", 14, 38);
+    
+    doc.setFontSize(11);
+    doc.setTextColor(100, 100, 100);
+    doc.text("Generado por ONLINE System", 14, 46);
+    
+    // Fecha
+    const date = new Date().toLocaleDateString();
+    doc.text(`Fecha: ${date}`, 170, 46, { align: "right" });
+    
+    doc.setDrawColor(200, 200, 200);
+    doc.line(14, 50, 196, 50);
+
+    // 1. Diagnóstico Actual (Data Table)
+    doc.setFontSize(14);
+    doc.setTextColor(textColor[0], textColor[1], textColor[2]);
+    doc.text("1. Diagnóstico Actual (Datos Operativos)", 14, 62);
+
+    autoTable(doc, {
+      startY: 66,
+      headStyles: { fillColor: primaryColor },
+      body: [
+        ["Cantidad de empleados", employees[0].toString()],
+        ["Equipos / Usuarios TI", equipments[0].toString()],
+        ["Inactividad mensual estimada", `${downtimeHours[0]} horas`],
+        ["Costo por hora de inactividad", `$${results.effectiveCostPerHour.toLocaleString()}`],
+        ["Costo mensual de soporte actual", `$${monthlySupportCost.toLocaleString()}`]
+      ]
+    });
+
+    let currentY = (doc as any).lastAutoTable.finalY + 15;
+
+    // 2. Pérdida y Análisis
+    doc.setFontSize(14);
+    doc.text("2. Costo Oculto de Inactividad Mensual", 14, currentY);
+    currentY += 10;
+    
+    doc.setFontSize(12);
+    doc.setTextColor(100, 100, 100);
+    doc.text(`La pérdida mensual estimada por inactividad y costos de soporte es de:`, 14, currentY);
+    
+    doc.setFontSize(16);
+    doc.setTextColor(225, 29, 72); // Rose-600
+    doc.text(`$${results.monthlyLoss.toLocaleString()}`, 14, currentY + 8);
+    
+    currentY += 25;
+
+    // 3. Problemas y Objetivos
+    if (selectedPainPoints.length > 0 || selectedObjectives.length > 0) {
+      doc.setFontSize(14);
+      doc.setTextColor(textColor[0], textColor[1], textColor[2]);
+      doc.text("3. Análisis Cualitativo", 14, currentY);
+      currentY += 10;
+      
+      const painPointsLabels = selectedPainPoints.map(id => PAIN_POINTS.find(p => p.id === id)?.label).filter(Boolean).join(",\n");
+      const objectivesLabels = selectedObjectives.map(id => OBJECTIVES.find(o => o.id === id)?.label).filter(Boolean).join(",\n");
+
+      autoTable(doc, {
+        startY: currentY,
+        headStyles: { fillColor: [71, 85, 105] }, // Slate-600
+        head: [["Elemento", "Detalle"]],
+        body: [
+          ["Problemas Actuales", painPointsLabels || "Ninguno seleccionado"],
+          ["Objetivos Estratégicos", objectivesLabels || "Ninguno seleccionado"]
+        ],
+        styles: { cellWidth: "wrap" }
+      });
+      
+      currentY = (doc as any).lastAutoTable.finalY + 15;
+    }
+
+    // 4. Proyección de Ahorro y ROI
+    if (currentY > 250) {
+        doc.addPage();
+        currentY = 20;
+    }
+
+    doc.setFontSize(14);
+    doc.setTextColor(textColor[0], textColor[1], textColor[2]);
+    doc.text("4. Proyección y Retorno de Inversión (ROI)", 14, currentY);
+    currentY += 10;
+
+    autoTable(doc, {
+      startY: currentY,
+      theme: "grid",
+      headStyles: { fillColor: [16, 185, 129] }, // Emerald-500
+      head: [["Métrica de Optimización", "Estimación Mensual/Anual"]],
+      body: [
+        ["Ahorro Potencial Mensual", `30% - 60% ($${results.savingsMin.toLocaleString()} - $${results.savingsMax.toLocaleString()})`],
+        ["Retorno de Inversión (ROI)", `${results.roiMin}% - ${results.roiMax}% anual`],
+        ["Tiempo de Recuperación", `${results.recoveryTimeMin} a ${results.recoveryTimeMax} meses`]
+      ]
+    });
+
+    currentY = (doc as any).lastAutoTable.finalY + 20;
+    
+    // Conclusión
+    doc.setFontSize(12);
+    doc.setTextColor(textColor[0], textColor[1], textColor[2]);
+    let conclusionText = `El ahorro estimado que generarás al reducir los tiempos de inactividad de tu infraestructura actual `;
+    if (selectedObjectives.length > 0) {
+        conclusionText += `podrá ser invertido directamente en tus objetivos estratégicos.`;
+    } else {
+        conclusionText += `mejorará significativamente la rentabilidad de tu negocio.`;
+    }
+    
+    const splitText = doc.splitTextToSize(conclusionText, 180);
+    doc.text(splitText, 14, currentY);
+
+    // Save
+    doc.save("Reporte_ROI_Online_System.pdf");
   };
 
   useEffect(() => {
-    const monthlyLoss = (downtimeHours[0] * costPerHour) + monthlySupportCost;
+    const effectiveCostPerHour = costMode === "manual" ? costPerHour : (employees[0] * averageSalary);
+    const monthlyLoss = (downtimeHours[0] * effectiveCostPerHour) + monthlySupportCost;
     const savingsMin = Math.round(monthlyLoss * 0.3);
     const savingsMax = Math.round(monthlyLoss * 0.6);
     
@@ -72,9 +221,10 @@ export function ROICalculator() {
       roiMin: Math.min(roiMin, 250),
       roiMax: Math.min(roiMax, 450),
       recoveryTimeMin: 3,
-      recoveryTimeMax: 6
+      recoveryTimeMax: 6,
+      effectiveCostPerHour
     });
-  }, [employees, equipments, downtimeHours, costPerHour, monthlySupportCost]);
+  }, [employees, equipments, downtimeHours, costPerHour, monthlySupportCost, costMode, averageSalary]);
 
   return (
     <section id="roi-calculator" className="py-24 relative bg-slate-950 overflow-hidden">
@@ -178,18 +328,43 @@ export function ROICalculator() {
                     </h3>
                     
                     <div className="space-y-4">
-                      <div className="space-y-2">
-                        <Label className="text-slate-300">Costo por hora de inactividad</Label>
-                        <div className="relative">
-                          <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-                          <Input 
-                            type="number" 
-                            value={costPerHour} 
-                            onChange={(e) => setCostPerHour(Number(e.target.value))}
-                            className="pl-10 bg-white/5 border-white/10 text-white focus:ring-primary"
-                          />
-                        </div>
-                      </div>
+                      
+                      <Tabs defaultValue="manual" value={costMode} onValueChange={(val) => setCostMode(val as "manual" | "calculated")}>
+                        <TabsList className="w-full bg-white/5 border border-white/10 mb-4 h-auto p-1">
+                          <TabsTrigger value="manual" className="flex-1 data-[state=active]:bg-primary data-[state=active]:text-white whitespace-normal py-2 text-xs">Monto Manual</TabsTrigger>
+                          <TabsTrigger value="calculated" className="flex-1 data-[state=active]:bg-primary data-[state=active]:text-white whitespace-normal py-2 text-xs">Auto-calculado</TabsTrigger>
+                        </TabsList>
+                        
+                        <TabsContent value="manual" className="space-y-2 mt-0">
+                          <Label className="text-slate-300">Costo total por hora de inactividad</Label>
+                          <div className="relative">
+                            <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                            <Input 
+                              type="number" 
+                              value={costPerHour} 
+                              onChange={(e) => setCostPerHour(Number(e.target.value))}
+                              className="pl-10 bg-white/5 border-white/10 text-white focus:ring-primary"
+                            />
+                          </div>
+                          <p className="text-[10px] text-slate-500 mt-1">Estimación manual del costo para toda empresa.</p>
+                        </TabsContent>
+                        
+                        <TabsContent value="calculated" className="space-y-2 mt-0">
+                          <Label className="text-slate-300">Salario Promedio por Empleado (Por Hr)</Label>
+                          <div className="relative">
+                            <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                            <Input 
+                              type="number" 
+                              value={averageSalary} 
+                              onChange={(e) => setAverageSalary(Number(e.target.value))}
+                              className="pl-10 bg-white/5 border-white/10 text-white focus:ring-primary"
+                            />
+                          </div>
+                          <p className="text-[10px] text-slate-500 mt-1">
+                            Costo Efectivo/hr: <span className="text-primary font-bold">${(employees[0] * averageSalary).toLocaleString()}</span> (Empleados × Salario)
+                          </p>
+                        </TabsContent>
+                      </Tabs>
 
                       <div className="space-y-2">
                         <Label className="text-slate-300">Costo mensual soporte actual</Label>
@@ -214,7 +389,12 @@ export function ROICalculator() {
                     <div className="grid grid-cols-1 gap-3">
                       {PAIN_POINTS.map((point) => (
                         <div key={point.id} className="flex items-center space-x-3 group cursor-pointer">
-                          <Checkbox id={point.id} className="border-white/20 data-[state=checked]:bg-primary" />
+                          <Checkbox 
+                            id={point.id} 
+                            checked={selectedPainPoints.includes(point.id)}
+                            onCheckedChange={(checked) => handlePainPointChange(point.id, checked as boolean)}
+                            className="border-white/20 data-[state=checked]:bg-primary" 
+                          />
                           <label htmlFor={point.id} className="text-sm text-slate-400 group-hover:text-slate-200 transition-colors flex items-center gap-2 pointer-events-none">
                             {point.icon}
                             {point.label}
@@ -230,7 +410,12 @@ export function ROICalculator() {
                     <div className="grid grid-cols-1 gap-3">
                       {OBJECTIVES.map((obj) => (
                         <div key={obj.id} className="flex items-center space-x-3 group cursor-pointer">
-                          <Checkbox id={obj.id} className="border-white/20 data-[state=checked]:bg-primary" />
+                          <Checkbox 
+                            id={obj.id} 
+                            checked={selectedObjectives.includes(obj.id)}
+                            onCheckedChange={(checked) => handleObjectiveChange(obj.id, checked as boolean)}
+                            className="border-white/20 data-[state=checked]:bg-primary" 
+                          />
                           <label htmlFor={obj.id} className="text-sm text-slate-400 group-hover:text-slate-200 transition-colors flex items-center gap-2 pointer-events-none">
                             {obj.icon}
                             {obj.label}
