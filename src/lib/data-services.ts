@@ -128,26 +128,27 @@ export const servicesData: ServiceData[] = [
   {
     slug: "infraestructura-critica",
     name: "Servicio de Ingeniería, Redes y Telecomunicaciones",
-    description: "Área de ingeniería especializada en el diseño, implementación y gestión de soluciones integrales en redes de energía eléctrica y telecomunicaciones en Chile, incluyendo cableado estructurado, sistemas de seguridad CCTV, redes de datos y telefonía digital.",
+    description: "Diseñamos y desplegamos infraestructura de red robusta, desde cableado estructurado certificado hasta arquitecturas de centros de datos, garantizando la máxima disponibilidad y seguridad para las operaciones más exigentes de su empresa.",
     cardDescription: "Soluciones de ingeniería en telecomunicaciones, redes críticas y seguridad CCTV para la continuidad de su negocio.",
     icon: Settings2,
     color: "text-slate-400",
     glow: "shadow-[0_0_20px_-10px_rgba(148,163,184,0.5)]",
-    image: "/telecom-biometric.png",
+    image: "/network-engineering.png",
     nameHighlight: "Redes y Telecomunicaciones",
     featuresTitle: "Servicios de Ingeniería en Redes",
     featuresTitleHighlight: "en Redes",
     featuresSubtitle: "",
     features: [
-      "Ingeniería y Diseño de Telecomunicaciones: Diseño de redes LAN y WAN, Arquitectura de soluciones de conectividad, Planificación de infraestructura tecnológica.",
-      "Cableado Estructurado y Redes de Datos: Instalación de cableado UTP y fibra óptica en Chile, Implementación de redes de alto rendimiento, Certificación de puntos de red.",
-      "Sistemas de Seguridad y CCTV: Instalación de cámaras de seguridad, Sistemas de monitoreo y control, Integración con plataformas tecnológicas.",
-      "Proyectos y Estudios Eléctricos: Diseño de sistemas de potencia eléctrica, Estudios de instalaciones eléctricas, Optimización energética.",
-      "Implementación de Data Centers y Salas Técnicas: Diseño de salas de servidores, Instalación de racks, UPS y climatización, Infraestructura crítica para empresas.",
-      "Análisis y Optimización de Redes: Evaluación de desempeño LAN/WAN, Diagnóstico de fallas, Mejora de estabilidad y rendimiento.",
-      "Sistemas de Comunicación Softphone (VoIP): Implementación de telefonía IP multicanal que permite realizar y recibir llamadas desde cualquier dispositivo (PC, móvil) sin depender de hardware físico tradicional. Sus ventajas incluyen reducción de costos, movilidad total para teletrabajo, escalabilidad inmediata de anexos y funciones unificadas (grabación, IVR, e integración con CRM).",
-      "Control de Acceso Biométrico: Diseño e instalación de sistemas de seguridad de alta precisión mediante reconocimiento por huella dactilar y escaneo ocular (iris). Estos sistemas restringen de forma irrefutable el acceso a áreas críticas, generando registros exactos y centralizados."
-    ]
+      "Ingeniería y Diseño de Redes de Próxima Generación: Planificación estratégica estructurada para arquitecturas LAN/WAN escalables y resilientes.",
+      "Infraestructura de Fibra Óptica y Cableado Certificado: Instalación de alta densidad con certificación garantizada para máxima velocidad y estabilidad.",
+      "Ciberseguridad en Capa de Red: Implementación de Firewalls de próxima generación, segmentación mediante VLANs y protección perimetral avanzada.",
+      "Infraestructura para Centros de Datos: Diseño térmico, sistemas de UPS redundantes y gestión de racks para operaciones críticas.",
+      "Soluciones de Comunicaciones Unificadas (SIP/VoIP): Despliegue de telefonía IP flexible con integración total en dispositivos móviles y de escritorio.",
+      "Seguridad Electrónica y Videovigilancia IP: Sistemas CCTV de alta resolución con analítica inteligente y almacenamiento centralizado.",
+      "Control de Acceso Biométrico: Sistemas de seguridad de alta precisión mediante huella dactilar y reconocimiento facial/iris, con registros de auditoría centralizados.",
+      "Proyectos y Estudios Eléctricos: Ingeniería de sistemas de potencia, tableros eléctricos, certificación SEC y auditorías de eficiencia energética corporativa."
+    ],
+    concludingText: "Construimos la columna vertebral tecnológica que soporta el crecimiento y la continuidad de su organización."
   },
   {
     slug: "cloud-computing",
