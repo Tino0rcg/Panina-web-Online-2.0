@@ -35,7 +35,7 @@ export function Navbar() {
     { name: "Servicios", href: "/servicios" },
     { name: "Sobre Nosotros", href: "/#about" },
     { name: "Calcula tu ROI", href: "/calculadora-roi" },
-    { name: "Blog/Actualidad TI", href: "/#actualidad-tecnologica" },
+    { name: "Blog & Actualidad TI", href: "/#actualidad-tecnologica" },
     { name: "Contacto", href: "/#contact" },
   ];
 
