@@ -27,14 +27,14 @@ const SLIDES = [
     primaryButtonText: "Ver Soluciones",
     primaryButtonHref: "#services",
     isBooking: false,
-    secondaryButtonText: "Agenda Reunión",
+    secondaryButtonText: "Agenda una Reunión Hoy",
     secondaryButtonHref: "/?service=transformacion-digital-y-soluciones#contact"
   },
   {
     id: 2,
     tag: "Optimización Estratégica",
     title: "Diagnóstico <br /> <span className='text-gradient'>TI 360°.</span>",
-    description: "Diagnóstico TI Estratégico para Optimizar Costos, Seguridad y Operación de su infraestructura tecnológica.",
+    description: "Diagnóstico TI Estratégico para Optimizar Costos, Seguridad y Operación de su infraestructura tecnológica.<br/><span className='text-accent font-semibold text-sm mt-3 inline-flex items-center gap-2'><svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path></svg> Valorado y bonificado al contratar servicios</span>",
     statValue: "360°",
     statLabel: "Visión Operativa",
     secondaryStatValue: "Calcula tu ROI",
@@ -43,7 +43,7 @@ const SLIDES = [
     primaryButtonText: "Descubre Más",
     primaryButtonHref: "#diagnostico",
     isBooking: false,
-    secondaryButtonText: "Agenda Reunión",
+    secondaryButtonText: "Agenda una Reunión Hoy",
     secondaryButtonHref: "/?service=Solicitar Diagnóstico 360°#contact"
   },
   {
@@ -57,7 +57,7 @@ const SLIDES = [
     secondaryStatLabel: "Concept Compliance",
     primaryButtonText: "Ver Soluciones",
     primaryButtonHref: "/servicios/ciberseguridad",
-    secondaryButtonText: "Agenda Reunión",
+    secondaryButtonText: "Agenda una Reunión Hoy",
     secondaryButtonHref: "/?service=ciberseguridad#contact",
     isBooking: false
   },
@@ -78,7 +78,7 @@ const SLIDES = [
     secondaryStatLabel: "Errores Operativos",
     primaryButtonText: "Ver Soluciones",
     primaryButtonHref: "/servicios/integracion-sistemas",
-    secondaryButtonText: "Agenda Reunión",
+    secondaryButtonText: "Agenda una Reunión Hoy",
     secondaryButtonHref: "/?service=integracion-sistemas#contact",
     isBooking: false
   }

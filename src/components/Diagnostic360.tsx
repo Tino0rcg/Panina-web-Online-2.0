@@ -116,7 +116,8 @@ export function Diagnostic360() {
           >
             Es una evaluación integral de tu entorno tecnológico que nos permite identificar oportunidades de mejora, riesgos operativos, reducción de costos y eficiencias ocultas.
             <br/><br/>
-            <span className="font-semibold text-white bg-primary/20 px-4 py-1 rounded-lg border border-primary/30">No es solo un análisis técnico, es una visión estratégica para alinear tu tecnología con los objetivos del negocio.</span>
+            <span className="block text-accent/90 font-medium mb-4 italic">El Diagnóstico TI 360° es un servicio valorizado que se descuenta completamente al contratar la implementación de las mejoras propuestas.</span>
+            <span className="font-semibold text-white bg-primary/20 px-4 py-1 rounded-lg border border-primary/30 inline-block">No es solo un análisis técnico, es una visión estratégica para alinear tu tecnología con los objetivos del negocio.</span>
           </motion.p>
         </div>
 
