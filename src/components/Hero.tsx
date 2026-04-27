@@ -197,31 +197,6 @@ export function Hero() {
                       className="text-4xl sm:text-6xl md:text-7xl font-headline font-bold leading-[0.95] tracking-tighter text-white relative z-10"
                       dangerouslySetInnerHTML={{ __html: currentSlide.title }}
                     />
-
-                    {/* Rotating Badge for Slide 2 */}
-                    {currentSlide.id === 2 && (
-                      <Link href="#diagnostico" className="absolute right-0 sm:right-10 md:-right-10 lg:-right-20 top-0 md:top-4 z-30 hover:scale-105 transition-transform duration-300 group">
-                        <div className="relative w-28 h-28 md:w-40 md:h-40 flex items-center justify-center">
-                          <motion.div 
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-0 rounded-full bg-primary/10 border border-primary/40 backdrop-blur-sm group-hover:bg-primary/20 group-hover:border-primary/60 transition-colors shadow-[0_0_25px_rgba(59,130,246,0.2)]"
-                          >
-                            <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible opacity-90 group-hover:opacity-100">
-                              <path id="textPath2" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="transparent" />
-                              <text className="text-[9.5px] font-bold fill-white tracking-[0.16em] uppercase">
-                                <textPath href="#textPath2" startOffset="0%">
-                                  SOLICITA SIN COSTO • DIAGNÓSTICO TI 360° • 
-                                </textPath>
-                              </text>
-                            </svg>
-                          </motion.div>
-                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <Target className="w-8 h-8 md:w-12 md:h-12 text-primary group-hover:text-white transition-colors" />
-                          </div>
-                        </div>
-                      </Link>
-                    )}
                   </div>
                   {currentSlide.subtitle && (
                     <motion.p 
