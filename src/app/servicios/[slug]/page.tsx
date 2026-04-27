@@ -91,7 +91,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 {service.concludingText && (
                   <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 relative group overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/20 transition-colors"></div>
-                    <p className="text-slate-800 text-2xl italic font-semibold leading-snug relative z-10">
+                    <p className="text-slate-800 text-2xl italic font-semibold leading-snug relative z-10 whitespace-pre-line">
                       "{service.concludingText}"
                     </p>
                   </div>

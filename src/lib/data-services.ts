@@ -59,7 +59,7 @@ export const servicesData: ServiceData[] = [
       "Reportes de gestión y desempeño: Informes periódicos con indicadores, incidencias y mejoras implementadas.",
       "Asesoría tecnológica continua: Acompañamiento estratégico para la evolución y optimización de tu entorno TI."
     ],
-    concludingText: "Evita caídas, reduce riesgos y asegura tu operación con un soporte TI profesional y mantenimiento preventivo inteligente.",
+    concludingText: "Evita caídas, reduce riesgos y asegura tu operación con un soporte TI profesional y mantenimiento preventivo inteligente.\n\n+30% eficiencia operativa\n✔ Reducción de costos\n✔ Eliminación de errores\n✔ Información en tiempo real",
     plans: [
       {
         name: "Plan Básico",
