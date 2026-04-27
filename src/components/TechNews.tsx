@@ -43,7 +43,7 @@ export function TechNews({ initialNews }: TechNewsProps) {
   if (newsToDisplay.length === 0) return null;
 
   return (
-    <section className="py-24 relative overflow-hidden bg-slate-950">
+    <section id="actualidad-tecnologica" className="py-24 relative overflow-hidden bg-slate-950">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 opacity-80 transition-opacity">

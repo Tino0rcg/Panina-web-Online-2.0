@@ -5,6 +5,13 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Consultoría TI y Transformación Digital | ONLINE System',
   description: 'Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.',
+  keywords: [
+    "Softland", "Automatización", "Servicios TI", "Soporte TI", "Outsourcing TI", 
+    "optimización de procesos TI", "Integración de sistemas", "Infraestructura TI", 
+    "BCP DRP", "sistemas para corredoras de seguros", "automatización seguros Chile",
+    "integración aseguradoras APIs", "CRM inmobiliario Chile", "empresa TI Región Metropolitana", 
+    "soporte informático", "solución para procesos manuales empresas", "ONLINE System"
+  ],
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -46,6 +53,25 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'G-NESD0XL7EQ');
+          `}
+        </Script>
+        <Script id="structured-data" type="application/ld+json" strategy="beforeInteractive">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ITUtility",
+              "name": "ONLINE System",
+              "url": "https://onlinesystem.cl/",
+              "logo": "https://onlinesystem.cl/favicon.png",
+              "description": "Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "Región Metropolitana",
+                "addressCountry": "CL"
+              },
+              "areaServed": "CL",
+              "sameAs": []
+            }
           `}
         </Script>
         {children}
