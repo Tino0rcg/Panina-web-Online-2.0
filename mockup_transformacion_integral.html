@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup - Transformación Digital Integral | ONLINE System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', /* Blue */
+                        accent: '#8b5cf6', /* Purple */
+                        dark: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b1120;
+            color: #f8fafc;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
+        }
+        .glass-panel {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(96, 165, 250, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+        .btn-premium {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            z-index: -1;
+            transition: opacity 0.5s ease;
+            opacity: 0;
+        }
+        .btn-premium:hover::before {
+            opacity: 1;
+        }
+        .btn-premium:hover {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen pb-24 font-sans">
+
+    <!-- Hero Section -->
+    <div class="relative pt-24 pb-16 px-6 max-w-7xl mx-auto text-center">
+        <div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent font-medium text-sm tracking-wide">
+            Servicio Premium
+        </div>
+        <h1 class="font-heading text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+            Transformación Digital <br />
+            <span class="text-gradient">Integral 360°</span>
+        </h1>
+        <p class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            Unimos consultoría estratégica y ejecución tecnológica impecable. No solo modernizamos tus sistemas; revolucionamos la forma en que opera tu empresa para prepararla para el futuro.
+        </p>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6">
+        
+        <!-- El Problema vs La Solución (Split View) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+            <!-- Problema -->
+            <div class="glass-panel p-10 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 blur-3xl rounded-full"></div>
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-slate-800/80 flex items-center justify-center border border-slate-700">
+                        <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-slate-200">El Enfoque Tradicional</h3>
+                </div>
+                <p class="text-slate-400 mb-6">Muchas empresas compran "soluciones tecnológicas" aisladas (un software aquí, un servidor allá) sin una estrategia. El resultado:</p>
+                <ul class="space-y-4">
+                    <li class="flex items-start text-slate-300">
+                        <span class="text-red-400 mr-3 mt-1">✕</span>
+                        <span>Sistemas fragmentados que no se comunican entre sí.</span>
+                    </li>
+                    <li class="flex items-start text-slate-300">
+                        <span class="text-red-400 mr-3 mt-1">✕</span>
+                        <span>Inversiones tecnológicas que no generan un ROI real.</span>
+                    </li>
+                    <li class="flex items-start text-slate-300">
+                        <span class="text-red-400 mr-3 mt-1">✕</span>
+                        <span>Personal frustrado por herramientas difíciles de usar.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Solución ONLINE System -->
+            <div class="glass-panel p-10 relative overflow-hidden border-primary/30 shadow-[0_0_40px_rgba(59,130,246,0.15)]">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-primary/20 blur-3xl rounded-full"></div>
+                <div class="flex items-center gap-4 mb-6 relative z-10">
+                    <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white">El Enfoque ONLINE System</h3>
+                </div>
+                <p class="text-slate-300 mb-6 relative z-10">Fusionamos la visión estratégica con la implementación técnica. Diseñamos un ecosistema digital completo y alineado con tus objetivos de negocio.</p>
+                <ul class="space-y-4 relative z-10">
+                    <li class="flex items-start text-white">
+                        <span class="text-green-400 mr-3 mt-1">✓</span>
+                        <span><strong>Diagnóstico Estratégico:</strong> Entendemos tu negocio primero.</span>
+                    </li>
+                    <li class="flex items-start text-white">
+                        <span class="text-green-400 mr-3 mt-1">✓</span>
+                        <span><strong>Arquitectura Integrada:</strong> Software, hardware y redes trabajando al unísono.</span>
+                    </li>
+                    <li class="flex items-start text-white">
+                        <span class="text-green-400 mr-3 mt-1">✓</span>
+                        <span><strong>Acompañamiento Continuo:</strong> No te dejamos solo después de la instalación.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Metodología / Pilares (Cards) -->
+        <div class="text-center mb-12">
+            <h2 class="font-heading text-4xl font-bold mb-4">Nuestro Ecosistema de Soluciones</h2>
+            <p class="text-slate-400 text-lg">Un proceso estructurado de principio a fin.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+            <!-- Pilar 1 -->
+            <div class="glass-panel p-8 feature-card bg-slate-900/40">
+                <div class="text-primary font-heading font-bold text-5xl mb-4 opacity-50">01</div>
+                <h4 class="font-bold text-xl mb-3 text-white">Consultoría</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">Auditoría tecnológica profunda para identificar cuellos de botella y oportunidades de mejora.</p>
+            </div>
+            <!-- Pilar 2 -->
+            <div class="glass-panel p-8 feature-card bg-slate-900/40">
+                <div class="text-primary font-heading font-bold text-5xl mb-4 opacity-50">02</div>
+                <h4 class="font-bold text-xl mb-3 text-white">Infraestructura</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">Modernización de servidores, redes, migración a la nube y ciberseguridad avanzada.</p>
+            </div>
+            <!-- Pilar 3 -->
+            <div class="glass-panel p-8 feature-card bg-slate-900/40">
+                <div class="text-accent font-heading font-bold text-5xl mb-4 opacity-50">03</div>
+                <h4 class="font-bold text-xl mb-3 text-white">Software</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">Implementación de ERPs, automatizaciones e integraciones a la medida de tu flujo de trabajo.</p>
+            </div>
+            <!-- Pilar 4 -->
+            <div class="glass-panel p-8 feature-card bg-slate-900/40">
+                <div class="text-accent font-heading font-bold text-5xl mb-4 opacity-50">04</div>
+                <h4 class="font-bold text-xl mb-3 text-white">Soporte Integral</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">Monitoreo proactivo, mesa de ayuda y mantenimiento evolutivo constante.</p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="glass-panel p-12 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 opacity-50"></div>
+            <div class="relative z-10">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">Elige la evolución, no solo la adaptación.</h2>
+                <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">Agenda una sesión estratégica con nosotros y descubre el verdadero potencial tecnológico de tu empresa.</p>
+                <a href="#" class="btn-premium inline-flex items-center justify-center px-10 py-5 rounded-full text-white font-bold text-lg tracking-wide">
+                    Iniciar mi Transformación
+                    <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

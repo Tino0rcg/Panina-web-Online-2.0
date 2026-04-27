@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup - Automatización de Procesos | ONLINE System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0066cc',
+                        accent: '#00ccff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #00ccff, #0066cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-button {
+            box-shadow: 0 0 15px rgba(0, 102, 204, 0.5);
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(0, 204, 255, 0.8);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative overflow-x-hidden pb-20">
+    <!-- Decorative Background Elements -->
+    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent/20 blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-6 pt-20 relative z-10">
+        
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <span class="text-accent font-semibold tracking-wider uppercase text-sm mb-4 block">Nuevo Servicio</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Automatización de Procesos <br class="hidden md:block" /> Empresariales en <span class="gradient-text">Chile</span>
+            </h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+                Deja de perder tiempo en tareas manuales y repetitivas. Transforma tu empresa con soluciones tecnológicas a medida que impulsan la eficiencia y reducen costos operativos.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <!-- Problema -->
+            <div class="glass-card p-8">
+                <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-6 border border-red-500/30">
+                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">El Problema</h3>
+                <p class="text-slate-300 mb-4">¿Tu equipo pasa horas en tareas que un sistema podría hacer en segundos? En Chile, el crecimiento se frena por:</p>
+                <ul class="space-y-3 text-slate-400">
+                    <li class="flex items-start"><span class="text-red-400 mr-2">✕</span> Dependencia de planillas Excel que se desordenan.</li>
+                    <li class="flex items-start"><span class="text-red-400 mr-2">✕</span> Traspaso manual de datos entre sistemas.</li>
+                    <li class="flex items-start"><span class="text-red-400 mr-2">✕</span> Aprobaciones lentas que retrasan ventas.</li>
+                </ul>
+            </div>
+
+            <!-- Impacto -->
+            <div class="glass-card p-8">
+                <div class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mb-6 border border-orange-500/30">
+                    <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">El Impacto Oculto</h3>
+                <p class="text-slate-300 mb-4">Cada hora dedicada a copiar y pegar datos es una hora que no se dedica a vender o innovar.</p>
+                <ul class="space-y-3 text-slate-400">
+                    <li class="flex items-start"><span class="text-orange-400 mr-2">⚠️</span> <strong>Pérdida de Dinero:</strong> Altos costos por horas en bajo valor.</li>
+                    <li class="flex items-start"><span class="text-orange-400 mr-2">⚠️</span> <strong>Errores Humanos:</strong> Problemas de stock o facturación.</li>
+                    <li class="flex items-start"><span class="text-orange-400 mr-2">⚠️</span> <strong>Lentitud:</strong> Tu competencia responde más rápido.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Solución -->
+        <div class="glass-card p-10 mb-16 relative overflow-hidden border-primary/30">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+            <h2 class="text-3xl font-bold mb-6">Nuestra Solución en ONLINE System</h2>
+            <p class="text-lg text-slate-300 mb-8 max-w-2xl">Integramos las herramientas que ya usas para que trabajen por ti. No necesitas cambiar todo tu sistema de la noche a la mañana.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                    <h4 class="text-accent font-bold mb-2">Desarrollo Low-Code</h4>
+                    <p class="text-sm text-slate-400">Apps personalizadas con AppSheet para ingreso de datos sin papel.</p>
+                </div>
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                    <h4 class="text-accent font-bold mb-2">Integración APIs</h4>
+                    <p class="text-sm text-slate-400">Conectamos tu ERP, CRM y Email para eliminar la doble digitación.</p>
+                </div>
+                <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700">
+                    <h4 class="text-accent font-bold mb-2">Flujos Inteligentes</h4>
+                    <p class="text-sm text-slate-400">Alertas automáticas y aprobaciones con un solo clic.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resultados y CTA -->
+        <div class="text-center glass-card p-12 bg-gradient-to-b from-slate-800/80 to-slate-900/80">
+            <h2 class="text-3xl font-bold mb-6">Resultados Claros</h2>
+            <div class="flex flex-wrap justify-center gap-4 mb-10">
+                <span class="px-4 py-2 bg-green-500/10 text-green-400 rounded-full border border-green-500/20">✅ Eficiencia Total</span>
+                <span class="px-4 py-2 bg-green-500/10 text-green-400 rounded-full border border-green-500/20">✅ Ahorro de Costos</span>
+                <span class="px-4 py-2 bg-green-500/10 text-green-400 rounded-full border border-green-500/20">✅ Control Absoluto</span>
+                <span class="px-4 py-2 bg-green-500/10 text-green-400 rounded-full border border-green-500/20">✅ Cero Errores</span>
+            </div>
+            
+            <h3 class="text-2xl font-semibold mb-8">¿Listo para modernizar las operaciones de tu empresa?</h3>
+            <a href="#" class="glow-button inline-block bg-gradient-to-r from-primary to-accent text-white font-bold py-4 px-8 rounded-full text-lg">
+                Solicitar Evaluación Gratuita
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>
