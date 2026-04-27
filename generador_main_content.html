@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Imagen HD - Main Content</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        /* Importamos Montserrat, que tiene las letras redondas idénticas a la imagen original */
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;800&family=Montserrat:wght@400;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e2e8f0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .instructions {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .controls {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .controls input {
+            width: 60px;
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #capture-area {
+            width: 800px;
+            position: relative;
+            background-color: #ffffff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        #capture-area img.background-base {
+            width: 100%;
+            display: block;
+        }
+
+        /* OVERLAY MAIN TITLE */
+        .white-overlay {
+            position: absolute;
+            top: 25px; 
+            left: 10%;
+            width: 80%;
+            height: 110px;
+            background-color: #ffffff;
+            z-index: 1;
+        }
+
+        .content {
+            position: absolute;
+            top: 35px;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .new-title {
+            color: #00558f; 
+            font-size: 34px;
+            font-weight: 800;
+            text-align: center;
+            line-height: 1.2;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .underline {
+            width: 100px;
+            height: 4px;
+            background-color: #006b8f; 
+            margin-top: 15px;
+            border-radius: 2px;
+        }
+
+        /* OVERLAY ERP CARD */
+        .erp-overlay {
+            position: absolute;
+            top: 61.5%; 
+            left: 65%;
+            width: 32%;
+            height: 12%; 
+            background-color: #ffffff;
+            z-index: 1;
+        }
+
+        .erp-new-text {
+            position: absolute;
+            top: 61.5%;
+            left: 65%;
+            width: 32%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .erp-new-title {
+            font-family: 'Montserrat', sans-serif; /* Solo el título usa la fuente redonda geométrica */
+            color: #00122e; /* Azul casi negro idéntico al de la foto */
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.1;
+            filter: blur(0.1px);
+            opacity: 0.95;
+            margin-bottom: 5px; /* Espacio idéntico al de la foto */
+        }
+
+        .erp-new-subtitle {
+            font-family: 'Montserrat', sans-serif; /* El subtítulo TAMBIÉN usa la fuente redonda geométrica */
+            color: #3b4754; /* Gris plomo oscuro */
+            font-size: 14.5px; 
+            font-weight: 500; /* Medium weight para igualar el grosor de la foto */
+            line-height: 1.35;
+            letter-spacing: -0.1px;
+            filter: blur(0.1px);
+            opacity: 0.95;
+        }
+
+        button.download-btn {
+            padding: 15px 30px;
+            background-color: #006b8f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button.download-btn:hover {
+            background-color: #004d66;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="instructions">
+        <h2>Generador HD: Contenido Principal Actualizado</h2>
+        <p>Se ajustó la **fuente tipográfica** (Montserrat) para que sea un clon exacto del diseño de letras redondas que aparece en las tarjetas de tu foto de referencia.</p>
+        
+        <div class="controls">
+            <strong>Ajuste Título Principal:</strong>
+            <label>Color: <input type="color" id="title-color" value="#00558f" oninput="updateTitleColor()"></label>
+        </div>
+
+        <div class="controls">
+            <strong>Ajuste Tarjeta ERP:</strong>
+            <label>Arriba/Abajo (%): <input type="number" id="erp-top" value="61.5" step="0.5" oninput="updateErpPos()"></label>
+            <label>Izquierda/Derecha (%): <input type="number" id="erp-left" value="65.0" step="0.5" oninput="updateErpPos()"></label>
+            <label>Alto del borrador (%): <input type="number" id="erp-height" value="12.0" step="0.5" oninput="updateErpPos()"></label>
+            <label>Suavizado (Blur px): <input type="number" id="erp-blur" value="0.1" step="0.1" oninput="updateErpPos()"></label>
+        </div>
+
+        <button class="download-btn" onclick="downloadImage()">Descargar Nueva Imagen (main_content.png)</button>
+    </div>
+
+    <!-- The area to capture -->
+    <div id="capture-area">
+        <img class="background-base" src="public/img/slices/main_content.png" alt="Base">
+        
+        <!-- MAIN TITLE OVERLAYS -->
+        <div class="white-overlay"></div>
+        <div class="content">
+            <div class="new-title">Tecnología para empresas<br>que no pueden detenerse</div>
+            <div class="underline"></div>
+        </div>
+
+        <!-- ERP CARD OVERLAYS -->
+        <div class="erp-overlay" id="overlay-box"></div>
+        
+        <div class="erp-new-text" id="overlay-text">
+            <div class="erp-new-title">Implementación e Integración<br>de Sistemas ERP y APIs</div>
+            <div class="erp-new-subtitle">Conexión total con Softland y SAP.</div>
+        </div>
+    </div>
+
+    <script>
+        function updateTitleColor() {
+            document.querySelector('.new-title').style.color = document.getElementById('title-color').value;
+        }
+
+        function updateErpPos() {
+            const topVal = document.getElementById('erp-top').value + '%';
+            const leftVal = document.getElementById('erp-left').value + '%';
+            const heightVal = document.getElementById('erp-height').value + '%';
+            const blurVal = document.getElementById('erp-blur').value + 'px';
+
+            const box = document.getElementById('overlay-box');
+            box.style.top = topVal;
+            box.style.left = leftVal;
+            box.style.height = heightVal;
+            
+            const textContainer = document.getElementById('overlay-text');
+            textContainer.style.top = topVal;
+            textContainer.style.left = leftVal;
+            textContainer.style.filter = `blur(${blurVal})`;
+        }
+
+        function downloadImage() {
+            const captureArea = document.getElementById('capture-area');
+            const button = document.querySelector('.download-btn');
+            
+            button.innerText = "Generando alta calidad...";
+            button.disabled = true;
+
+            html2canvas(captureArea, {
+                scale: 3, 
+                useCORS: true,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const dataURL = canvas.toDataURL('image/png');
+                
+                const link = document.createElement('a');
+                link.download = 'main_content.png';
+                link.href = dataURL;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                button.innerText = "¡Descargado!";
+                setTimeout(() => {
+                    button.innerText = "Descargar Nueva Imagen (main_content.png)";
+                    button.disabled = false;
+                }, 3000);
+            }).catch(err => {
+                console.error(err);
+                alert("Hubo un error generando la imagen. Por favor intenta de nuevo.");
+                button.innerText = "Descargar Nueva Imagen (main_content.png)";
+                button.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>

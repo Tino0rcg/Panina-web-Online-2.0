@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 
 import { Toaster } from "@/components/ui/toaster";
 import { WhatsAppWidget } from "@/components/WhatsAppWidget";
+import Script from "next/script";
 
 export default function RootLayout({
   children,
@@ -37,6 +38,16 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background text-foreground scroll-smooth">
+        <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-NESD0XL7EQ" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-NESD0XL7EQ');
+          `}
+        </Script>
         {children}
         <Toaster />
         <WhatsAppWidget />

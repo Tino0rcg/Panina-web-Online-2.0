@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Imagen HD</title>
+    <!-- Incluir html2canvas desde CDN -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .instructions {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        #capture-area {
+            width: 650px;
+            height: 520px; /* Estimated height to match proportions */
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            /* Original image as background to keep the server rack on the right */
+            background-image: url('https://www.onlinesystem.cl/img/slices/header_info.png');
+            background-size: cover;
+            background-position: right center;
+        }
+
+        /* Overlay to hide the old text on the left */
+        .white-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 75%; /* Covers left text but leaves right servers visible */
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,1) 80%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        /* Content container for new text */
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 20px;
+            box-sizing: border-box;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .check-icon {
+            width: 28px;
+            height: 28px;
+            background-color: #006b8f; /* Teal color from logo/theme */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .check-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        .text {
+            color: #002855; /* Dark blue from text */
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 400px;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #006b8f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d66;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="instructions">
+        <h2>Generador de Imagen HD para Correo</h2>
+        <p>He recreado tu diseño original en alta calidad. Al hacer clic en el botón de abajo, se generará una imagen perfecta para tu correo con el texto actualizado a <b>"Diagnóstico TI 360°"</b>.</p>
+        <button onclick="downloadImage()">Descargar Nueva Imagen (header_info.png)</button>
+    </div>
+
+    <!-- This is the element that will be captured -->
+    <div id="capture-area">
+        <div class="white-overlay"></div>
+        <div class="content">
+            
+            <div class="list-item">
+                <div class="check-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="text" style="font-size: 26px;">Diagnóstico TI 360°</div>
+            </div>
+
+            <div class="list-item">
+                <div class="check-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="text">Nos encargamos de que tu<br>empresa nunca se detenga</div>
+            </div>
+
+            <div class="list-item">
+                <div class="check-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="text">Reducimos costos automatizando<br>procesos</div>
+            </div>
+
+            <div class="list-item">
+                <div class="check-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="text">Modernizamos tu operación TI</div>
+            </div>
+
+            <div class="list-item">
+                <div class="check-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="text">Somos tu área TI estratégica</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function downloadImage() {
+            const captureArea = document.getElementById('capture-area');
+            const button = document.querySelector('button');
+            
+            button.innerText = "Generando...";
+            button.disabled = true;
+
+            // Use html2canvas to render the div to an image
+            // We set scale: 2 to generate a Retina-ready 2x image!
+            html2canvas(captureArea, {
+                scale: 2, 
+                useCORS: true, // Needed to load the background image from onlinesystem.cl
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                // Convert canvas to data URL
+                const dataURL = canvas.toDataURL('image/png');
+                
+                // Create a temporary link element to trigger the download
+                const link = document.createElement('a');
+                link.download = 'header_info.png';
+                link.href = dataURL;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                button.innerText = "¡Descargado!";
+                setTimeout(() => {
+                    button.innerText = "Descargar Nueva Imagen (header_info.png)";
+                    button.disabled = false;
+                }, 3000);
+            }).catch(err => {
+                console.error(err);
+                alert("Hubo un error generando la imagen. Por favor intenta de nuevo.");
+                button.innerText = "Descargar Nueva Imagen (header_info.png)";
+                button.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
