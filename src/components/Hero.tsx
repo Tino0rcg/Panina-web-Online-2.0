@@ -213,9 +213,8 @@ export function Hero() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 1 }}
                     className="text-base md:text-xl text-slate-200/80 max-w-2xl leading-relaxed font-light"
-                  >
-                    {currentSlide.description}
-                  </motion.p>
+                    dangerouslySetInnerHTML={{ __html: currentSlide.description }}
+                  />
 
                   {currentSlide.features && (
                     <motion.div 
