@@ -37,7 +37,7 @@ export function ServicesSection() {
             className="text-primary font-headline font-semibold tracking-widest uppercase text-xs flex items-center justify-center gap-3"
           >
             <span className="w-12 h-px bg-primary/20"></span>
-            Moderniza tus sistemas y evita caídas que impacten tu negocio
+            Estrategia, Continuidad y Alta Disponibilidad
             <span className="w-12 h-px bg-primary/20"></span>
           </motion.h2>
           <motion.h3 
@@ -45,10 +45,10 @@ export function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-6xl font-headline font-bold text-slate-900 tracking-tight"
           >
-            Soluciones TI para <span className="text-gradient">Modernizar y Asegurar</span> tu Operación
+            Servicios TI para empresas que <span className="text-gradient">no pueden detenerse</span>
           </motion.h3>
           <p className="text-slate-500 text-xl font-light leading-relaxed">
-            Mejoramos tu infraestructura, integramos tus sistemas y protegemos la continuidad de tu negocio.
+            Eliminamos riesgos, automatizamos procesos y garantizamos la continuidad de su negocio en Chile.
           </p>
         </div>
 

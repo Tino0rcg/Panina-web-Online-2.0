@@ -2,6 +2,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { servicesData } from "@/lib/data-services";
 import { notFound } from "next/navigation";
+import { Diagnostic360 } from "@/components/Diagnostic360";
 import Link from "next/link";
 import { ArrowLeft, Rocket, ShieldCheck, Settings2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = servicesData.find((s) => s.slug === slug);
   if (!service) return { title: 'Servicio no encontrado' };
 
-  const title = `${service.name} | ONLINE System`;
+  // SEO Optimized Title: Service Name + Country Context
+  const title = `${service.name} en Chile | ONLINE System`;
   const description = service.description;
   const url = `https://onlinesystem.cl/servicios/${service.slug}`;
   const imageUrl = service.image || '/logo.png';
@@ -160,7 +162,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 <div className="pt-4">
                   <BookingModal>
                     <Button className="bg-primary hover:bg-primary/90 text-white rounded-2xl font-bold shadow-2xl shadow-primary/20 px-12 h-20 text-xl w-full sm:w-auto transition-all hover:scale-105 active:scale-95 group">
-                      Agendar Consultoría Técnica
+                      Solicitar Diagnóstico TI 360°
                       <Rocket className="ml-3 w-7 h-7 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </Button>
                   </BookingModal>
@@ -296,6 +298,8 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </div>
         </div>
       </section>
+
+      <Diagnostic360 />
 
       <Footer />
     </main>

@@ -8,11 +8,12 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 const CATEGORIES = [
-  "Soporte Técnico Especializado",
-  "Soluciones ERP Softland",
-  "Consultoría Estratégica TI",
-  "Proyectos de Ingeniería y Redes",
-  "Otros Requerimientos"
+  "Soporte TI Empresas (Continuidad 24/7)",
+  "Automatización de Procesos B2B",
+  "Integración ERP (Softland, SAP, APIs)",
+  "Ciberseguridad y Protección de Datos",
+  "Consultoría Cloud e Infraestructura",
+  "Solicitar Diagnóstico TI Valorado"
 ];
 
 const WHATSAPP_NUMBER = "+56996070383";

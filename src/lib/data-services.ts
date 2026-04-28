@@ -40,257 +40,214 @@ export interface ServiceData {
 
 export const servicesData: ServiceData[] = [
   {
-    slug: "soporte-especializado",
-    name: "Contrato y Soporte de Mantenimiento Preventivo",
-    description: "Somos una empresa TI en la Región Metropolitana especializada en Outsourcing TI. Garantizamos la continuidad operativa de tu negocio con un servicio integral de Soporte TI y mantenimiento preventivo, diseñado para anticipar fallas, brindar soporte informático oportuno y asegurar la estabilidad de tu infraestructura tecnológica.",
-    cardDescription: "Soporte TI integral, Outsourcing TI y soporte informático preventivo para garantizar la continuidad de su infraestructura.",
+    slug: "soporte-ti-empresas-chile",
+    name: "Soporte TI para Empresas y Mantenimiento Preventivo",
+    description: "Garantizamos la continuidad operativa de su negocio en Chile con un servicio integral de Soporte TI y mantenimiento preventivo. Diseñamos soluciones de outsourcing TI para anticipar fallas, asegurar la estabilidad de su infraestructura y proteger sus activos críticos.",
+    cardDescription: "Soporte TI integral y mantenimiento preventivo diseñado para asegurar la continuidad operativa de empresas en Chile.",
     icon: ShieldCheck,
     color: "text-accent",
     glow: "shadow-[0_0_20px_-10px_rgba(45,183,193,0.5)]",
     image: "https://raw.githubusercontent.com/Tino0rcg/imagenes-pagina-online-2.0/main/Soporte.png",
     features: [
-      "Monitoreo proactivo 24/7: Detección temprana de incidentes para evitar interrupciones en tu operación.",
-      "Mantenimiento preventivo programado: Revisión periódica de equipos, servidores y redes para maximizar su rendimiento y vida útil.",
-      "Soporte técnico remoto y en terreno: Atención rápida y eficiente ante incidencias críticas y requerimientos diarios.",
-      "Gestión de seguridad informática: Protección de datos, control de accesos y actualización continua contra amenazas.",
-      "Administración de redes y conectividad: Optimización de la infraestructura para asegurar estabilidad y alta disponibilidad.",
-      "Gestión de servicios cloud: Administración de plataformas en la nube, respaldos y continuidad operacional.",
-      "Actualización y gestión de parches: Sistemas siempre actualizados, seguros y alineados a buenas prácticas.",
-      "Reportes de gestión y desempeño: Informes periódicos con indicadores, incidencias y mejoras implementadas.",
-      "Asesoría tecnológica continua: Acompañamiento estratégico para la evolución y optimización de tu entorno TI."
+      "Monitoreo proactivo 24/7: Detección temprana de incidentes para evitar interrupciones.",
+      "Mantenimiento preventivo programado: Maximice el rendimiento y vida útil de sus equipos.",
+      "Soporte técnico remoto y en terreno: Atención rápida ante incidencias críticas en Santiago y regiones.",
+      "Gestión de seguridad informática: Protección de datos y control de accesos continuo.",
+      "Administración de redes y conectividad: Estabilidad y alta disponibilidad garantizada.",
+      "Gestión de servicios cloud: Administración de nubes, respaldos y continuidad operacional.",
+      "Actualización y gestión de parches: Sistemas siempre seguros y alineados a buenas prácticas.",
+      "Reportes de gestión y desempeño: Indicadores claros sobre el estado de su plataforma TI.",
+      "Asesoría tecnológica continua: Acompañamiento estratégico para el crecimiento de su empresa."
     ],
-    concludingText: "Evita caídas, reduce riesgos y asegura tu operación con un soporte TI profesional y mantenimiento preventivo inteligente.\n\n+30% eficiencia operativa\n✔ Reducción de costos\n✔ Eliminación de errores\n✔ Información en tiempo real",
+    concludingText: "Asegure su operación con un soporte TI profesional que elimina riesgos y reduce costos operativos.\n\n✔ +30% eficiencia operativa\n✔ Eliminación de caídas críticas\n✔ Soporte experto 24/7",
     plans: [
       {
-        name: "Plan Básico",
-        subtitle: "Ideal para pequeñas empresas",
+        name: "Plan Proactivo",
+        subtitle: "Para empresas en crecimiento",
         features: [
-          "Soporte remoto (horario hábil)",
+          "Soporte remoto ilimitado",
           "Mantenimiento preventivo mensual",
-          "Gestión básica de usuarios",
-          "Monitoreo limitado"
+          "Gestión de seguridad básica",
+          "Monitoreo 8x5"
         ],
-        summary: "Para operaciones simples"
+        summary: "Estabilidad para su negocio"
       },
       {
-        name: "Plan Profesional",
-        subtitle: "Ideal para empresas en crecimiento",
+        name: "Plan Business Critical",
+        subtitle: "Continuidad Total",
         features: [
-          "Soporte remoto + en terreno",
-          "Monitoreo proactivo",
-          "Mantenimiento preventivo programado",
-          "Administración de red",
-          "Seguridad y actualizaciones",
-          "Reportes mensuales"
+          "Soporte remoto + On-site",
+          "Monitoreo proactivo 24/7",
+          "Administración avanzada de red",
+          "Gestión de respaldos y Cloud",
+          "Reportes ejecutivos mensuales"
         ],
-        summary: "Equilibrio perfecto entre costo y cobertura",
+        summary: "Nuestra solución más recomendada",
         highlight: true
       },
       {
         name: "Plan Enterprise",
-        subtitle: "Para empresas críticas",
+        subtitle: "Outsourcing Total TI",
         features: [
-          "Soporte 24/7",
-          "Monitoreo avanzado en tiempo real",
-          "SLA garantizado",
-          "Gestión completa TI",
-          "Cloud + infraestructura",
-          "Seguridad avanzada",
-          "Asesoría estratégica continua"
+          "SLA garantizado por contrato",
+          "Ingeniero residente opcional",
+          "Ciberseguridad avanzada",
+          "Asesoría estratégica de TI (vCTO)",
+          "Gestión completa de infraestructura"
         ],
-        summary: "Máximo nivel de continuidad y control"
+        summary: "Control absoluto de su tecnología"
       }
     ]
   },
   {
-    slug: "transformacion-digital-y-soluciones",
-    name: "Transformación Digital y Soluciones Tecnológicas Integrales",
-    nameHighlight: "y Soluciones Tecnológicas Integrales",
-    description: "ONLINE System provee Servicios TI avanzados para ayudar a las empresas en su transformación digital mediante la optimización de procesos TI y automatización. Desarrollamos la solución para procesos manuales en empresas, modernizando su gestión tecnológica.",
-    cardDescription: "Visión estratégica, Servicios TI a medida y optimización de procesos TI para la modernización tecnológica de su empresa.",
+    slug: "automatizacion-procesos-empresas",
+    name: "Automatización de Procesos y Transformación Digital",
+    nameHighlight: "y Transformación Digital",
+    description: "Ayudamos a empresas en Chile a eliminar tareas manuales ineficientes mediante la automatización de procesos. Implementamos soluciones TI a medida que modernizan su gestión tecnológica y aceleran su productividad.",
+    cardDescription: "Optimización de procesos y automatización inteligente para modernizar la gestión tecnológica de su empresa.",
     icon: Rocket,
     color: "text-accent",
     glow: "shadow-[0_0_20px_-10px_rgba(45,183,193,0.5)]",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800",
-    featuresTitle: "Servicios de Implementación",
-    featuresTitleHighlight: "de Implementación",
-    featuresSubtitle: "",
+    featuresTitle: "Servicios de Automatización",
+    featuresTitleHighlight: "de Automatización",
+    featuresSubtitle: "Soluciones diseñadas para escalar su operación sin aumentar costos fijos.",
     features: [
-      "Gestión TI: Administración, soporte y monitoreo continuo de la infraestructura.",
-      "Análisis de necesidades: Levantamiento de procesos y detección de oportunidades de mejora.",
-      "Diseño de solución: Definición de arquitectura tecnológica y automatización de procesos.",
-      "Implementación: Desarrollo e integración de soluciones adaptadas al negocio.",
-      "Conectividad: Integración de sistemas y plataformas mediante redes y servicios cloud.",
-      "Integración con APIs: Interoperabilidad entre aplicaciones para centralizar la información.",
-      "Optimización continua: Mejora constante basada en métricas y evolución del negocio."
+      "Análisis de cuellos de botella: Detectamos procesos manuales que frenan su crecimiento.",
+      "Diseño de flujos digitales: Creación de arquitecturas de automatización eficientes.",
+      "Integración de sistemas: Conectamos sus herramientas actuales para que hablen entre sí.",
+      "Desarrollo de bots y scripts: Automatización de tareas repetitivas y carga de datos.",
+      "Dashboards de control: Visibilidad en tiempo real de sus procesos automatizados.",
+      "Optimización de costos: Reducción drástica de errores humanos y tiempos de ejecución."
     ]
   },
   {
-    slug: "infraestructura-critica",
-    name: "Servicio de Ingeniería, Redes y Telecomunicaciones",
-    description: "Diseñamos y desplegamos una Infraestructura TI robusta, desde cableado estructurado hasta arquitecturas de centros de datos. Incluimos planificación BCP DRP (Continuidad de Negocio y Recuperación de Desastres) garantizando disponibilidad y seguridad para operaciones críticas.",
-    cardDescription: "Ingeniería en telecomunicaciones, Infraestructura TI crítica, seguridad y planificación BCP DRP para la continuidad de su negocio.",
+    slug: "infraestructura-redes-telecomunicaciones",
+    name: "Ingeniería de Redes e Infraestructura Crítica",
+    description: "Diseño y despliegue de infraestructura TI robusta para empresas. Desde cableado estructurado certificado hasta ciberseguridad en capa de red, garantizamos que su conectividad soporte las demandas de una operación moderna.",
+    cardDescription: "Ingeniería de redes, conectividad de alta velocidad e infraestructura crítica para operaciones empresariales.",
     icon: Settings2,
     color: "text-slate-400",
     glow: "shadow-[0_0_20px_-10px_rgba(148,163,184,0.5)]",
     image: "/network-engineering.png",
-    nameHighlight: "Redes y Telecomunicaciones",
-    featuresTitle: "Servicios de Ingeniería en Redes",
-    featuresTitleHighlight: "en Redes",
-    featuresSubtitle: "",
+    nameHighlight: "Redes e Infraestructura Crítica",
+    featuresTitle: "Servicios de Ingeniería",
+    featuresTitleHighlight: "de Ingeniería",
+    featuresSubtitle: "Infraestructura diseñada para la alta disponibilidad.",
     features: [
-      "Ingeniería y Diseño de Redes de Próxima Generación: Planificación estratégica estructurada para arquitecturas LAN/WAN escalables y resilientes.",
-      "Infraestructura de Fibra Óptica y Cableado Certificado: Instalación de alta densidad con certificación garantizada para máxima velocidad y estabilidad.",
-      "Ciberseguridad en Capa de Red: Implementación de Firewalls de próxima generación, segmentación mediante VLANs y protección perimetral avanzada.",
-      "Infraestructura para Centros de Datos: Diseño térmico, sistemas de UPS redundantes y gestión de racks para operaciones críticas.",
-      "Soluciones de Comunicaciones Unificadas (SIP/VoIP): Despliegue de telefonía IP flexible con integración total en dispositivos móviles y de escritorio.",
-      "Seguridad Electrónica y Videovigilancia IP: Sistemas CCTV de alta resolución con analítica inteligente y almacenamiento centralizado.",
+      "Diseño de Redes LAN/WAN: Arquitecturas escalables y resilientes para alta demanda.",
+      "Fibra Óptica y Cableado Certificado: Instalación profesional con certificación de velocidad.",
+      "Ciberseguridad Perimetral (Firewalls): Protección avanzada contra amenazas externas.",
+      "Infraestructura para Centros de Datos: Diseño de racks, energía y climatización.",
+      "Comunicaciones Unificadas (VoIP): Telefonía IP de alta calidad integrada a su red.",
+      "Seguridad Electrónica IP: Videovigilancia y control de acceso centralizado.",
       "Control de Acceso Biométrico: Sistemas de seguridad de alta precisión mediante huella dactilar y reconocimiento facial/iris, con registros de auditoría centralizados.",
       "Proyectos y Estudios Eléctricos: Ingeniería de sistemas de potencia, tableros eléctricos, certificación SEC y auditorías de eficiencia energética corporativa."
     ],
-    concludingText: "Construimos la columna vertebral tecnológica que soporta el crecimiento y la continuidad de su organización."
+    concludingText: "Construimos la base tecnológica que permite a su empresa crecer sin límites."
   },
   {
-    slug: "cloud-computing",
-    name: "Cloud Computing",
-    description: "Arquitecturas en AWS, Azure y Google Cloud con enfoque en alta disponibilidad y resiliencia tecnológica.",
+    slug: "cloud-computing-chile",
+    name: "Cloud Computing y Migración a la Nube",
+    description: "Lleve su empresa al siguiente nivel con arquitecturas Cloud en AWS, Azure o Google Cloud. Nos especializamos en migración segura y optimización de costos en la nube para empresas en Chile.",
     icon: Cloud,
     color: "text-accent",
     glow: "shadow-[0_0_20px_-10px_rgba(45,183,193,0.5)]",
     image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800",
     features: [
-      "Migración segura de servidores físicos a entornos Cloud.",
-      "Arquitecturas Serverless y microservicios escalables.",
-      "Gestión de contenedores (Docker, Kubernetes).",
-      "Optimización de costos y monitoreo de recursos en la nube."
+      "Migración de Infraestructura: Traslado seguro de servidores físicos a entornos AWS, Azure o Google Cloud con tiempo de inactividad mínimo.",
+      "Arquitecturas Híbridas: Conexión eficiente entre sus servidores locales y la nube para máxima resiliencia y flexibilidad.",
+      "Optimización de Costos (FinOps): Auditoría y ajuste de recursos en la nube para reducir gastos innecesarios y maximizar el rendimiento.",
+      "Respaldo y Recuperación (DRP): Planes de continuidad de negocio con respaldos automatizados y recuperación ante desastres en la nube."
     ]
   },
   {
-    slug: "ciberseguridad",
-    name: "Ciberseguridad",
-    description: "Análisis forense, auditorías de vulnerabilidades industriales y protección proactiva de activos digitales.",
+    slug: "ciberseguridad-empresas-chile",
+    name: "Ciberseguridad y Protección de Activos Digitales",
+    description: "Proteja su empresa contra ransomware y ataques dirigidos. Realizamos auditorías de vulnerabilidades y protegemos proactivamente su información crítica bajo estándares internacionales.",
     icon: ShieldCheck,
     color: "text-red-400",
     glow: "shadow-[0_0_20px_-10px_rgba(248,113,113,0.5)]",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
     features: [
-      "Ethical Hacking y pruebas de penetración (Pentesting).",
-      "Implementación de arquitecturas Zero Trust y firewalls NGFW.",
-      "Respuesta a incidentes y análisis forense digital.",
-      "Concientización y entrenamiento en seguridad para personal."
+      "Auditorías de Pentesting: Identificación de vulnerabilidades mediante simulaciones de ataques controlados y ethical hacking.",
+      "Protección de Endpoints: Blindaje de computadores y servidores contra ransomware y malware de última generación.",
+      "Arquitecturas Zero Trust: Implementación de políticas de seguridad donde nadie es confiable sin verificación previa.",
+      "Respuesta ante Incidentes: Equipo de respuesta rápida para contención de ataques y análisis forense digital."
     ]
   },
   {
     slug: "big-data-analytics",
-    name: "Big Data & Analytics",
-    description: "Inteligencia de negocios avanzada, dashboards de control en tiempo real y modelado predictivo.",
+    name: "Big Data & Business Intelligence",
+    description: "Transforme sus datos en decisiones estratégicas. Dashboards en tiempo real y análisis predictivo para optimizar su rentabilidad.",
     icon: BarChart3,
     color: "text-primary",
     glow: "shadow-[0_0_20px_-10px_rgba(17,122,151,0.5)]",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     features: [
-      "Diseño e implementación de Data Lakes y Data Warehouses.",
-      "Creación de tableros directivos (Dashboards) interactivos.",
-      "Análisis predictivo mediante modelos estadísticos avanzados.",
-      "Integración y limpieza de múltiples fuentes de datos."
+      "Centralización de Datos: Consolidación de múltiples fuentes de información en un solo repositorio estructurado.",
+      "Dashboards Ejecutivos: Creación de tableros de control en Power BI o herramientas similares para decisiones estratégicas.",
+      "Análisis de Tendencias: Identificación de patrones de comportamiento para anticipar movimientos del mercado.",
+      "Calidad de Datos: Procesos de limpieza y estructuración para asegurar que la información sea confiable y útil."
     ]
   },
   {
-    slug: "inteligencia-artificial",
-    name: "Inteligencia Artificial",
-    description: "Implementación de redes neuronales, chatbots de nivel empresarial y automatización cognitiva.",
+    slug: "inteligencia-artificial-negocios",
+    name: "Inteligencia Artificial para Negocios",
+    description: "Automatización cognitiva y agentes inteligentes para optimizar flujos de trabajo corporativos.",
     icon: BrainCircuit,
     color: "text-accent",
     glow: "shadow-[0_0_20px_-10px_rgba(45,183,193,0.5)]",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
     features: [
-      "Desarrollo de asistentes virtuales (Bots) con NLP.",
-      "Visión artificial para control de calidad industrial.",
-      "Modelos de Machine Learning para optimización de demanda.",
-      "Integración de LLMs en flujos de trabajo corporativos."
+      "Agentes Inteligentes: Implementación de Chatbots avanzados con IA Generativa para atención al cliente y soporte interno.",
+      "Procesamiento Automático: Automatización de lectura de documentos y facturas mediante OCR inteligente.",
+      "Optimización de Stock: Modelos predictivos para la gestión de inventarios y cadena de suministro.",
+      "Integración de LLMs: Conexión de modelos de lenguaje (como GPT) en sus flujos de trabajo operativos."
     ]
   },
   {
-    slug: "partner-softland",
-    name: "Partner tecnológico en soluciones Softland",
-    description: "En ONLINE System somos partner tecnológico en soluciones Softland ERP, brindando servicios especializados en implementación, soporte y optimización de plataformas empresariales para automatización en Chile.",
-    cardDescription: "Especialistas en implementación, automatización y soporte de ERP Softland para potenciar la eficiencia operativa de su empresa.",
+    slug: "partner-softland-soporte",
+    name: "Partner Tecnológico Softland ERP",
+    description: "Especialistas en implementación, soporte y optimización de Softland ERP en Chile. Aseguramos que su ERP sea el motor de su empresa, no un problema.",
+    cardDescription: "Soporte experto y optimización de Softland ERP para potenciar la eficiencia de su negocio.",
     icon: Settings2,
     color: "text-blue-500",
     glow: "shadow-[0_0_20px_-10px_rgba(59,130,246,0.5)]",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     features: [
-      "Implementación y puesta en marcha: Acompañamiento en el despliegue inicial de módulos ERP.",
-      "Soporte especializado: Resolución técnica y funcional para la continuidad de su operación.",
-      "Optimización de procesos: Mejora en el uso de la plataforma para maximizar la productividad.",
-      "Integraciones estratégicas: Conexión de Softland con otras plataformas y ecosistemas digitales.",
-      "Mejora continua: Auditorías y ajustes periódicos para alinear el sistema con el crecimiento del negocio."
-    ],
-    concludingText: "Acompañamos a nuestros clientes en todo el ciclo de vida de sus sistemas Softland, garantizando una gestión eficiente y escalable."
+      "Soporte Especializado: Resolución de incidencias técnicas y funcionales para todos los módulos de Softland ERP.",
+      "Actualizaciones de Versión: Migración segura de bases de datos y despliegue de nuevas funcionalidades del sistema.",
+      "Optimización Operativa: Ajuste de flujos contables y de remuneraciones para una gestión más rápida y sin errores.",
+      "Capacitación Continua: Entrenamiento a usuarios para maximizar el uso de las herramientas del ERP."
+    ]
   },
   {
-    slug: "integracion-sistemas",
-    name: "Implementación e Integración de Sistemas ERP y APIs",
+    slug: "integracion-erp-apis",
+    name: "Integración de Sistemas ERP y APIs",
     nameHighlight: "Sistemas ERP y APIs",
-    description: "Centralice sus operaciones con nuestra Integración de sistemas tecnológicos. Conectamos ERPs como Softland, SAP y Defontana con e-commerce, software financiero y sistemas a medida, logrando una automatización total.",
-    cardDescription: "Integración de sistemas, automatización de aseguradoras y conexión de plataformas core o CRM para centralizar sus operaciones.",
+    description: "Conectamos sus sistemas core (Softland, SAP, Defontana) con e-commerce, CRM y software a medida. Logre una automatización total eliminando la doble digitación de datos.",
+    cardDescription: "Integración de sistemas y automatización de flujos de datos entre ERPs y aplicaciones externas.",
     icon: Code2,
     color: "text-primary",
     glow: "shadow-[0_0_20px_-10px_rgba(17,122,151,0.5)]",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
     featuresTitle: "Casos de ",
     featuresTitleHighlight: "Uso",
-    featuresSubtitle: "Escenarios comunes resueltos con nuestra Integración de sistemas y automatización.",
+    featuresSubtitle: "Sincronización total de su ecosistema digital.",
     features: [
-      "Sistemas para corredoras de seguros: Conectamos su gestión interna con la automatización seguros Chile, implementando integración aseguradoras APIs para emitir pólizas y siniestros en tiempo real.",
-      "CRM Inmobiliario Chile: Vinculamos su plataforma de ventas y leads con su CRM inmobiliario Chile y el ERP corporativo para un flujo de reservas y facturación sin fricciones.",
-      "Comercio Omnicanal (E-commerce ↔ ERP): Sincronice inventarios y compras entre Shopify, VTEX y su ERP (Softland, SAP). Evite doble digitación.",
-      "Cierre Contable y Financiero Automatizado: Conecte su ERP con pasarelas de pago y facturación electrónica (DTE).",
-      "Gestión de Capital Humano Integrada: Vincule plataformas de RRHH (Buk, Talana) con su ecosistema financiero.",
-      "Logística y Trazabilidad en la Nube: Conecte su sistema de gestión de bodegas (WMS) o proveedores logísticos.",
-      "Consolidación de Datos (BI): Unificamos la data de sus múltiples sistemas para tableros interactivos."
+      "Integración E-commerce ↔ ERP (Stock y Pedidos).",
+      "Conectividad con pasarelas de pago y bancos.",
+      "Automatización de procesos para corredoras de seguros.",
+      "Sincronización de CRM con facturación electrónica.",
+      "Desarrollo de APIs a medida para interoperabilidad."
     ],
-    concludingText: "Acelere su competitividad automatizando procesos manuales con una Integración de sistemas a la medida.",
-    plans: [
-      {
-        name: "Evaluación Diagnóstica",
-        subtitle: "Para iniciar integraciones",
-        features: [
-          "Mapeo de arquitectura TI",
-          "Revisión de viabilidad técnica",
-          "Propuesta de roadmap"
-        ],
-        summary: "Para entender por dónde empezar"
-      },
-      {
-        name: "Integración Dedicada",
-        subtitle: "Ejecución de procesos",
-        features: [
-          "Desarrollo de conectores API",
-          "Automatización de 2 a 3 sistemas",
-          "Mapeo de procesos",
-          "Soporte post-despliegue"
-        ],
-        summary: "Automatización estándar corporativa",
-        highlight: true
-      },
-      {
-        name: "Arquitectura Enterprise",
-        subtitle: "Agnosticismo total",
-        features: [
-          "Microservicios avanzados",
-          "Migración a Cloud",
-          "Sincronización multi-país/multi-empresa",
-          "Soporte y SLA 24/7"
-        ],
-        summary: "Para operaciones de gran escala"
-      }
-    ]
+    concludingText: "Acelere su empresa eliminando procesos manuales mediante integraciones robustas."
   },
   {
     slug: "oficina-virtual-inteligente",
-    name: "Oficina Virtual Inteligente",
-    description: "Transforme sus oficinas y salas de reunión físicas con tecnología avanzada. Nuestro servicio de Oficina Virtual Inteligente integra sistemas de comunicación de alta calidad, control de acceso y sensores IoT para garantizar seguridad, colaboración y confort.",
+    name: "Sala Virtual e Inteligente",
+    description: "Transforme sus oficinas y salas de reunión físicas con tecnología avanzada. Nuestro servicio de Sala Virtual e Inteligente integra sistemas de comunicación de alta calidad, control de acceso y sensores IoT para garantizar seguridad, colaboración y confort.",
     cardDescription: "Sistemas de videoconferencia, control de acceso biométrico y sensores IoT para espacios de trabajo modernos e inteligentes.",
     icon: Monitor,
     color: "text-indigo-400",

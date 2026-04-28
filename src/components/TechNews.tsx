@@ -69,7 +69,7 @@ export function TechNews({ posts }: TechNewsProps) {
               <span className="text-primary font-bold text-xs tracking-[0.3em] uppercase">Intelligence Feed</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-headline font-bold text-white leading-tight">
-              Actualidad <span className="text-gradient">Tecnológica Mundial</span>
+              BLOG Actualidad <span className="text-gradient">Tecnológica Mundial</span>
             </h2>
           </div>
           
