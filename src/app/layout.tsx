@@ -12,6 +12,32 @@ export const metadata: Metadata = {
     "integración aseguradoras APIs", "CRM inmobiliario Chile", "empresa TI Región Metropolitana", 
     "soporte informático", "solución para procesos manuales empresas", "ONLINE System"
   ],
+  metadataBase: new URL('https://onlinesystem.cl'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_CL',
+    url: 'https://onlinesystem.cl',
+    siteName: 'ONLINE System',
+    title: 'Consultoría TI y Transformación Digital | ONLINE System',
+    description: 'Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'ONLINE System - Consultoría TI',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Consultoría TI y Transformación Digital | ONLINE System',
+    description: 'Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.',
+    images: ['/logo.png'],
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },

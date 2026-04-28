@@ -10,9 +10,36 @@ import { BookingModal } from "@/components/BookingModal";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = servicesData.find((s) => s.slug === slug);
+  if (!service) return { title: 'Servicio no encontrado' };
+
+  const title = `${service.name} | ONLINE System`;
+  const description = service.description;
+  const url = `https://onlinesystem.cl/servicios/${service.slug}`;
+  const imageUrl = service.image || '/logo.png';
+
   return {
-    title: `${service?.name || 'Servicio'} | ONLINE System`,
-    description: service?.description,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'website',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: service.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 

@@ -19,7 +19,32 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { servicesData } from "@/lib/data-services";
 import { BookingModal } from "@/components/BookingModal";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Nuestros Servicios de Consultoría TI | ONLINE System",
+  description: "Explora nuestro catálogo de servicios especializados: ciberseguridad, cloud computing, automatización y transformación digital para empresas en Chile.",
+  openGraph: {
+    title: "Nuestros Servicios de Consultoría TI | ONLINE System",
+    description: "Explora nuestro catálogo de servicios especializados: ciberseguridad, cloud computing, automatización y transformación digital para empresas en Chile.",
+    url: "https://onlinesystem.cl/servicios",
+    type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Servicios de ONLINE System",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nuestros Servicios de Consultoría TI | ONLINE System",
+    description: "Explora nuestro catálogo de servicios especializados: ciberseguridad, cloud computing, automatización y transformación digital para empresas en Chile.",
+    images: ["/logo.png"],
+  },
+};
 
 export default function ServicesPage() {
   return (

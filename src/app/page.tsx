@@ -8,14 +8,14 @@ import { Footer } from "@/components/Footer";
 import { IndustriesSection } from "@/components/IndustriesSection";
 import { ValueProposition } from "@/components/ValueProposition";
 import { MethodologySection } from "@/components/MethodologySection";
-import { getLatestTechNews } from "@/lib/news";
+import { getAllPosts } from "@/lib/blog";
 import { TechNews } from "@/components/TechNews";
 import { ClientCarousel } from "@/components/ClientCarousel";
 import { Diagnostic360 } from "@/components/Diagnostic360";
 
 
 export default async function Home() {
-  const news = await getLatestTechNews();
+  const posts = getAllPosts();
 
   return (
     <main className="relative">
@@ -30,7 +30,7 @@ export default async function Home() {
       <ValueProposition />
       <TeamSection />
 
-      <TechNews initialNews={news} />
+      <TechNews posts={posts} />
       <ContactSection />
       <Footer />
     </main>

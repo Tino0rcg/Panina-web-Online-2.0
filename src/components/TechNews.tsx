@@ -2,7 +2,8 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { ExternalLink, ShieldAlert, Globe2, Zap, Clock, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import type { NewsItem } from "@/lib/news";
+import Link from "next/link";
+import type { BlogPost } from "@/lib/blog";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -10,11 +11,11 @@ import { formatDistanceToNow } from "date-fns";
 import { es } from "date-fns/locale";
 
 interface TechNewsProps {
-  initialNews: NewsItem[];
+  posts: BlogPost[];
 }
 
-export function TechNews({ initialNews }: TechNewsProps) {
-  const newsToDisplay = initialNews && initialNews.length > 0 ? initialNews.slice(0, 10) : [];
+export function TechNews({ posts }: TechNewsProps) {
+  const newsToDisplay = posts && posts.length > 0 ? posts.slice(0, 10) : [];
   
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
@@ -93,7 +94,7 @@ export function TechNews({ initialNews }: TechNewsProps) {
         {/* Carousel Viewport */}
         <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
           <div className="flex gap-6 md:gap-8">
-            {newsToDisplay.map((item, index) => (
+            {newsToDisplay.map((post, index) => (
               <div 
                 key={index} 
                 className="flex-[0_0_100%] sm:flex-[0_0_80%] md:flex-[0_0_45%] lg:flex-[0_0_31%] min-w-0"
@@ -103,21 +104,21 @@ export function TechNews({ initialNews }: TechNewsProps) {
                 >
                   {/* Category Badge */}
                   <div className="flex items-center gap-3 mb-6">
-                    <div className={`p-2.5 rounded-xl ${item.color || 'bg-primary'} shadow-lg shadow-black/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                      {item.tag === "Ciberseguridad" && <ShieldAlert className="w-5 h-5 text-white" />}
-                      {item.tag === "Infraestructura" && <Globe2 className="w-5 h-5 text-white" />}
-                      {item.tag === "IA & Algoritmos" && <Zap className="w-5 h-5 text-white" />}
-                      {item.tag === "Innovación" && <Clock className="w-5 h-5 text-white" />}
-                      {!["Ciberseguridad", "Infraestructura", "IA & Algoritmos", "Innovación"].includes(item.tag) && <Zap className="w-5 h-5 text-white" />}
+                    <div className={`p-2.5 rounded-xl bg-primary shadow-lg shadow-black/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
+                      {post.tags?.[0] === "Ciberseguridad" && <ShieldAlert className="w-5 h-5 text-white" />}
+                      {post.tags?.[0] === "Infraestructura" && <Globe2 className="w-5 h-5 text-white" />}
+                      {post.tags?.[0] === "IA & Algoritmos" && <Zap className="w-5 h-5 text-white" />}
+                      {post.tags?.[0] === "Innovación" && <Clock className="w-5 h-5 text-white" />}
+                      {(!post.tags || !["Ciberseguridad", "Infraestructura", "IA & Algoritmos", "Innovación"].includes(post.tags[0])) && <Zap className="w-5 h-5 text-white" />}
                     </div>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{item.tag}</span>
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{post.tags?.[0] || 'TECNOLOGÍA'}</span>
                   </div>
 
                   {/* Date Badge */}
                   <div className="absolute top-8 right-8 flex flex-col items-end text-right">
                     <span className="text-[9px] font-bold text-primary/60 uppercase tracking-widest leading-none mb-1">Publicado</span>
                     <span className="text-[10px] text-slate-400 font-medium whitespace-nowrap">
-                      {formatDistanceToNow(new Date(item.publishedAt), { addSuffix: true, locale: es })}
+                      {post.date ? formatDistanceToNow(new Date(post.date), { addSuffix: true, locale: es }) : ''}
                     </span>
                   </div>
 
@@ -125,29 +126,27 @@ export function TechNews({ initialNews }: TechNewsProps) {
                   <div className="flex flex-col flex-grow space-y-4">
                     {/* Title */}
                     <h3 className="text-xl md:text-2xl font-headline font-bold text-white group-hover:text-primary transition-colors leading-tight line-clamp-3">
-                      {item.title}
+                      {post.title}
                     </h3>
                     
                     {/* Description/Content */}
                     <p className="text-slate-400 text-sm leading-relaxed line-clamp-5 font-light">
-                      {item.description}
+                      {post.description || post.content.substring(0, 150) + '...'}
                     </p>
                   </div>
 
                   {/* Footer */}
                   <div className="w-full flex items-center justify-between mt-auto pt-6 border-t border-white/5">
                     <div className="flex flex-col">
-                      <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mb-1">Fuente</span>
-                      <span className="text-primary font-bold text-xs uppercase tracking-wider">{item.source}</span>
+                      <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mb-1">Lectura Exclusiva</span>
+                      <span className="text-primary font-bold text-xs uppercase tracking-wider">ONLINE System</span>
                     </div>
-                    <a 
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link 
+                      href={`/blog/${post.slug}`}
                       className="flex items-center gap-3 bg-white/5 p-3 rounded-2xl hover:bg-primary hover:text-white transition-all group/link"
                     >
                       <ArrowRight className="w-5 h-6 transition-transform group-hover/link:translate-x-1" />
-                    </a>
+                    </Link>
                   </div>
 
                   {/* Subtle hover overlay */}
