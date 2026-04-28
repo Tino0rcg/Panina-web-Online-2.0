@@ -20,7 +20,7 @@ const EVALUATION_POINTS = [
   {
     icon: <ShieldAlert className="w-6 h-6 text-primary" />,
     title: "Seguridad y vulnerabilidades",
-    description: "Detección de brechas de seguridad y evaluación de riesgos."
+    description: "Detección de brechas de seguridad, evaluación de riesgos y continuidad operativa (Backups, BCP / DRP)"
   },
   {
     icon: <RefreshCcw className="w-6 h-6 text-primary" />,
@@ -29,7 +29,7 @@ const EVALUATION_POINTS = [
   },
   {
     icon: <AlertTriangle className="w-6 h-6 text-primary" />,
-    title: "Riesgos y puntos críticos",
+    title: "Riesgos, puntos críticos e integraciones de sistemas",
     description: "Identificación proactiva de fallas potenciales críticas."
   },
   {
@@ -235,7 +235,7 @@ export function Diagnostic360() {
                 </p>
                 <div className="p-4 rounded-xl bg-accent/10 border border-accent/20 border-l-4 border-l-accent">
                   <p className="text-sm font-medium text-slate-200">
-                    Si decides avanzar con nosotros en un contrato de soporte o implementación, el costo del diagnóstico puede ser descontado del proyecto.
+                    Si decides avanzar con nosotros en un contrato de soporte o implementación, el costo del diagnóstico será descontado al contratar servicios.
                   </p>
                 </div>
               </div>

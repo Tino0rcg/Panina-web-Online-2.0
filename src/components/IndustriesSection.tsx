@@ -52,7 +52,7 @@ export function IndustriesSection() {
     },
     {
       title: "Inmobiliaria",
-      description: "Conectividad robusta para complejos habitacionales y soluciones de automatización en edificios inteligentes.",
+      description: "Conectividad robusta para complejos, automatización de edificios inteligentes y despliegue de CRM inmobiliario en Chile.",
       icon: Home,
       gradient: "from-slate-500/10 to-slate-700/5",
       iconColor: "text-slate-600",
@@ -107,8 +107,8 @@ export function IndustriesSection() {
       delay: 0.5
     },
     {
-      title: "Financieras y Bancos",
-      description: "Ciberseguridad de grado bancario, redundancia de centros de datos y alta disponibilidad transaccional.",
+      title: "Banca y Seguros",
+      description: "Ciberseguridad bancaria, sistemas para corredoras de seguros y automatización de flujos mediante integración de APIs.",
       icon: Landmark,
       gradient: "from-zinc-500/10 to-stone-600/5",
       iconColor: "text-zinc-700",

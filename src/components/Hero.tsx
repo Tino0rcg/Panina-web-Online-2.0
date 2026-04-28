@@ -11,7 +11,7 @@ const SLIDES = [
   {
     id: 1,
     tag: "Infraestructura & Continuidad",
-    title: "Tecnología para empresas <br /> <span className='text-gradient'>que no pueden detenerse.</span>",
+    title: "Tecnología para empresas <br /> que no pueden detenerse.",
     subtitle: "<strong>Evita caídas, reduce riesgos y asegura la continuidad de tu operación.</strong>",
     description: "",
     features: [
@@ -33,8 +33,18 @@ const SLIDES = [
   {
     id: 2,
     tag: "Optimización Estratégica",
-    title: "Diagnóstico <br /> <span className='text-gradient'>TI 360°.</span>",
-    description: "Diagnóstico TI Estratégico para Optimizar Costos, Seguridad y Operación de su infraestructura tecnológica.<br/><span className='text-accent font-semibold text-sm mt-3 inline-flex items-center gap-2'><svg class='w-4 h-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path></svg> Valorado y bonificado al contratar servicios</span>",
+    title: "Diagnóstico <br /> TI 360°.",
+    description: "<span class='font-medium text-primary'>Identificamos ineficiencias, riesgos y oportunidades en tu operación tecnológica, entregando un plan claro para mejorar productividad, seguridad y reducir costos.</span><br/><span class='text-white font-semibold text-sm mt-3 inline-flex items-center gap-2'><svg class='w-4 h-4 text-primary' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'></path></svg> Valorado y bonificado al contratar servicios</span>",
+    features: [
+      "Infraestructura TI",
+      "Revisión Sistemas",
+      "Procesos",
+      "Integración de Sistemas",
+      "Puntos de Riesgo",
+      "Gestión Soporte",
+      "ROI",
+      "Recomendaciones"
+    ],
     statValue: "360°",
     statLabel: "Visión Operativa",
     secondaryStatValue: "Calcula tu ROI",

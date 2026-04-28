@@ -59,7 +59,7 @@ export default function RootLayout({
           {`
             {
               "@context": "https://schema.org",
-              "@type": "ITUtility",
+              "@type": "ProfessionalService",
               "name": "ONLINE System",
               "url": "https://onlinesystem.cl/",
               "logo": "https://onlinesystem.cl/favicon.png",
