@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -68,11 +69,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       
       <article className="pt-32 pb-24 md:pt-40">
         <div className="container mx-auto px-6 max-w-4xl">
-          {/* Back Button */}
-          <Link href="/blog" className="inline-flex items-center text-slate-400 hover:text-primary transition-colors mb-8 font-medium">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Volver a todos los artículos
-          </Link>
+          <Breadcrumbs 
+            items={[
+              { label: "Blog", href: "/#actualidad-tecnologica" },
+              { label: post.title.substring(0, 30) + "...", href: "", active: true }
+            ]} 
+          />
 
           {/* Article Header */}
           <header className="mb-12 pb-12 border-b border-white/10">

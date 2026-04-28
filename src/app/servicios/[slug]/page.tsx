@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ArrowLeft, Rocket, ShieldCheck, Settings2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/BookingModal";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -100,13 +101,12 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         <section className="pt-40 pb-20 bg-slate-50 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] -mr-64 -mt-64"></div>
           <div className="container mx-auto px-6 relative z-10">
-            <Link 
-              href="/servicios" 
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-primary transition-colors mb-12 font-bold uppercase text-xs tracking-widest group"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-2 transition-transform" />
-              Volver al Catálogo
-            </Link>
+            <Breadcrumbs 
+              items={[
+                { label: "Servicios", href: "/servicios" },
+                { label: service.name, href: "", active: true }
+              ]} 
+            />
             
             <div className="max-w-4xl space-y-8">
               <div className={`p-4 rounded-2xl bg-white border border-slate-100 shadow-xl inline-block ${service.glow}`}>

@@ -1,3 +1,4 @@
+
 import { MetadataRoute } from 'next';
 import { servicesData } from '@/lib/data-services';
 import { getAllPosts } from '@/lib/blog';
@@ -5,12 +6,12 @@ import { getAllPosts } from '@/lib/blog';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://onlinesystem.cl';
 
-  // Base routes
-  const routes = [
+  // Home and static pages
+  const staticPages = [
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
+      changeFrequency: 'daily' as const,
       priority: 1,
     },
     {
@@ -20,29 +21,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/calculadora-roi`,
       lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
     },
   ];
 
-  // Dynamic service routes
-  const serviceRoutes = servicesData.map((service) => ({
+  // Dynamic service pages
+  const servicePages = servicesData.map((service) => ({
     url: `${baseUrl}/servicios/${service.slug}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
+    changeFrequency: 'weekly' as const,
     priority: 0.9,
   }));
 
-  // Dynamic blog routes
+  // Dynamic blog pages
   const blogPosts = getAllPosts();
-  const blogRoutes = blogPosts.map((post) => ({
+  const blogPages = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
 
-  return [...routes, ...serviceRoutes, ...blogRoutes];
+  return [...staticPages, ...servicePages, ...blogPages];
 }

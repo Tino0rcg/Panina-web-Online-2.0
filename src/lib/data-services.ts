@@ -40,10 +40,10 @@ export interface ServiceData {
 
 export const servicesData: ServiceData[] = [
   {
-    slug: "soporte-ti-empresas-chile",
+    slug: "soporte-ti-mantenimiento-preventivo-empresas-chile",
     name: "Soporte TI para Empresas y Mantenimiento Preventivo",
-    description: "Garantizamos la continuidad operativa de su negocio en Chile con un servicio integral de Soporte TI y mantenimiento preventivo. Diseñamos soluciones de outsourcing TI para anticipar fallas, asegurar la estabilidad de su infraestructura y proteger sus activos críticos.",
-    cardDescription: "Soporte TI integral y mantenimiento preventivo diseñado para asegurar la continuidad operativa de empresas en Chile.",
+    description: "Garantizamos la continuidad operativa de su negocio en Chile con un servicio integral de Soporte TI, mantenimiento informático y asistencia técnica proactiva. Diseñamos soluciones de outsourcing tecnológico para anticipar fallas, asegurar la estabilidad de su infraestructura y proteger sus activos críticos con respuesta inmediata.",
+    cardDescription: "Soporte técnico integral, mantenimiento informático y outsourcing tecnológico diseñado para asegurar la continuidad operativa de empresas.",
     icon: ShieldCheck,
     color: "text-accent",
     glow: "shadow-[0_0_20px_-10px_rgba(45,183,193,0.5)]",
@@ -100,11 +100,11 @@ export const servicesData: ServiceData[] = [
     ]
   },
   {
-    slug: "automatizacion-procesos-empresas",
+    slug: "automatizacion-procesos-transformacion-digital-b2b",
     name: "Automatización de Procesos y Transformación Digital",
     nameHighlight: "y Transformación Digital",
-    description: "Ayudamos a empresas en Chile a eliminar tareas manuales ineficientes mediante la automatización de procesos. Implementamos soluciones TI a medida que modernizan su gestión tecnológica y aceleran su productividad.",
-    cardDescription: "Optimización de procesos y automatización inteligente para modernizar la gestión tecnológica de su empresa.",
+    description: "Ayudamos a empresas en Chile a eliminar tareas manuales ineficientes mediante la automatización de procesos y optimización de flujos de trabajo. Implementamos soluciones de ingeniería de software a medida que modernizan su gestión tecnológica y aceleran la productividad de su equipo.",
+    cardDescription: "Eficiencia operativa mediante la automatización inteligente y transformación digital para modernizar la gestión de su empresa.",
     icon: Rocket,
     color: "text-accent",
     glow: "shadow-[0_0_20px_-10px_rgba(45,183,193,0.5)]",
@@ -122,10 +122,10 @@ export const servicesData: ServiceData[] = [
     ]
   },
   {
-    slug: "infraestructura-redes-telecomunicaciones",
+    slug: "ingenieria-redes-infraestructura-critica-telecomunicaciones",
     name: "Ingeniería de Redes e Infraestructura Crítica",
-    description: "Diseño y despliegue de infraestructura TI robusta para empresas. Desde cableado estructurado certificado hasta ciberseguridad en capa de red, garantizamos que su conectividad soporte las demandas de una operación moderna.",
-    cardDescription: "Ingeniería de redes, conectividad de alta velocidad e infraestructura crítica para operaciones empresariales.",
+    description: "Diseño y despliegue de infraestructura tecnológica robusta para empresas. Desde cableado estructurado certificado hasta seguridad perimetral en capa de red, garantizamos conectividad de alta velocidad para soportar las demandas de una operación moderna y resiliente.",
+    cardDescription: "Ingeniería de redes, conectividad empresarial de alta velocidad e infraestructura crítica para operaciones de alta disponibilidad.",
     icon: Settings2,
     color: "text-slate-400",
     glow: "shadow-[0_0_20px_-10px_rgba(148,163,184,0.5)]",
@@ -147,9 +147,9 @@ export const servicesData: ServiceData[] = [
     concludingText: "Construimos la base tecnológica que permite a su empresa crecer sin límites."
   },
   {
-    slug: "cloud-computing-chile",
+    slug: "cloud-computing-migracion-nube-aws-azure",
     name: "Cloud Computing y Migración a la Nube",
-    description: "Lleve su empresa al siguiente nivel con arquitecturas Cloud en AWS, Azure o Google Cloud. Nos especializamos en migración segura y optimización de costos en la nube para empresas en Chile.",
+    description: "Escale su empresa con arquitecturas Cloud en AWS, Azure o Google Cloud. Somos expertos en migración segura a la nube, gestión de servidores virtuales y optimización de costos de infraestructura cloud para empresas con visión de futuro.",
     icon: Cloud,
     color: "text-accent",
     glow: "shadow-[0_0_20px_-10px_rgba(45,183,193,0.5)]",
@@ -162,9 +162,9 @@ export const servicesData: ServiceData[] = [
     ]
   },
   {
-    slug: "ciberseguridad-empresas-chile",
+    slug: "ciberseguridad-proteccion-datos-ransomware-empresas",
     name: "Ciberseguridad y Protección de Activos Digitales",
-    description: "Proteja su empresa contra ransomware y ataques dirigidos. Realizamos auditorías de vulnerabilidades y protegemos proactivamente su información crítica bajo estándares internacionales.",
+    description: "Proteja su empresa contra ransomware, phishing y ciberataques dirigidos. Realizamos blindaje de red, auditorías de seguridad informática y protegemos proactivamente su información sensible bajo estándares internacionales de ciberseguridad.",
     icon: ShieldCheck,
     color: "text-red-400",
     glow: "shadow-[0_0_20px_-10px_rgba(248,113,113,0.5)]",
@@ -177,7 +177,7 @@ export const servicesData: ServiceData[] = [
     ]
   },
   {
-    slug: "big-data-analytics",
+    slug: "big-data-business-intelligence-decisiones-estrategicas",
     name: "Big Data & Business Intelligence",
     description: "Transforme sus datos en decisiones estratégicas. Dashboards en tiempo real y análisis predictivo para optimizar su rentabilidad.",
     icon: BarChart3,
@@ -192,7 +192,7 @@ export const servicesData: ServiceData[] = [
     ]
   },
   {
-    slug: "inteligencia-artificial-negocios",
+    slug: "inteligencia-artificial-ia-generativa-negocios",
     name: "Inteligencia Artificial para Negocios",
     description: "Automatización cognitiva y agentes inteligentes para optimizar flujos de trabajo corporativos.",
     icon: BrainCircuit,
@@ -207,10 +207,10 @@ export const servicesData: ServiceData[] = [
     ]
   },
   {
-    slug: "partner-softland-soporte",
+    slug: "partner-tecnologico-softland-erp-soporte-especializado",
     name: "Partner Tecnológico Softland ERP",
-    description: "Especialistas en implementación, soporte y optimización de Softland ERP en Chile. Aseguramos que su ERP sea el motor de su empresa, no un problema.",
-    cardDescription: "Soporte experto y optimización de Softland ERP para potenciar la eficiencia de su negocio.",
+    description: "Especialistas en implementación, soporte técnico y optimización de Softland ERP en Chile. Aseguramos que su gestión contable y financiera sea el motor de su empresa mediante consultoría de sistemas experta y acompañamiento continuo.",
+    cardDescription: "Soporte experto, consultoría de sistemas y optimización de Softland ERP para potenciar la gestión financiera de su negocio.",
     icon: Settings2,
     color: "text-blue-500",
     glow: "shadow-[0_0_20px_-10px_rgba(59,130,246,0.5)]",
@@ -223,7 +223,7 @@ export const servicesData: ServiceData[] = [
     ]
   },
   {
-    slug: "integracion-erp-apis",
+    slug: "integracion-sistemas-erp-apis-automatizacion",
     name: "Integración de Sistemas ERP y APIs",
     nameHighlight: "Sistemas ERP y APIs",
     description: "Conectamos sus sistemas core (Softland, SAP, Defontana) con e-commerce, CRM y software a medida. Logre una automatización total eliminando la doble digitación de datos.",
@@ -245,7 +245,7 @@ export const servicesData: ServiceData[] = [
     concludingText: "Acelere su empresa eliminando procesos manuales mediante integraciones robustas."
   },
   {
-    slug: "oficina-virtual-inteligente",
+    slug: "sala-virtual-inteligente-videoconferencia-iot",
     name: "Sala Virtual e Inteligente",
     description: "Transforme sus oficinas y salas de reunión físicas con tecnología avanzada. Nuestro servicio de Sala Virtual e Inteligente integra sistemas de comunicación de alta calidad, control de acceso y sensores IoT para garantizar seguridad, colaboración y confort.",
     cardDescription: "Sistemas de videoconferencia, control de acceso biométrico y sensores IoT para espacios de trabajo modernos e inteligentes.",

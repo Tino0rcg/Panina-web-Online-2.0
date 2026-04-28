@@ -105,13 +105,13 @@ export function TechNews({ posts }: TechNewsProps) {
                   {/* Category Badge */}
                   <div className="flex items-center gap-3 mb-6">
                     <div className={`p-2.5 rounded-xl bg-primary shadow-lg shadow-black/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                      {post.tags?.[0] === "Ciberseguridad" && <ShieldAlert className="w-5 h-5 text-white" />}
-                      {post.tags?.[0] === "Infraestructura" && <Globe2 className="w-5 h-5 text-white" />}
-                      {post.tags?.[0] === "IA & Algoritmos" && <Zap className="w-5 h-5 text-white" />}
-                      {post.tags?.[0] === "Innovación" && <Clock className="w-5 h-5 text-white" />}
-                      {(!post.tags || !["Ciberseguridad", "Infraestructura", "IA & Algoritmos", "Innovación"].includes(post.tags[0])) && <Zap className="w-5 h-5 text-white" />}
+                      {post.tag === "Ciberseguridad" && <ShieldAlert className="w-5 h-5 text-white" />}
+                      {post.tag === "Infraestructura" && <Globe2 className="w-5 h-5 text-white" />}
+                      {post.tag === "IA & Algoritmos" && <Zap className="w-5 h-5 text-white" />}
+                      {post.tag === "Innovación" && <Clock className="w-5 h-5 text-white" />}
+                      {!["Ciberseguridad", "Infraestructura", "IA & Algoritmos", "Innovación"].includes(post.tag) && <Zap className="w-5 h-5 text-white" />}
                     </div>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{post.tags?.[0] || 'TECNOLOGÍA'}</span>
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{post.tag || 'TECNOLOGÍA'}</span>
                   </div>
 
                   {/* Date Badge */}
@@ -131,7 +131,7 @@ export function TechNews({ posts }: TechNewsProps) {
                     
                     {/* Description/Content */}
                     <p className="text-slate-400 text-sm leading-relaxed line-clamp-5 font-light">
-                      {post.description || post.content.substring(0, 150) + '...'}
+                      {post.excerpt || post.content.substring(0, 150) + '...'}
                     </p>
                   </div>
 

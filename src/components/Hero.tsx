@@ -25,7 +25,7 @@ const SLIDES = [
     secondaryStatValue: "24/7",
     secondaryStatLabel: "Soporte Crítico",
     primaryButtonText: "Ver Soluciones de Soporte",
-    primaryButtonHref: "/servicios/soporte-ti-empresas-chile",
+    primaryButtonHref: "/servicios/soporte-ti-mantenimiento-preventivo-empresas-chile",
     isBooking: false,
     secondaryButtonText: "Solicitar Diagnóstico TI 360°",
     secondaryButtonHref: "/?service=Soporte TI#contact"
@@ -66,7 +66,7 @@ const SLIDES = [
     secondaryStatValue: "24/7",
     secondaryStatLabel: "Monitoreo SOC",
     primaryButtonText: "Ver Plan de Seguridad",
-    primaryButtonHref: "/servicios/ciberseguridad-empresas-chile",
+    primaryButtonHref: "/servicios/ciberseguridad-proteccion-datos-ransomware-empresas",
     secondaryButtonText: "Evaluar Mi Riesgo",
     secondaryButtonHref: "/?service=ciberseguridad#contact",
     isBooking: false
@@ -87,7 +87,7 @@ const SLIDES = [
     secondaryStatValue: "-40%",
     secondaryStatLabel: "Costos Operativos",
     primaryButtonText: "Ver Soluciones de Integración",
-    primaryButtonHref: "/servicios/integracion-erp-apis",
+    primaryButtonHref: "/servicios/integracion-sistemas-erp-apis-automatizacion",
     secondaryButtonText: "Consultoría ERP",
     secondaryButtonHref: "/?service=integracion-erp-apis#contact",
     isBooking: false

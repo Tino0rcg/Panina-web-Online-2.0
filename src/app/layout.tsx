@@ -86,28 +86,27 @@ export default function RootLayout({
           {`
             {
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
+              "@type": "ITService",
               "name": "ONLINE System",
               "image": "https://onlinesystem.cl/logo.png",
-              "@id": "https://onlinesystem.cl/",
+              "@id": "https://onlinesystem.cl/#organization",
               "url": "https://onlinesystem.cl/",
-              "telephone": "+569XXXXXXXX",
+              "telephone": "+56996070383",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Av. Providencia",
                 "addressLocality": "Santiago",
                 "addressRegion": "Región Metropolitana",
-                "postalCode": "XXXXXXX",
+                "postalCode": "7500000",
                 "addressCountry": "CL"
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": -33.4372,
-                "longitude": -70.6328
+                "latitude": -33.4256,
+                "longitude": -70.6147
               },
-              "url": "https://onlinesystem.cl/",
-              "logo": "https://onlinesystem.cl/favicon.png",
-              "description": "Consultoría líder en Ingeniería TI y Transformación Digital en Chile. Especialistas en ciberseguridad, resiliencia cloud y soporte técnico crítico.",
+              "logo": "https://onlinesystem.cl/logo.png",
+              "description": "Expertos en Continuidad Operacional, Soporte TI y Transformación Digital para empresas en Chile. Soporte 24/7 y Ciberseguridad.",
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": [
@@ -120,11 +119,17 @@ export default function RootLayout({
                 "opens": "09:00",
                 "closes": "18:30"
               },
-              "areaServed": {
-                "@type": "Country",
-                "name": "Chile"
-              },
-              "sameAs": []
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Santiago"
+                },
+                {
+                  "@type": "Country",
+                  "name": "Chile"
+                }
+              ],
+              "priceRange": "$$$"
             }
           `}
         </Script>

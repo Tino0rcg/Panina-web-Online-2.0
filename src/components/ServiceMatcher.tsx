@@ -27,7 +27,7 @@ export function ServiceMatcher() {
         toast({
           title: "Error de Análisis",
           description: error instanceof Error ? error.message : "Hubo un problema al procesar su solicitud. Intente nuevamente.",
-          variant: "destructive shadow-2xl",
+          variant: "destructive",
         });
       }
     });
