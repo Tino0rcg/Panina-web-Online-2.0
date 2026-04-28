@@ -60,6 +60,39 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     return (
       <main className="min-h-screen bg-white">
         <Navbar />
+        
+        {/* Structured Data for Service */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              "name": service.name,
+              "description": service.description,
+              "provider": {
+                "@type": "ProfessionalService",
+                "name": "ONLINE System",
+                "url": "https://onlinesystem.cl"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Chile"
+              },
+              "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": service.name,
+                "itemListElement": service.features.map((feature, index) => ({
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": feature.split(":")[0]
+                  }
+                }))
+              }
+            })
+          }}
+        />
   
         {/* Hero Section */}
         <section className="pt-40 pb-20 bg-slate-50 relative overflow-hidden">

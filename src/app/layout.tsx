@@ -6,11 +6,12 @@ export const metadata: Metadata = {
   title: 'Consultoría TI y Transformación Digital | ONLINE System',
   description: 'Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.',
   keywords: [
-    "Softland", "Automatización", "Servicios TI", "Soporte TI", "Outsourcing TI", 
-    "optimización de procesos TI", "Integración de sistemas", "Infraestructura TI", 
-    "BCP DRP", "sistemas para corredoras de seguros", "automatización seguros Chile",
-    "integración aseguradoras APIs", "CRM inmobiliario Chile", "empresa TI Región Metropolitana", 
-    "soporte informático", "solución para procesos manuales empresas", "ONLINE System"
+    "Consultoría TI Chile", "Transformación Digital empresas", "Ingeniería Informática",
+    "Softland ERP Chile", "Automatización de procesos", "Ciberseguridad corporativa",
+    "Soporte TI 24/7", "Outsourcing TI Región Metropolitana", "Infraestructura Cloud AWS Azure",
+    "Continuidad de Negocio BCP DRP", "Integración de sistemas APIs", "CRM Inmobiliario Chile",
+    "Sistemas para corredoras de seguros", "Automatización seguros Chile",
+    "Soluciones TI para empresas", "ONLINE System Chile"
   ],
   metadataBase: new URL('https://onlinesystem.cl'),
   alternates: {
@@ -21,21 +22,21 @@ export const metadata: Metadata = {
     locale: 'es_CL',
     url: 'https://onlinesystem.cl',
     siteName: 'ONLINE System',
-    title: 'Consultoría TI y Transformación Digital | ONLINE System',
-    description: 'Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.',
+    title: 'Ingeniería TI y Transformación Digital de Alto Nivel | ONLINE System',
+    description: 'Lideramos la transformación tecnológica en Chile. Expertos en ciberseguridad, resiliencia Cloud, integración de sistemas y soporte TI crítico 24/7.',
     images: [
       {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'ONLINE System - Consultoría TI',
+        alt: 'ONLINE System - Consultoría en Ingeniería TI',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Consultoría TI y Transformación Digital | ONLINE System',
-    description: 'Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.',
+    title: 'Ingeniería TI y Transformación Digital de Alto Nivel | ONLINE System',
+    description: 'Lideramos la transformación tecnológica en Chile. Expertos en ciberseguridad, resiliencia Cloud, integración de sistemas y soporte TI crítico 24/7.',
     images: ['/logo.png'],
   },
   icons: {
@@ -87,15 +88,42 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "name": "ONLINE System",
+              "image": "https://onlinesystem.cl/logo.png",
+              "@id": "https://onlinesystem.cl/",
               "url": "https://onlinesystem.cl/",
-              "logo": "https://onlinesystem.cl/favicon.png",
-              "description": "Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.",
+              "telephone": "+569XXXXXXXX",
               "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Av. Providencia",
+                "addressLocality": "Santiago",
                 "addressRegion": "Región Metropolitana",
+                "postalCode": "XXXXXXX",
                 "addressCountry": "CL"
               },
-              "areaServed": "CL",
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -33.4372,
+                "longitude": -70.6328
+              },
+              "url": "https://onlinesystem.cl/",
+              "logo": "https://onlinesystem.cl/favicon.png",
+              "description": "Consultoría líder en Ingeniería TI y Transformación Digital en Chile. Especialistas en ciberseguridad, resiliencia cloud y soporte técnico crítico.",
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "18:30"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Chile"
+              },
               "sameAs": []
             }
           `}

@@ -12,7 +12,15 @@ import { getAllPosts } from "@/lib/blog";
 import { TechNews } from "@/components/TechNews";
 import { ClientCarousel } from "@/components/ClientCarousel";
 import { Diagnostic360 } from "@/components/Diagnostic360";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: 'Consultoría en Ingeniería TI y Transformación Digital en Chile | ONLINE System',
+  description: 'Optimizamos la infraestructura tecnológica de su empresa. Especialistas en soporte TI 24/7, ciberseguridad, integración Softland y soluciones cloud en Chile.',
+  alternates: {
+    canonical: '/',
+  },
+};
 
 export default async function Home() {
   const posts = getAllPosts();

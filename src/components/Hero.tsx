@@ -162,7 +162,7 @@ export function Hero() {
                 
                 <div className="space-y-6">
                   {/* Semantic H1 for SEO */}
-                  <h1 className="sr-only">Consultoría en Ingeniería TI y Transformación Digital | ONLINE System</h1>
+                  <h1 className="sr-only">Consultoría en Ingeniería TI, Ciberseguridad y Transformación Digital en Chile | ONLINE System</h1>
                   
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>

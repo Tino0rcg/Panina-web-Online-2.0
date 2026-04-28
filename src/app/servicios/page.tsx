@@ -22,11 +22,11 @@ import { BookingModal } from "@/components/BookingModal";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nuestros Servicios de Consultoría TI | ONLINE System",
-  description: "Explora nuestro catálogo de servicios especializados: ciberseguridad, cloud computing, automatización y transformación digital para empresas en Chile.",
+  title: "Servicios de Consultoría TI e Ingeniería Avanzada | ONLINE System",
+  description: "Descubra nuestro ecosistema de servicios TI en Chile: Outsourcing, Ciberseguridad, Integración Softland, Redes y Transformación Digital corporativa.",
   openGraph: {
-    title: "Nuestros Servicios de Consultoría TI | ONLINE System",
-    description: "Explora nuestro catálogo de servicios especializados: ciberseguridad, cloud computing, automatización y transformación digital para empresas en Chile.",
+    title: "Servicios de Consultoría TI e Ingeniería Avanzada | ONLINE System",
+    description: "Descubra nuestro ecosistema de servicios TI en Chile: Outsourcing, Ciberseguridad, Integración Softland, Redes y Transformación Digital corporativa.",
     url: "https://onlinesystem.cl/servicios",
     type: "website",
     images: [
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Servicios de ONLINE System",
+        alt: "Servicios de Ingeniería TI - ONLINE System",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nuestros Servicios de Consultoría TI | ONLINE System",
-    description: "Explora nuestro catálogo de servicios especializados: ciberseguridad, cloud computing, automatización y transformación digital para empresas en Chile.",
+    title: "Servicios de Consultoría TI e Ingeniería Avanzada | ONLINE System",
+    description: "Descubra nuestro ecosistema de servicios TI en Chile: Outsourcing, Ciberseguridad, Integración Softland, Redes y Transformación Digital corporativa.",
     images: ["/logo.png"],
   },
 };
@@ -64,9 +64,9 @@ export default function ServicesPage() {
           </Link>
           
           <div className="max-w-4xl space-y-8">
-            <h1 className="text-6xl md:text-8xl font-headline font-bold text-slate-900 tracking-tighter leading-none">
-              Catálogo de <br />
-              <span className="text-gradient">servicios.</span>
+            <h1 className="text-5xl md:text-7xl font-headline font-bold text-slate-900 tracking-tighter leading-none">
+              Ingeniería TI y <br />
+              <span className="text-gradient">Servicios Estratégicos.</span>
             </h1>
             <div className="max-w-4xl space-y-6 border-l-4 border-primary pl-8">
               <p className="text-2xl text-slate-500 font-light leading-relaxed">

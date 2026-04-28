@@ -7,11 +7,11 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata = {
-  title: "Blog & Actualidad TI | ONLINE System",
-  description: "Análisis experto, noticias y casos de éxito sobre ciberseguridad, cloud computing y transformación digital corporativa.",
+  title: "Insights de Tecnología y Estrategia TI | ONLINE System Blog",
+  description: "Análisis experto sobre transformación digital, ciberseguridad y automatización en Chile. Manténgase a la vanguardia con nuestra visión técnica corporativa.",
   openGraph: {
-    title: "Blog & Actualidad TI | ONLINE System",
-    description: "Análisis experto, noticias y casos de éxito sobre ciberseguridad, cloud computing y transformación digital corporativa.",
+    title: "Insights de Tecnología y Estrategia TI | ONLINE System Blog",
+    description: "Análisis experto sobre transformación digital, ciberseguridad y automatización en Chile. Manténgase a la vanguardia con nuestra visión técnica corporativa.",
     url: "https://onlinesystem.cl/blog",
     type: "website",
     images: [
@@ -19,14 +19,14 @@ export const metadata = {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "ONLINE System Blog",
+        alt: "ONLINE System Blog - Tecnología y Estrategia",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog & Actualidad TI | ONLINE System",
-    description: "Análisis experto, noticias y casos de éxito sobre ciberseguridad, cloud computing y transformación digital corporativa.",
+    title: "Insights de Tecnología y Estrategia TI | ONLINE System Blog",
+    description: "Análisis experto sobre transformación digital, ciberseguridad y automatización en Chile. Manténgase a la vanguardia con nuestra visión técnica corporativa.",
     images: ["/logo.png"],
   },
 };
@@ -43,7 +43,7 @@ export default function BlogPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none"></div>
         <div className="container mx-auto px-6 relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-headline font-bold text-white mb-6">
-            Inteligencia <span className="text-gradient">TI Aplicada</span>
+            Tecnología y <span className="text-gradient">Estrategia TI</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
             Explora nuestros artículos y análisis profundo sobre los desafíos tecnológicos que enfrentan las empresas de hoy.
