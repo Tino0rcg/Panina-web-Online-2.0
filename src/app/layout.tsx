@@ -5,6 +5,9 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Consultoría TI y Transformación Digital | ONLINE System',
   description: 'Lideramos la transformación digital de tu empresa en Chile. Especialistas en ciberseguridad, cloud computing y arquitecturas TI de alta resiliencia.',
+  verification: {
+    google: '30xR51TGMinJwO4tq7-KJ6_c7MfQiEgglqTu7OJ07_w',
+  },
   keywords: [
     "Consultoría TI Chile", "Transformación Digital empresas", "Ingeniería Informática",
     "Softland ERP Chile", "Automatización de procesos", "Ciberseguridad corporativa",
