@@ -7,11 +7,11 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata = {
-  title: "Insights de Tecnología y Estrategia TI | ONLINE System Blog",
-  description: "Análisis experto sobre transformación digital, ciberseguridad y automatización en Chile. Manténgase a la vanguardia con nuestra visión técnica corporativa.",
+  title: "Noticias TI y Tecnología para Empresas en Chile | ONLINE System Blog",
+  description: "Artículos sobre ciberseguridad, soporte TI, cloud computing y transformación digital para empresas y gerentes TI en Chile. Actualización semanal.",
   openGraph: {
-    title: "Insights de Tecnología y Estrategia TI | ONLINE System Blog",
-    description: "Análisis experto sobre transformación digital, ciberseguridad y automatización en Chile. Manténgase a la vanguardia con nuestra visión técnica corporativa.",
+    title: "Noticias TI y Tecnología para Empresas en Chile | ONLINE System Blog",
+    description: "Artículos sobre ciberseguridad, soporte TI, cloud computing y transformación digital para empresas y gerentes TI en Chile. Actualización semanal.",
     url: "https://onlinesystem.cl/blog",
     type: "website",
     images: [

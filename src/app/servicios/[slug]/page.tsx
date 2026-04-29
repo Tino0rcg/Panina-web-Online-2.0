@@ -9,14 +9,51 @@ import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/BookingModal";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
+// Mapa de Meta Titles únicos y de alta intención de búsqueda por servicio
+const seoTitles: Record<string, { title: string; description: string }> = {
+  "soporte-ti-mantenimiento-preventivo-empresas-chile": {
+    title: "Técnico Informático para Empresas en Santiago | Soporte TI 24/7 | ONLINE System",
+    description: "¿Necesita soporte informático urgente en Santiago? Somos su equipo TI externo. Mantenimiento preventivo, asistencia en terreno y outsourcing tecnológico. Respuesta inmediata."
+  },
+  "automatizacion-procesos-transformacion-digital-b2b": {
+    title: "Automatización de Procesos Empresariales en Chile | Transformación Digital | ONLINE System",
+    description: "Elimine el trabajo manual en su empresa. Automatizamos flujos, integramos sistemas y digitalizamos procesos para que opere más rápido y con menos costos en Chile."
+  },
+  "ingenieria-redes-infraestructura-critica-telecomunicaciones": {
+    title: "Instalación de Redes Empresariales en Santiago | Cableado e Infraestructura TI | ONLINE System",
+    description: "¿Red lenta o inestable? Diseñamos e instalamos infraestructura de redes LAN/WAN, cableado estructurado certificado y firewalls para empresas en Chile."
+  },
+  "cloud-computing-migracion-nube-aws-azure": {
+    title: "Migración a la Nube AWS y Azure en Chile | Cloud Computing Empresarial | ONLINE System",
+    description: "Migre su empresa a la nube de forma segura. Arquitecturas Cloud en AWS, Azure y Google Cloud con optimización de costos y respaldo ante desastres para empresas en Chile."
+  },
+  "ciberseguridad-proteccion-datos-ransomware-empresas": {
+    title: "Protección contra Ransomware y Ciberataques en Chile | Ciberseguridad Empresarial | ONLINE System",
+    description: "Proteja los datos de su empresa antes de que los atacantes actúen. Auditorías de seguridad, ethical hacking, Zero Trust y blindaje de red para empresas en Santiago."
+  },
+  "partner-tecnologico-softland-erp-soporte-especializado": {
+    title: "Soporte y Optimización Softland ERP en Chile | Partner Certificado | ONLINE System",
+    description: "Especialistas en implementación, soporte técnico y optimización de Softland ERP. Consultoría experta para que su gestión contable y financiera funcione sin problemas."
+  },
+  "inteligencia-artificial-ia-generativa-negocios": {
+    title: "Inteligencia Artificial para Empresas en Chile | IA Generativa y Analítica | ONLINE System",
+    description: "Integre Inteligencia Artificial en su operación. Automatización con IA, análisis predictivo y soluciones de IA generativa para empresas que quieren liderar en Chile."
+  },
+  "sala-virtual-inteligente-videoconferencia-iot": {
+    title: "Sala de Reuniones Virtual e Inteligente en Chile | Videoconferencia IoT | ONLINE System",
+    description: "Equipe su empresa con salas de videoconferencia profesional e infraestructura IoT inteligente. Soluciones de colaboración remota de alto nivel para empresas en Santiago."
+  },
+};
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = servicesData.find((s) => s.slug === slug);
   if (!service) return { title: 'Servicio no encontrado' };
 
-  // SEO Optimized Title: Service Name + Country Context
-  const title = `${service.name} en Chile | ONLINE System`;
-  const description = service.description;
+  // Usar título único si existe, sino fallback al nombre del servicio
+  const seoData = seoTitles[slug];
+  const title = seoData?.title || `${service.name} en Chile | ONLINE System`;
+  const description = seoData?.description || service.description;
   const url = `https://onlinesystem.cl/servicios/${service.slug}`;
   const imageUrl = service.image || '/logo.png';
 
