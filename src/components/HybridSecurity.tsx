@@ -267,7 +267,7 @@ export function HybridSecurity() {
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-[22px] mb-4 ${card.iconBg} ${card.iconColor}`}>
                           {card.icon}
                         </div>
-                        <h3 className="text-[16px] font-bold mb-2">{card.title}</h3>
+                        <h3 className="text-[16px] font-extrabold text-white mb-2">{card.title}</h3>
                         <p className="text-[13px] text-white/50 leading-[1.6]">{card.desc}</p>
                         {card.port && (
                           <p className={`mt-3 text-[11px] font-bold ${card.iconColor}`}>{card.port}</p>
@@ -352,7 +352,7 @@ export function HybridSecurity() {
                               {step.num}
                             </div>
                             <div>
-                              <h4 className="text-[16px] font-bold mb-1">{step.title}</h4>
+                              <h4 className="text-[16px] font-extrabold text-white mb-1">{step.title}</h4>
                               <p className="text-[13px] text-white/50 leading-[1.5]">{step.desc}</p>
                             </div>
                           </div>
@@ -380,7 +380,7 @@ export function HybridSecurity() {
                             {step.num}
                           </div>
                           <div>
-                            <h4 className="text-[16px] font-bold mb-1">{step.title}</h4>
+                            <h4 className="text-[16px] font-extrabold text-white mb-1">{step.title}</h4>
                             <p className="text-[13px] text-white/50 leading-[1.5]">{step.desc}</p>
                           </div>
                         </div>
