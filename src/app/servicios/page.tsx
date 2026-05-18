@@ -22,7 +22,7 @@ import { BookingModal } from "@/components/BookingModal";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Servicios TI para Empresas en Santiago Chile | Soporte, Redes y Ciberseguridad | ONLINE System",
+  title: "Servicios TI e Ingeniería Avanzada | ONLINE System",
   description: "Empresa de informática en Santiago: Soporte TI 24/7, instalación de redes, ciberseguridad contra ransomware, cloud computing y Softland ERP. Solicite diagnóstico hoy.",
   openGraph: {
     title: "Servicios de Consultoría TI e Ingeniería Avanzada | ONLINE System",

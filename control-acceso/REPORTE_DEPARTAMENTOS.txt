@@ -1,0 +1,65 @@
+REPORTE DE DEPARTAMENTOS SCANIA - 06-05-2026
+====================================================
+
+1. DEPARTAMENTOS MAESTROS (VIGENTES EN SISTEMA):
+----------------------------------------------------
+- AREA COMERCIAL
+- AREA USADOS
+- AREACOMERCIAL
+- ASESOR DE VENTAS
+- ASESORES DE VENTAS
+- ASESORES SERVICIOS
+- BODEGA
+- CASINO
+- CONTABILIDAD
+- FRAVAL PINTURA
+- GERENCIA
+- GRUPO NORTE
+- INFORMATICA
+- MARKETINK
+- MASTER DRIVE
+- OPERACIONES
+- RECEPCIÓN
+- RECURSOS HUMANOS
+- REPUESTOS
+- SALA CAPACITACION
+- SALA LAVADOS
+- SALA PINTURA
+- SERVICIOS GENERALES
+- SIN INFORMAR
+- SINIESTRO
+- TALLER
+- TALLER MANTENCION
+
+
+2. RESUMEN DE VISITAS POR ÁREA (TRAZABILIDAD):
+----------------------------------------------------
+- AREA USADOS: 74 registros
+- AREACOMERCIAL: 147 registros
+- ASESOR DE VENTAS: 88 registros
+- ASESORES DE VENTAS: 12 registros
+- ASESORES SERVICIOS: 162 registros
+- BODEGA: 14 registros
+- CASINO: 85 registros
+- CONTABILIDAD: 4 registros
+- FRAVAL PINTURA: 4 registros
+- GERENCIA: 130 registros
+- GRUPO NORTE: 70 registros
+- INFORMATICA: 24 registros
+- MARKETINK: 97 registros
+- MASTER DRIVE: 22 registros
+- OPERACIONES: 73 registros
+- RECEPCIÓN: 110 registros
+- RECEPCIýN: 3 registros
+- RECURSOS HUMANOS: 26 registros
+- REPUESTOS: 4420 registros
+- SALA CAPACITACION: 52 registros
+- SALA LAVADOS: 18 registros
+- SALA PINTURA: 4 registros
+- SERVICIOS GENERALES: 143 registros
+- SIN INFORMAR: 4144 registros
+- SINIESTRO: 199 registros
+- Sin Informar: 44 registros
+- TALLER: 171 registros
+- TALLER MANTENCION: 36 registros
+- TI: 2 registros

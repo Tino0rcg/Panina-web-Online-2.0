@@ -91,6 +91,27 @@ const SLIDES = [
     secondaryButtonText: "Consultoría ERP",
     secondaryButtonHref: "/?service=integracion-erp-apis#contact",
     isBooking: false
+  },
+  {
+    id: 5,
+    tag: "Control de Identidad",
+    title: "Sistema de Gestión <br /> <span className='text-gradient'>de Accesos Inteligente.</span>",
+    description: "Plataforma de escritorio autónoma con capacidad 100% Offline. Gestión de identidad, auditoría en tiempo real y seguridad perimetral diseñada para infraestructuras críticas.",
+    features: [
+      "Operación 100% Offline",
+      "Base de datos local SQLite",
+      "Escaneo de cédula Samsung",
+      "Reportes exportables a Excel"
+    ],
+    statValue: "100%",
+    statLabel: "Disponibilidad Offline",
+    secondaryStatValue: "0ms",
+    secondaryStatLabel: "Latencia Local",
+    primaryButtonText: "Ver Plataforma Offline",
+    primaryButtonHref: "/#plataforma-offline",
+    secondaryButtonText: "Solicitar Demo",
+    secondaryButtonHref: "/?service=gestion-accesos#contact",
+    isBooking: false
   }
 ];
 

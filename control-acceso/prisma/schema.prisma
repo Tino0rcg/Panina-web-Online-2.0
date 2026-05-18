@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id         String   @id @default(uuid())
+  name       String
+  rut        String?  @unique
+  address    String?
+  phone      String?
+  logo_url   String?
+  active     Boolean  @default(true)
+  created_at DateTime @default(now())
+  
+  doors      Door[]
+  users      UserProfile[]
+  visits     Visit[]
+  departments Department[]
+}
+
+model Door {
+  id         String   @id @default(uuid())
+  company_id String
+  company    Company  @relation(fields: [company_id], references: [id], onDelete: Cascade)
+  name       String
+  location   String?
+  active     Boolean  @default(true)
+  created_at DateTime @default(now())
+  
+  users      UserProfile[]
+  visits     Visit[]
+}
+
+model UserProfile {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String   // Hash de la contraseña para login local
+  company_id String?
+  company    Company? @relation(fields: [company_id], references: [id])
+  role       String   // 'superadmin', 'admin', 'guard'
+  full_name     String
+  guard_company String?
+  door_id       String?
+  door       Door?    @relation(fields: [door_id], references: [id])
+  active     Boolean  @default(true)
+  created_at DateTime @default(now())
+  
+  visits     Visit[]
+}
+
+model Person {
+  id         String   @id @default(uuid())
+  rut        String   @unique
+  full_name  String
+  birth_date String?
+  sex                  String?
+  last_visitor_company String?
+  is_conflictive       Boolean  @default(false)
+  conflict_notes       String?
+  created_at           DateTime @default(now())
+  updated_at DateTime @updatedAt
+  
+  visits     Visit[]
+}
+
+model Visit {
+  id               String   @id @default(uuid())
+  company_id       String
+  company          Company  @relation(fields: [company_id], references: [id])
+  door_id          String
+  door             Door     @relation(fields: [door_id], references: [id])
+  person_id        String
+  person           Person   @relation(fields: [person_id], references: [id])
+  guard_id         String?
+  guard            UserProfile? @relation(fields: [guard_id], references: [id])
+  
+  visited_person   String
+  area             String
+  reason           String
+  entry_time       DateTime @default(now())
+  exit_time        DateTime?
+  visitor_company  String?
+  vehicle_plate    String?
+  photo_url        String?
+  notes            String?
+  
+  is_active        Boolean  @default(true)
+  created_at       DateTime @default(now())
+}
+model Department {
+  id         String   @id @default(uuid())
+  company_id String
+  company    Company  @relation(fields: [company_id], references: [id])
+  name       String   @unique
+  active     Boolean  @default(true)
+  created_at DateTime @default(now())
+}

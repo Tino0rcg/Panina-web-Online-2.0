@@ -1,0 +1,66 @@
+{
+  "name": "control-acceso-pc",
+  "version": "1.0.0",
+  "description": "Terminal de Escritorio para Control de Acceso - Modo Kiosko",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "ONLINE System",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.onlinesystem.controlacceso",
+    "productName": "Scania Access System",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "allowToChangeInstallationDirectory": false,
+      "shortcutName": "Scania Access"
+    },
+    "extraResources": [
+      {
+        "from": "../control-acceso/.next/standalone",
+        "to": "standalone",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../control-acceso/public",
+        "to": "standalone/control-acceso/public",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../control-acceso/.next/static",
+        "to": "standalone/control-acceso/.next/static",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../control-acceso/bridge-server.js",
+        "to": "bridge-server.js"
+      },
+      {
+        "from": "../control-acceso/prisma/dev.db",
+        "to": "dev.db"
+      }
+    ],
+    "files": [
+      "main.js",
+      "package.json"
+    ]
+  }
+}

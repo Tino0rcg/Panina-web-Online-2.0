@@ -72,7 +72,7 @@ export function Footer() {
             <ul className="space-y-6">
               {[
                 { name: "Metodología de Ingeniería", href: "#methodology" },
-                { name: "Modernización ERP", href: "/servicios/partner-softland" },
+                { name: "Modernización ERP", href: "/servicios/partner-tecnologico-softland-erp-soporte-especializado" },
                 { name: "Seguridad Industrial", href: "/servicios" }
               ].map((service) => (
                 <li key={service.name}>

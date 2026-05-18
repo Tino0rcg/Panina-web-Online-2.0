@@ -6,6 +6,8 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Noticias TI y Tecnología para Empresas en Chile | ONLINE System Blog",
   description: "Artículos sobre ciberseguridad, soporte TI, cloud computing y transformación digital para empresas y gerentes TI en Chile. Actualización semanal.",

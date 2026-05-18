@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONLINE System — Soluciones TI para Empresas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0a1628;
+    --navy2:   #0f2040;
+    --blue:    #00A9E0;
+    --blue2:   #0082b3;
+    --accent:  #00d4ff;
+    --white:   #ffffff;
+    --gray:    #8a9bbf;
+    --gray2:   #c8d4e8;
+    --card-bg: #111e35;
+    --card-border: rgba(0,169,224,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ───────────────────────────────── */
+  .hero {
+    position: relative;
+    padding: 0 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* fondo geométrico animado */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(0,169,224,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 10% 80%, rgba(0,130,179,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 0 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Logo / badge */
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,169,224,0.12);
+    border: 1px solid rgba(0,169,224,0.3);
+    border-radius: 40px;
+    padding: 6px 16px;
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+  .brand-badge .dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  .brand-badge span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  .hero-headline {
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+  }
+  .hero-headline em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray2);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 440px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--blue), var(--blue2));
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 24px rgba(0,169,224,0.35);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,169,224,0.5);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--blue);
+    padding: 14px 28px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(0,169,224,0.4);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+  .btn-secondary:hover {
+    background: rgba(0,169,224,0.1);
+    border-color: var(--blue);
+  }
+
+  /* Stats panel */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 24px 22px;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0,169,224,0.5);
+  }
+  .stat-card .num {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--blue), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+  }
+  .stat-card .label {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .stat-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  /* ─── DIVIDER ─────────────────────────────── */
+  .section-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,169,224,0.3), transparent);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ─── SECTION HEADER ──────────────────────── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    margin-bottom: 14px;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--gray2);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ─── SERVICIOS ───────────────────────────── */
+  .services-section {
+    padding: 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,169,224,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,169,224,0.2);
+  }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: rgba(0,169,224,0.12);
+    border: 1px solid rgba(0,169,224,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .service-name {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--white);
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .service-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-top: 4px;
+    transition: gap 0.2s ease;
+  }
+  .service-card:hover .service-arrow { gap: 10px; }
+
+  /* ─── PROPUESTA DE VALOR ──────────────────── */
+  .value-section {
+    padding: 80px 40px;
+    background: linear-gradient(135deg, var(--navy2) 0%, #0d1f3a 100%);
+  }
+
+  .value-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .value-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+  }
+
+  .value-item .vi-icon {
+    font-size: 32px;
+  }
+  .value-item .vi-title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .value-item .vi-text {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ─── CTA FINAL ───────────────────────────── */
+  .cta-section {
+    padding: 90px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-box {
+    background: linear-gradient(135deg, rgba(0,169,224,0.15) 0%, rgba(0,82,179,0.1) 100%);
+    border: 1px solid rgba(0,169,224,0.3);
+    border-radius: 24px;
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,169,224,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-box h2 {
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+  .cta-box p {
+    font-size: 16px;
+    color: var(--gray2);
+    max-width: 500px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  .footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 36px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--blue); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--gray);
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    margin-top: 8px;
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .value-grid { grid-template-columns: 1fr; }
+    .footer { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 560px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .hero { padding: 0 20px; }
+    .services-section, .cta-section, .value-section { padding: 60px 20px; }
+    .cta-box { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════ HERO ════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid">
+
+    <!-- Texto izquierdo -->
+    <div>
+      <div class="brand-badge">
+        <span class="dot"></span>
+        <span>ONLINE System — Santiago, Chile</span>
+      </div>
+
+      <h1 class="hero-headline">
+        Tu empresa no puede permitirse<br>
+        <em>un día sin TI funcionando.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Somos el partner tecnológico de empresas chilenas que necesitan
+        infraestructura TI confiable, soporte experto y transformación digital
+        sin riesgos. 7 servicios especializados. Un solo proveedor.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="https://wa.me/56996070383" target="_blank" class="btn-primary">
+          💬 Hablar con un especialista
+        </a>
+        <a href="https://onlinesystem.cl/servicios" target="_blank" class="btn-secondary">
+          Ver todos los servicios →
+        </a>
+      </div>
+    </div>
+
+    <!-- Panel de estadísticas derecho -->
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="icon">🏆</div>
+        <div class="num">+12</div>
+        <div class="label">Años de experiencia en TI empresarial en Chile</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">⚡</div>
+        <div class="num">24/7</div>
+        <div class="label">Soporte técnico disponible para tu empresa</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">🛡️</div>
+        <div class="num">99.9%</div>
+        <div class="label">Disponibilidad garantizada en infraestructura crítica</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon">🤝</div>
+        <div class="num">Partner</div>
+        <div class="label">Oficial Softland ERP Chile — soporte especializado</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════════════════════ SERVICIOS ════════════════════════ -->
+<section class="services-section">
+  <div class="section-header">
+    <span class="section-tag">Nuestras Soluciones</span>
+    <h2 class="section-title">7 servicios TI para empresas que no pueden fallar</h2>
+    <p class="section-desc">
+      Desde el soporte diario hasta la transformación digital con IA.
+      Cada servicio diseñado para empresas chilenas en crecimiento.
+    </p>
+  </div>
+
+  <div class="services-grid">
+
+    <a href="https://onlinesystem.cl/servicios/soporte-ti-mantenimiento-preventivo-empresas-chile" target="_blank" class="service-card">
+      <div class="service-icon">🖥️</div>
+      <div class="service-name">Soporte TI &amp; Mantenimiento Preventivo</div>
+      <div class="service-desc">Resolución de fallas en minutos, no en días. Evitamos las interrupciones antes que ocurran.</div>
+      <span class="service-arrow">Conocer más →</span>
+    </a>
+
+    <a href="https://onlinesystem.cl/servicios/ingenieria-redes-infraestructura-critica-telecomunicaciones" target="_blank" class="service-card">
+      <div class="service-icon">🌐</div>
+      <div class="service-name">Ingeniería de Redes e Infraestructura Crítica</div>
+      <div class="service-desc">Diseño e implementación de redes corporativas robustas. WiFi industrial, fibra y telecomunicaciones.</div>
+      <span class="service-arrow">Conocer más →</span>
+    </a>
+
+    <a href="https://onlinesystem.cl/servicios/automatizacion-procesos-transformacion-digital-b2b" target="_blank" class="service-card">
+      <div class="service-icon">⚙️</div>
+      <div class="service-name">Automatización &amp; Transformación Digital</div>
+      <div class="service-desc">Eliminamos procesos manuales que cuestan tiempo y dinero. Flujos digitales inteligentes para tu operación.</div>
+      <span class="service-arrow">Conocer más →</span>
+    </a>
+
+    <a href="https://onlinesystem.cl/servicios/partner-tecnologico-softland-erp-soporte-especializado" target="_blank" class="service-card">
+      <div class="service-icon">📊</div>
+      <div class="service-name">Partner Softland ERP — Soporte Especializado</div>
+      <div class="service-desc">Implementación, migración y soporte experto del ERP líder en Chile. Integración con tus sistemas actuales.</div>
+      <span class="service-arrow">Conocer más →</span>
+    </a>
+
+    <a href="https://onlinesystem.cl/servicios/ciberseguridad-proteccion-datos-ransomware-empresas" target="_blank" class="service-card">
+      <div class="service-icon">🔒</div>
+      <div class="service-name">Ciberseguridad &amp; Protección contra Ransomware</div>
+      <div class="service-desc">Blindaje activo para tu empresa: detección de amenazas, respaldos cifrados y recuperación ante desastres.</div>
+      <span class="service-arrow">Conocer más →</span>
+    </a>
+
+    <a href="https://onlinesystem.cl/servicios/inteligencia-artificial-ia-generativa-negocios" target="_blank" class="service-card">
+      <div class="service-icon">🤖</div>
+      <div class="service-name">Inteligencia Artificial para Negocios</div>
+      <div class="service-desc">Automatización con IA generativa aplicada a tu empresa: atención, análisis de datos y eficiencia operativa.</div>
+      <span class="service-arrow">Conocer más →</span>
+    </a>
+
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ════════════════════════ POR QUÉ ONLINE ════════════════════════ -->
+<section class="value-section">
+  <div class="value-inner">
+    <div class="section-header">
+      <span class="section-tag">¿Por qué ONLINE System?</span>
+      <h2 class="section-title">El partner TI que tu empresa necesita hoy</h2>
+      <p class="section-desc">
+        No somos un proveedor más. Somos el equipo técnico que actúa como
+        si fuéramos parte de tu empresa.
+      </p>
+    </div>
+
+    <div class="value-grid">
+      <div class="value-item">
+        <div class="vi-icon">⏱️</div>
+        <div class="vi-title">Respuesta en minutos</div>
+        <div class="vi-text">Mientras tu competencia espera al técnico 3 días, nosotros respondemos en menos de 1 hora. Tu operación no se detiene.</div>
+      </div>
+      <div class="value-item">
+        <div class="vi-icon">📍</div>
+        <div class="vi-title">Especialistas en empresas chilenas</div>
+        <div class="vi-text">Entendemos las necesidades de las PYMEs y empresas medianas en Chile. Hablamos tu idioma, conocemos tu industria.</div>
+      </div>
+      <div class="value-item">
+        <div class="vi-icon">🎯</div>
+        <div class="vi-title">Un solo proveedor, solución completa</div>
+        <div class="vi-text">Soporte, redes, ciberseguridad, ERP e IA bajo un mismo contrato. Coordinación 0 complicaciones para tu equipo.</div>
+      </div>
+      <div class="value-item">
+        <div class="vi-icon">💰</div>
+        <div class="vi-title">Tecnología que se paga sola</div>
+        <div class="vi-text">Cada solución implementada genera ahorro medible: menos horas perdidas, menos fallas, menos riesgos de seguridad.</div>
+      </div>
+      <div class="value-item">
+        <div class="vi-icon">🔐</div>
+        <div class="vi-title">Seguridad y continuidad operativa</div>
+        <div class="vi-text">Tus datos protegidos, tus sistemas respaldados y tu operación garantizada incluso ante incidentes graves.</div>
+      </div>
+      <div class="value-item">
+        <div class="vi-icon">🚀</div>
+        <div class="vi-title">Escalamos contigo</div>
+        <div class="vi-text">Desde una PYME de 10 personas hasta una empresa de 500+ usuarios. Nuestros servicios crecen con tu negocio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ CTA FINAL ════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>¿Tu empresa tiene los sistemas<br><em style="font-style:normal;background:linear-gradient(90deg,#00A9E0,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">bajo control hoy?</em></h2>
+    <p>
+      Agenda un diagnóstico gratuito de 30 minutos con nuestro equipo.
+      Sin compromisos. Identificamos los riesgos TI reales de tu empresa.
+    </p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/56996070383" target="_blank" class="btn-primary" style="font-size:15px;padding:15px 32px;">
+        💬 Agendar diagnóstico gratuito
+      </a>
+      <a href="mailto:contacto@onlinesystem.cl" class="btn-secondary" style="font-size:15px;padding:15px 32px;">
+        ✉️ Enviar consulta
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ FOOTER ════════════════════════ -->
+<footer>
+  <div class="footer">
+    <div class="footer-brand">ONLINE System</div>
+    <div class="footer-links">
+      <a href="https://onlinesystem.cl" target="_blank">🌐 onlinesystem.cl</a>
+      <a href="tel:+56996070383">📞 +56 9 9607 0383</a>
+      <a href="mailto:contacto@onlinesystem.cl">✉️ contacto@onlinesystem.cl</a>
+      <a href="https://wa.me/56996070383" target="_blank">💬 WhatsApp</a>
+    </div>
+    <div class="footer-copy">
+      © 2025 ONLINE System Chile — Soluciones TI para empresas · Santiago, Chile
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

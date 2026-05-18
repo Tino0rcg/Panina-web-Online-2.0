@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scania Access System — Presentación</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a1628;color:#fff;overflow:hidden;height:100vh;width:100vw}
+.deck{position:relative;width:100%;height:100vh}
+.deck::before{content:'ONLINE System';position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-15deg);font-size:150px;font-weight:900;color:#00A9E0;opacity:.03;z-index:0;pointer-events:none;white-space:nowrap;letter-spacing:-5px}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:100px 80px 60px 80px;opacity:0;pointer-events:none;transition:opacity .6s ease,transform .6s ease;transform:translateX(40px)}
+.slide.active{opacity:1;pointer-events:auto;transform:translateX(0)}
+.slide.prev{transform:translateX(-40px)}
+/* Nav */
+.nav{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:100}
+.nav .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:.3s}
+.nav .dot.active{background:#00A9E0;width:30px;border-radius:5px}
+.arrows{position:fixed;bottom:28px;right:40px;display:flex;gap:8px;z-index:100}
+.arrows button{width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:#fff;font-size:18px;cursor:pointer;transition:.3s}
+.arrows button:hover{background:#00A9E0;border-color:#00A9E0}
+.counter{position:fixed;bottom:36px;left:40px;font-size:12px;color:rgba(255,255,255,.3);z-index:100;font-weight:600;letter-spacing:2px}
+/* Components */
+.tag{display:inline-block;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.tag-blue{background:rgba(0,169,224,.15);color:#00A9E0;border:1px solid rgba(0,169,224,.3)}
+h1.hero{font-size:clamp(36px,5vw,64px);font-weight:900;line-height:1.1;margin-bottom:16px;background:linear-gradient(135deg,#fff 0%,#00A9E0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2.title{font-size:clamp(28px,3.5vw,48px);font-weight:800;margin-bottom:12px}
+p.sub{font-size:clamp(14px,1.5vw,20px);color:rgba(255,255,255,.6);max-width:700px;line-height:1.7}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px;width:100%;max-width:1100px;align-items:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%;max-width:1100px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;width:100%;max-width:1100px}
+.card{background:rgba(17,30,53,.8);border:1px solid rgba(0,169,224,.12);border-radius:20px;padding:32px 28px;transition:.3s}
+.card:hover{border-color:rgba(0,169,224,.4);transform:translateY(-4px)}
+.card .icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
+.img-frame{border-radius:20px;overflow:hidden;border:2px solid rgba(0,169,224,.2);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.img-frame img{width:100%;display:block}
+.stat-box{text-align:center;padding:28px 20px;background:rgba(17,30,53,.8);border:1px solid rgba(0,169,224,.12);border-radius:20px}
+.stat-box .num{font-size:clamp(28px,3vw,42px);font-weight:900;color:#00A9E0}
+.stat-box .label{font-size:12px;color:rgba(255,255,255,.45);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.timeline{display:flex;flex-direction:column;gap:20px;max-width:800px;width:100%}
+.timeline .step{display:flex;gap:20px;align-items:flex-start}
+.timeline .step .num{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#00A9E0,#0082b3);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+.timeline .step .content h4{font-size:16px;font-weight:700;margin-bottom:4px}
+.timeline .step .content p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5}
+.logo-corner{position:fixed;top:30px;right:40px;display:flex;flex-direction:column;align-items:flex-end;z-index:100;opacity:.8}
+.logo-corner .brand{font-weight:900;font-size:20px;letter-spacing:-1px}
+.logo-corner .slogan{font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.3);font-weight:700;margin-top:-2px;text-transform:uppercase}
+.accent{color:#00A9E0}
+.bg-glow{position:absolute;width:500px;height:500px;border-radius:50%;filter:blur(120px);opacity:.08;pointer-events:none}
+.bg-glow.blue{background:#00A9E0;top:-100px;right:-100px}
+.bg-glow.purple{background:#8b5cf6;bottom:-100px;left:-100px}
+.online-badge{position:fixed;top:24px;right:30px;z-index:100;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:6px}
+.online-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e}
+.list-check{list-style:none;display:flex;flex-direction:column;gap:12px}
+.list-check li{font-size:14px;color:rgba(255,255,255,.7);padding-left:28px;position:relative;line-height:1.6}
+.list-check li::before{content:'✓';position:absolute;left:0;color:#00A9E0;font-weight:800}
+</style>
+</head>
+<body>
+<div class="logo-corner">
+  <div class="brand">ONLINE <span style="color:#00A9E0">System</span></div>
+  <div class="slogan">Tecnología e Innovación</div>
+</div>
+
+<div class="deck" id="deck">
+
+<!-- SLIDE 1: PORTADA -->
+<div class="slide active" id="s0">
+  <div class="bg-glow blue"></div><div class="bg-glow purple"></div>
+  <div style="margin-bottom:40px; filter:brightness(0) invert(1); opacity:.9">
+    <img src="img/scania_logo.png" alt="Scania Logo" style="height:60px">
+  </div>
+  <span class="tag tag-blue">Sistema de Gestión de Accesos</span>
+  <h1 class="hero">Scania Access<br>System</h1>
+  <p class="sub" style="text-align:center">Plataforma integral de control de visitantes, seguridad perimetral y trazabilidad operativa para instalaciones Scania Chile.</p>
+  <p style="margin-top:40px;font-size:12px;color:rgba(255,255,255,.3);letter-spacing:3px;text-transform:uppercase">Presione → o haga clic para avanzar</p>
+</div>
+
+<!-- SLIDE 2: PROBLEMA -->
+<div class="slide" id="s1">
+  <div class="bg-glow blue" style="right:auto;left:-200px;top:50%"></div>
+  <span class="tag tag-blue">Contexto</span>
+  <h2 class="title">¿Por qué un sistema<br>de <span class="accent">control de accesos</span>?</h2>
+  <div class="grid3" style="margin-top:32px">
+    <div class="card">
+      <div class="icon" style="background:rgba(239,68,68,.15);color:#ef4444">⚠</div>
+      <h3>Riesgo de Seguridad</h3>
+      <p>Sin registro digital, no hay trazabilidad de quién ingresa o sale de las instalaciones en tiempo real.</p>
+    </div>
+    <div class="card">
+      <div class="icon" style="background:rgba(234,179,8,.15);color:#eab308">📋</div>
+      <h3>Registros Manuales</h3>
+      <p>Bitácoras en papel se pierden, son ilegibles y no permiten generar reportes ni auditorías automatizadas.</p>
+    </div>
+    <div class="card">
+      <div class="icon" style="background:rgba(0,169,224,.15);color:#00A9E0">🔒</div>
+      <h3>Cumplimiento Normativo</h3>
+      <p>Regulaciones exigen un control verificable de personas en instalaciones industriales y plantas operativas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: SOLUCIÓN OVERVIEW -->
+<div class="slide" id="s2">
+  <div class="bg-glow purple" style="left:auto;right:-200px;bottom:auto;top:-100px"></div>
+  <div class="grid2">
+    <div>
+      <span class="tag tag-blue">La Solución</span>
+      <h2 class="title">Plataforma<br><span class="accent">100% Offline</span></h2>
+      <p class="sub">Sistema de escritorio autónomo que no requiere internet. Opera en la red local de la planta con base de datos propia, escáner móvil y modo kiosco de seguridad.</p>
+      <ul class="list-check" style="margin-top:24px">
+        <li>Funciona sin conexión a internet</li>
+        <li>Base de datos local SQLite (sin costos de servidor)</li>
+        <li>Interfaz táctil para guardias de seguridad</li>
+        <li>Escaneo de cédula desde celular Samsung</li>
+        <li>Reportes exportables a Excel</li>
+      </ul>
+    </div>
+    <div class="img-frame"><img src="img/hero.png" alt="Centro de Control"></div>
+  </div>
+</div>
+
+<!-- SLIDE 4: FUNCIONALIDADES -->
+<div class="slide" id="s3">
+  <span class="tag tag-blue">Funcionalidades Clave</span>
+  <h2 class="title" style="margin-bottom:28px">Módulos del <span class="accent">Sistema</span></h2>
+  <div class="grid4">
+    <div class="card">
+      <div class="icon" style="background:rgba(0,169,224,.15);color:#00A9E0">📷</div>
+      <h3>Registro de Ingreso</h3>
+      <p>Escaneo de cédula (PDF417) o ingreso manual. Autocompletado para visitantes recurrentes.</p>
+    </div>
+    <div class="card">
+      <div class="icon" style="background:rgba(34,197,94,.15);color:#22c55e">🚪</div>
+      <h3>Registro de Salida</h3>
+      <p>Cierre de visita con cálculo automático de tiempo de permanencia en planta.</p>
+    </div>
+    <div class="card">
+      <div class="icon" style="background:rgba(239,68,68,.15);color:#ef4444">🔺</div>
+      <h3>Alerta Conflictivos</h3>
+      <p>Marcado de visitantes conflictivos con bloqueo automático de ingreso y registro de observaciones.</p>
+    </div>
+    <div class="card">
+      <div class="icon" style="background:rgba(168,85,247,.15);color:#a855f7">📊</div>
+      <h3>Reportes y Auditoría</h3>
+      <p>Estadísticas en tiempo real, historial completo filtrable y exportación a Excel.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: ESCANEO MÓVIL -->
+<div class="slide" id="s4">
+  <div class="bg-glow blue"></div>
+  <div class="grid2">
+    <div class="img-frame"><img src="img/mobile.png" alt="Escaneo Móvil"></div>
+    <div>
+      <span class="tag tag-blue">Innovación</span>
+      <h2 class="title">Escaneo <span class="accent">Móvil</span></h2>
+      <p class="sub">El guardia usa su celular Samsung como escáner de cédulas. La información se sincroniza instantáneamente al PC principal vía red Wi-Fi local.</p>
+      <div class="timeline" style="margin-top:28px">
+        <div class="step"><div class="num">1</div><div class="content"><h4>Escaneo</h4><p>La cámara del celular lee el código PDF417 del reverso de la cédula.</p></div></div>
+        <div class="step"><div class="num">2</div><div class="content"><h4>Sincronización</h4><p>Los datos se envían al PC por Wi-Fi en menos de 1 segundo vía bridge en puerto 3001.</p></div></div>
+        <div class="step"><div class="num">3</div><div class="content"><h4>Registro</h4><p>El PC autocompleta el formulario y el guardia solo confirma e indica destino.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: DASHBOARD -->
+<div class="slide" id="s5">
+  <div class="bg-glow purple" style="left:auto;right:-100px"></div>
+  <div class="grid2">
+    <div>
+      <span class="tag tag-blue">Visibilidad Total</span>
+      <h2 class="title">Dashboard<br><span class="accent">en Tiempo Real</span></h2>
+      <p class="sub">Panel de control con KPIs de seguridad, gráficos de frecuencia y métricas operativas que permiten tomar decisiones informadas.</p>
+      <div class="grid2" style="gap:12px;margin-top:24px;max-width:400px">
+        <div class="stat-box"><div class="num">5.038</div><div class="label">Visitas registradas</div></div>
+        <div class="stat-box"><div class="num">45m</div><div class="label">Duración promedio</div></div>
+        <div class="stat-box"><div class="num">3</div><div class="label">Puertas activas</div></div>
+        <div class="stat-box"><div class="num">24/7</div><div class="label">Operación continua</div></div>
+      </div>
+    </div>
+    <div class="img-frame"><img src="img/dashboard.png" alt="Dashboard"></div>
+  </div>
+</div>
+
+<!-- SLIDE 7: ARQUITECTURA -->
+<div class="slide" id="s6">
+  <span class="tag tag-blue">Arquitectura</span>
+  <h2 class="title" style="margin-bottom:28px">Componentes del <span class="accent">Sistema</span></h2>
+  <div class="grid3">
+    <div class="card" style="text-align:center">
+      <div class="icon" style="background:rgba(0,169,224,.15);color:#00A9E0;margin:0 auto 16px">🖥️</div>
+      <h3>Aplicación de Escritorio</h3>
+      <p>Electron + Next.js en modo kiosco. Pantalla completa, auto-ajuste de zoom según resolución del monitor.</p>
+      <p style="margin-top:12px;font-size:11px;color:#00A9E0;font-weight:700">Puerto 3000</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="icon" style="background:rgba(34,197,94,.15);color:#22c55e;margin:0 auto 16px">📱</div>
+      <h3>Bridge Móvil</h3>
+      <p>Servidor Node.js que recibe datos del celular Samsung y los envía al PC principal en tiempo real.</p>
+      <p style="margin-top:12px;font-size:11px;color:#22c55e;font-weight:700">Puerto 3001</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="icon" style="background:rgba(168,85,247,.15);color:#a855f7;margin:0 auto 16px">💾</div>
+      <h3>Base de Datos</h3>
+      <p>SQLite con Prisma ORM. Almacenamiento local sin dependencias externas ni costos de hosting cloud.</p>
+      <p style="margin-top:12px;font-size:11px;color:#a855f7;font-weight:700">Archivo local .db</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: SEGURIDAD -->
+<div class="slide" id="s7">
+  <div class="bg-glow blue" style="top:auto;bottom:-200px;right:50%"></div>
+  <span class="tag tag-blue">Seguridad y Control</span>
+  <h2 class="title" style="margin-bottom:28px">Gestión de <span class="accent">Visitantes Conflictivos</span></h2>
+  <div class="grid2" style="max-width:900px">
+    <div>
+      <div class="timeline">
+        <div class="step"><div class="num" style="background:linear-gradient(135deg,#ef4444,#dc2626)">!</div><div class="content"><h4>Marcado de Conflictivo</h4><p>Desde el Historial, el guardia marca a un visitante como conflictivo e ingresa el motivo en una ventana dedicada.</p></div></div>
+        <div class="step"><div class="num" style="background:linear-gradient(135deg,#ef4444,#dc2626)">✕</div><div class="content"><h4>Bloqueo Automático</h4><p>Al ingresar el RUT de una persona conflictiva, el sistema muestra una alerta roja prominente y bloquea el botón de ingreso.</p></div></div>
+        <div class="step"><div class="num" style="background:linear-gradient(135deg,#22c55e,#16a34a)">✓</div><div class="content"><h4>Rehabilitación</h4><p>Un administrador puede quitar la marca de conflictivo y restaurar el acceso cuando lo considere apropiado.</p></div></div>
+      </div>
+    </div>
+    <div class="card" style="background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);text-align:center;padding:40px">
+      <div style="font-size:64px;margin-bottom:16px">🔺</div>
+      <h3 style="color:#ef4444;font-size:20px">ALERTA: VISITANTE CONFLICTIVO</h3>
+      <p style="margin-top:12px">El sistema previene el ingreso de personas marcadas, protegiendo al personal y las instalaciones.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: BENEFICIOS -->
+<div class="slide" id="s8">
+  <span class="tag tag-blue">Valor Agregado</span>
+  <h2 class="title" style="margin-bottom:28px">Beneficios para <span class="accent">Scania</span></h2>
+  <div class="grid3">
+    <div class="card"><div class="icon" style="background:rgba(0,169,224,.15);color:#00A9E0">🛡️</div><h3>Seguridad Reforzada</h3><p>Control total de quién entra y sale, con alertas automáticas para visitantes de riesgo. Trazabilidad completa.</p></div>
+    <div class="card"><div class="icon" style="background:rgba(34,197,94,.15);color:#22c55e">⚡</div><h3>Eficiencia Operativa</h3><p>Registro en menos de 15 segundos con escaneo de cédula. Eliminación total del papel y la bitácora manual.</p></div>
+    <div class="card"><div class="icon" style="background:rgba(168,85,247,.15);color:#a855f7">📈</div><h3>Reportes Ejecutivos</h3><p>Exportación a Excel, filtros por fecha, puerta y área. Datos listos para auditorías y compliance.</p></div>
+    <div class="card"><div class="icon" style="background:rgba(234,179,8,.15);color:#eab308">💰</div><h3>Cero Costo Recurrente</h3><p>Sin servidores cloud, sin licencias mensuales, sin internet. La inversión es única y el sistema es autosuficiente.</p></div>
+    <div class="card"><div class="icon" style="background:rgba(239,68,68,.15);color:#ef4444">🔄</div><h3>Escalable</h3><p>Soporte multi-empresa, multi-puerta y multi-guardia. Preparado para crecer con las operaciones de Scania.</p></div>
+    <div class="card"><div class="icon" style="background:rgba(6,182,212,.15);color:#06b6d4">📱</div><h3>Movilidad</h3><p>El guardia opera desde su celular Samsung en terreno. Sin hardware adicional, sin lectores externos costosos.</p></div>
+  </div>
+</div>
+
+<!-- SLIDE 10: CIERRE -->
+<div class="slide" id="s9">
+  <div class="bg-glow blue"></div><div class="bg-glow purple"></div>
+  <span class="tag tag-blue">Desarrollado por ONLINE System</span>
+  <h1 class="hero" style="text-align:center">Seguridad<br>Inteligente</h1>
+  <p class="sub" style="text-align:center;margin-bottom:40px">Scania Access System transforma el control de accesos en una ventaja competitiva: más seguro, más rápido y sin costos recurrentes.</p>
+  <div style="font-weight:900; font-size:72px; letter-spacing:-3px; margin-bottom:32px; filter:drop-shadow(0 0 20px rgba(0,169,224,0.3))">ONLINE <span style="color:#00A9E0">System</span></div>
+  <div style="display:flex;gap:20px;align-items:center">
+    <div style="padding:14px 32px;background:linear-gradient(135deg,#00A9E0,#0082b3);border-radius:16px;font-weight:700;font-size:14px">contacto@onlinesystem.cl</div>
+    <div style="padding:14px 32px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:16px;font-weight:600;font-size:14px;color:rgba(255,255,255,.6)">onlinesystem.cl</div>
+  </div>
+  <p style="margin-top:48px;font-size:11px;color:rgba(255,255,255,.2);letter-spacing:3px">© 2026 ONLINE SYSTEM SpA — Todos los derechos reservados</p>
+</div>
+
+</div><!-- /deck -->
+
+<!-- Nav dots -->
+<div class="nav" id="nav"></div>
+<div class="arrows"><button id="prev">←</button><button id="next">→</button></div>
+<div class="counter" id="counter"></div>
+
+<script>
+const slides=document.querySelectorAll('.slide'),nav=document.getElementById('nav'),counter=document.getElementById('counter');
+let cur=0;
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>go(i);nav.appendChild(d)});
+function go(n){if(n<0||n>=slides.length)return;slides[cur].classList.remove('active');slides[cur].classList.add('prev');setTimeout(()=>slides[cur===n?-1:cur]?.classList.remove('prev'),600);cur=n;slides[cur].classList.remove('prev');slides[cur].classList.add('active');document.querySelectorAll('.nav .dot').forEach((d,i)=>d.classList.toggle('active',i===cur));counter.textContent=`${cur+1} / ${slides.length}`}
+document.getElementById('prev').onclick=()=>go(cur-1);document.getElementById('next').onclick=()=>go(cur+1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+counter.textContent=`1 / ${slides.length}`;
+</script>
+</body>
+</html>

@@ -37,6 +37,41 @@ const nextConfig: NextConfig = {
     ],
   },
   allowedDevOrigins: ['192.168.100.50', 'localhost:9002'],
+  async redirects() {
+    return [
+      {
+        source: '/wp-content/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/wp-admin/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/tag/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/category/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/wp-login.php',
+        destination: '/',
+        permanent: true,
+      },
+      // Redirigir cualquier otro patrón común de archivos .php que suelen causar 404s por bots
+      {
+        source: '/:path*.php',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

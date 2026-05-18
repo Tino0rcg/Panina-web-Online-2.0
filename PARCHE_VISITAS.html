@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Parche de Visitas - SCANIA</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; background-color: #f4f4f9; color: #333; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1 { color: #002c5f; }
+        button { background-color: #002c5f; color: white; border: none; padding: 15px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; margin-top: 20px; }
+        button:hover { background-color: #001a3a; }
+        #log { margin-top: 20px; background: #eee; padding: 10px; border-radius: 5px; height: 200px; overflow-y: auto; font-family: monospace; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Herramienta de Corrección SCANIA</h1>
+        <p>Esta herramienta buscará en tu sistema local las visitas que quedaron "pendientes de salida" por error y forzará su cierre para arreglar las estadísticas.</p>
+        <p><strong>Importante:</strong> Debes ejecutar esto en la misma computadora donde funciona el sistema principal (Servidor).</p>
+        
+        <button id="btnFix">Ejecutar Corrección Ahora</button>
+
+        <div id="log">Esperando...</div>
+    </div>
+
+    <script>
+        const logEl = document.getElementById('log');
+        function log(msg) {
+            logEl.textContent += msg + '\n';
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        document.getElementById('btnFix').addEventListener('click', async () => {
+            document.getElementById('btnFix').disabled = true;
+            log('Conectando al sistema local (http://localhost:3000)...');
+            
+            try {
+                // 1. Obtener todas las visitas recientes
+                const res = await fetch('http://localhost:3000/api/visits?limit=10000');
+                if (!res.ok) throw new Error('No se pudo conectar al sistema. ¿Está abierto el Scania Access?');
+                
+                const data = await res.json();
+                const visitas = data.visits || [];
+                log(`Se encontraron ${visitas.length} visitas en el historial reciente.`);
+
+                // 2. Filtrar las que no tienen salida
+                const pendientes = visitas.filter(v => v.exit_time === null);
+                log(`Se detectaron ${pendientes.length} visitas atascadas sin salida.`);
+
+                if (pendientes.length === 0) {
+                    log('¡Todo está perfecto! No hay visitas atascadas.');
+                    return;
+                }
+
+                // 3. Forzar salida a cada una
+                let arregladas = 0;
+                for (const v of pendientes) {
+                    log(`Cerrando visita de: ${v.person?.full_name} (RUT: ${v.person?.rut})...`);
+                    const exitRes = await fetch('http://localhost:3000/api/visits/exit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ visit_id: v.id })
+                    });
+                    
+                    if (exitRes.ok) {
+                        arregladas++;
+                        log(`✓ Visita cerrada exitosamente.`);
+                    } else {
+                        log(`❌ Error al cerrar visita.`);
+                    }
+                }
+
+                log(`\n¡PROCESO COMPLETADO! Se arreglaron ${arregladas} visitas.`);
+                log('Ya puedes cerrar esta ventana y revisar tu Reporte y Dashboard.');
+
+            } catch (err) {
+                log(`Error crítico: ${err.message}`);
+                log('Asegúrate de abrir este archivo en la computadora servidor (la de la pantalla).');
+            }
+        });
+    </script>
+</body>
+</html>
