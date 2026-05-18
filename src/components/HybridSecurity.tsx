@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar, MessageSquare } from "lucide-react";
+import { BookingModal } from "@/components/BookingModal";
 
 export function HybridSecurity() {
   const [current, setCurrent] = useState(0);
@@ -234,12 +235,20 @@ export function HybridSecurity() {
                     ONLINE <span className="text-[#00A9E0]">System</span>
                   </div>
                   <div className="flex gap-5 justify-center flex-wrap">
-                    <div className="px-8 py-3.5 bg-gradient-to-br from-[#00A9E0] to-[#0082b3] rounded-2xl font-bold text-sm">
-                      contacto@onlinesystem.cl
-                    </div>
-                    <div className="px-8 py-3.5 bg-white/5 border border-white/15 rounded-2xl font-semibold text-sm text-white/60">
-                      onlinesystem.cl
-                    </div>
+                    <BookingModal>
+                      <button className="px-8 py-4 bg-gradient-to-br from-[#00A9E0] to-[#0082b3] hover:shadow-[0_0_25px_rgba(0,169,224,0.4)] text-white font-bold text-sm rounded-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.03] cursor-pointer">
+                        <Calendar className="w-4 h-4" />
+                        Agenda tu Demo
+                      </button>
+                    </BookingModal>
+                    
+                    <a 
+                      href="/#contact?service=Otros&message=Hola%20equipo%20de%20ONLINE%20System,%0A%0ASolicito%20ser%20contactado%20por%20un%20Especialista%20del%20Sistema%20de%20Gestión%20de%20Acceso%20para%20nuestra%20organización.%0A%0AQuedo%20atento."
+                      className="px-8 py-4 bg-white/5 border border-white/15 hover:border-[#00A9E0]/40 hover:bg-white/10 text-white font-semibold text-sm rounded-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.03]"
+                    >
+                      <MessageSquare className="w-4 h-4 text-[#00A9E0]" />
+                      Hablar con Especialista
+                    </a>
                   </div>
                 </div>
               )}
