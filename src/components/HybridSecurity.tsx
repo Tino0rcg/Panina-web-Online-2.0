@@ -254,23 +254,34 @@ export function HybridSecurity() {
               {/* LAYOUT: GRIDS (3 y 4) */}
               {(slides[current].type === "grid3" || slides[current].type === "grid4" || slides[current].type === "grid3_tech") && (
                 <div className="w-full">
-                  <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-5">
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-4">
                     {slides[current].tag}
                   </span>
-                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold text-white mb-8">
+                  <h2 className="text-[clamp(24px,3vw,38px)] font-extrabold text-white mb-4 md:mb-5 leading-tight">
                     {slides[current].title}<br />
                     <span className="text-[#00A9E0]">{slides[current].titleAccent}</span>
                   </h2>
-                  <div className={`grid gap-6 w-full max-w-[1100px] ${slides[current].type === "grid4" ? "md:grid-cols-4" : "md:grid-cols-3"}`}>
+                  <div className={`grid gap-4 w-full max-w-[1100px] ${
+                    slides[current].type === "grid4" 
+                      ? "md:grid-cols-4" 
+                      : "md:grid-cols-3"
+                  }`}>
                     {slides[current].cards?.map((card, idx) => (
-                      <div key={idx} className="bg-[#111e35]/80 border border-[#00A9E0]/10 rounded-[20px] p-8 transition-transform duration-300 hover:border-[#00A9E0]/40 hover:-translate-y-1">
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-[22px] mb-4 ${card.iconBg} ${card.iconColor}`}>
+                      <div 
+                        key={idx} 
+                        className={`bg-[#111e35]/80 border border-[#00A9E0]/10 rounded-[20px] transition-transform duration-300 hover:border-[#00A9E0]/40 hover:-translate-y-1 ${
+                          (slides[current].cards && slides[current].cards.length > 4)
+                            ? "p-4 md:p-5"
+                            : "p-6 md:p-6"
+                        }`}
+                      >
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-[18px] mb-3 ${card.iconBg} ${card.iconColor}`}>
                           {card.icon}
                         </div>
-                        <h3 className="text-[16px] font-extrabold text-white mb-2">{card.title}</h3>
-                        <p className="text-[13px] text-white/50 leading-[1.6]">{card.desc}</p>
+                        <h3 className="text-[14px] md:text-[15px] font-extrabold text-white mb-1.5">{card.title}</h3>
+                        <p className="text-[12px] text-white/50 leading-[1.5]">{card.desc}</p>
                         {card.port && (
-                          <p className={`mt-3 text-[11px] font-bold ${card.iconColor}`}>{card.port}</p>
+                          <p className={`mt-2 text-[10px] font-bold ${card.iconColor}`}>{card.port}</p>
                         )}
                       </div>
                     ))}
