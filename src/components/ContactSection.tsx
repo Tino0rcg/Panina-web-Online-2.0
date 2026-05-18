@@ -51,6 +51,8 @@ function ContactForm() {
         setSelectedService("Solicitar Diagnóstico 360°");
       } else if (serviceParam.toLowerCase() === "otros" || serviceParam.toLowerCase() === "otro") {
         setSelectedService("otros");
+      } else if (serviceParam.toLowerCase().includes("acceso") || serviceParam.toLowerCase().includes("gestión") || serviceParam === "Sistema Gestión de Acceso") {
+        setSelectedService("Sistema Gestión de Acceso");
       }
 
       const messageParam = searchParams.get("message");
@@ -179,6 +181,7 @@ function ContactForm() {
                       </SelectItem>
                     ))}
                   <SelectItem value="Solicitar Diagnóstico 360°">Solicitar Diagnóstico 360°</SelectItem>
+                  <SelectItem value="Sistema Gestión de Acceso">Sistema Gestión de Acceso</SelectItem>
                   <SelectItem value="otros">Otro / Consultoría General</SelectItem>
                 </SelectContent>
               </Select>
