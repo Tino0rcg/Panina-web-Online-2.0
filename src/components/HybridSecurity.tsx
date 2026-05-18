@@ -181,59 +181,43 @@ export function HybridSecurity() {
       {/* Contenedor Principal */}
       <div className="container mx-auto px-6 relative z-10 w-full max-w-6xl">
 
-        {/* Cabecera de la Sección (Se oculta dinámicamente al avanzar para liberar espacio) */}
-        {current === 0 && (
-          <div className="text-center mb-8 md:mb-12">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
-              <span className="text-[#00A9E0] font-bold text-[10px] tracking-[0.3em] uppercase">
-                Sistema de Control de Accesos
-              </span>
-              <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
-            </div>
+        {/* Contenedor de la Presentación con altura estable y controles fijos para evitar saltos de pantalla */}
+        <div className="relative w-full min-h-[580px] md:min-h-[520px] pb-24">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="w-full flex items-center min-h-[460px] md:min-h-[400px]"
+            >
+              <div className="w-full">
+                {/* LAYOUT: PORTADA */}
+                {slides[current].type === "portada" && (
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-4 mb-4">
+                      <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
+                      <span className="text-[#00A9E0] font-bold text-[10px] tracking-[0.3em] uppercase">
+                        Sistema de Control de Accesos
+                      </span>
+                      <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
+                    </div>
 
-            <h2 className="text-4xl md:text-6xl font-headline font-extrabold text-white tracking-tighter leading-[1] mb-4">
-              Seguridad <span className="text-[#00A9E0] italic">Inteligente.</span>
-            </h2>
+                    <h2 className="text-4xl md:text-6xl font-headline font-extrabold text-white tracking-tighter leading-[1] mb-6">
+                      Seguridad <span className="text-[#00A9E0] italic">Inteligente.</span>
+                    </h2>
 
-            <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-4xl mx-auto">
-              Transforma el control de accesos en una ventaja competitiva: <br className="hidden md:block" />
-              <span className="text-white/80 font-normal">más seguro, más eficiente, más rápido y sin costos recurrentes.</span>
-            </p>
-          </div>
-        )}
+                    <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-4xl mx-auto mb-8">
+                      Transforma el control de accesos en una ventaja competitiva: <br className="hidden md:block" />
+                      <span className="text-white/80 font-normal">más seguro, más eficiente, más rápido y sin costos recurrentes.</span>
+                    </p>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="w-full flex items-center min-h-[450px] md:min-h-[500px]"
-          >
-            <div className="w-full">
-              {/* LAYOUT: PORTADA */}
-              {slides[current].type === "portada" && (
-                <div className="text-center">
-                  {slides[current].tag && (
-                    <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-5">
-                      {slides[current].tag}
-                    </span>
-                  )}
-                  {slides[current].title && (
-                    <h1 className="text-[clamp(36px,5vw,64px)] font-black leading-[1.1] mb-4 bg-gradient-to-br from-white to-[#00A9E0] bg-clip-text text-transparent">
-                      {slides[current].title}<br />{slides[current].titleAccent}
-                    </h1>
-                  )}
-                  <p className="text-[clamp(14px,1.5vw,20px)] text-white/60 max-w-[700px] mx-auto leading-[1.7]">
-                    {slides[current].sub}
-                  </p>
-                  <p className="mt-10 text-[12px] text-white/30 tracking-[3px] uppercase">
-                    Presione → o haga clic para avanzar
-                  </p>
-                </div>
-              )}
+                    <p className="text-[12px] text-white/30 tracking-[3px] uppercase mt-12 animate-pulse">
+                      Presione → o haga clic para avanzar
+                    </p>
+                  </div>
+                )}
 
               {/* LAYOUT: CIERRE */}
               {slides[current].type === "cierre" && (
@@ -448,6 +432,7 @@ export function HybridSecurity() {
           {current + 1} / {slides.length}
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   );
 }
