@@ -63,6 +63,25 @@ function ContactForm() {
   }, [searchParams]);
 
   useEffect(() => {
+    const handleSelectService = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail) {
+        if (customEvent.detail.service) {
+          setSelectedService(customEvent.detail.service);
+        }
+        if (customEvent.detail.message) {
+          setInitialMessage(customEvent.detail.message);
+        }
+      }
+    };
+
+    window.addEventListener("select-service", handleSelectService);
+    return () => {
+      window.removeEventListener("select-service", handleSelectService);
+    };
+  }, []);
+
+  useEffect(() => {
     if (state?.success) {
       toast({
         title: "Mensaje Enviado",

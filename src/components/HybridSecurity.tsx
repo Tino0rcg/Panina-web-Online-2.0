@@ -144,6 +144,22 @@ export function HybridSecurity() {
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
+  const handleEspecialistaClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const event = new CustomEvent("select-service", {
+      detail: {
+        service: "Sistema de Control de Accesos",
+        message: "Especialista Sistema Gestión de Acceso"
+      }
+    });
+    window.dispatchEvent(event);
+
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight" || e.key === " ") nextSlide();
@@ -241,6 +257,7 @@ export function HybridSecurity() {
                     
                     <a 
                       href="/?service=Sistema de Control de Accesos&message=Especialista%20Sistema%20Gestión%20de%20Acceso#contact"
+                      onClick={handleEspecialistaClick}
                       className="px-8 py-4 bg-white/5 border border-white/15 hover:border-[#00A9E0]/40 hover:bg-white/10 text-white font-semibold text-sm rounded-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.03]"
                     >
                       <MessageSquare className="w-4 h-4 text-[#00A9E0]" />
