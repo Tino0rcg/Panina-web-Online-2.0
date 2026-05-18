@@ -182,7 +182,7 @@ export function HybridSecurity() {
       <div className="container mx-auto px-6 relative z-10 w-full max-w-6xl">
 
         {/* Contenedor de la Presentación con altura estable y controles fijos para evitar saltos de pantalla */}
-        <div className="relative w-full min-h-[580px] md:min-h-[520px] pb-24">
+        <div className="relative w-full h-[620px] md:h-[520px] pb-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -190,7 +190,7 @@ export function HybridSecurity() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="w-full flex items-center min-h-[460px] md:min-h-[400px]"
+              className="w-full flex items-center h-[520px] md:h-[420px] overflow-y-auto md:overflow-y-visible pr-2"
             >
               <div className="w-full">
                 {/* LAYOUT: PORTADA */}
