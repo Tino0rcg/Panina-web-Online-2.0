@@ -164,25 +164,27 @@ export function HybridSecurity() {
       {/* Contenedor Principal */}
       <div className="container mx-auto px-6 relative z-10 w-full max-w-6xl">
 
-        {/* Cabecera Fija de la Sección (Requerimientos del Sitio Web) */}
-        <div className="text-center mb-8 md:mb-12">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
-            <span className="text-[#00A9E0] font-bold text-[10px] tracking-[0.3em] uppercase">
-              Sistema de Control de Accesos
-            </span>
-            <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
+        {/* Cabecera de la Sección (Se oculta dinámicamente al avanzar para liberar espacio) */}
+        {current === 0 && (
+          <div className="text-center mb-8 md:mb-12">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
+              <span className="text-[#00A9E0] font-bold text-[10px] tracking-[0.3em] uppercase">
+                Sistema de Control de Accesos
+              </span>
+              <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
+            </div>
+
+            <h2 className="text-4xl md:text-6xl font-headline font-extrabold text-white tracking-tighter leading-[1] mb-4">
+              Seguridad <span className="text-[#00A9E0] italic">Inteligente.</span>
+            </h2>
+
+            <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-4xl mx-auto">
+              Transforma el control de accesos en una ventaja competitiva: <br className="hidden md:block" />
+              <span className="text-white/80 font-normal">más seguro, más eficiente, más rápido y sin costos recurrentes.</span>
+            </p>
           </div>
-
-          <h2 className="text-4xl md:text-6xl font-headline font-extrabold text-white tracking-tighter leading-[1] mb-4">
-            Seguridad <span className="text-[#00A9E0] italic">Inteligente.</span>
-          </h2>
-
-          <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-4xl mx-auto">
-            Transforma el control de accesos en una ventaja competitiva: <br className="hidden md:block" />
-            <span className="text-white/80 font-normal">más seguro, más eficiente, más rápido y sin costos recurrentes.</span>
-          </p>
-        </div>
+        )}
 
         <AnimatePresence mode="wait">
           <motion.div
