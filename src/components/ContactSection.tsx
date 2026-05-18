@@ -27,7 +27,7 @@ function ContactForm() {
   const [state, formAction, isPending] = useActionState(sendContactEmail, null);
 
   // States for pre-filling with default service
-  const [selectedService, setSelectedService] = useState("Contrato y Soporte de Mantenimiento Preventivo");
+  const [selectedService, setSelectedService] = useState("");
   const [initialMessage, setInitialMessage] = useState("");
 
   useEffect(() => {
@@ -51,8 +51,8 @@ function ContactForm() {
         setSelectedService("Solicitar Diagnóstico 360°");
       } else if (serviceParam.toLowerCase() === "otros" || serviceParam.toLowerCase() === "otro") {
         setSelectedService("otros");
-      } else if (serviceParam.toLowerCase().includes("acceso") || serviceParam.toLowerCase().includes("gestión") || serviceParam === "Sistema Gestión de Acceso") {
-        setSelectedService("Sistema Gestión de Acceso");
+      } else if (serviceParam.toLowerCase().includes("acceso") || serviceParam.toLowerCase().includes("control") || serviceParam === "Sistema de Control de Accesos") {
+        setSelectedService("Sistema de Control de Accesos");
       }
 
       const messageParam = searchParams.get("message");
@@ -181,7 +181,7 @@ function ContactForm() {
                       </SelectItem>
                     ))}
                   <SelectItem value="Solicitar Diagnóstico 360°">Solicitar Diagnóstico 360°</SelectItem>
-                  <SelectItem value="Sistema Gestión de Acceso">Sistema Gestión de Acceso</SelectItem>
+                  <SelectItem value="Sistema de Control de Accesos">Sistema de Control de Accesos</SelectItem>
                   <SelectItem value="otros">Otro / Consultoría General</SelectItem>
                 </SelectContent>
               </Select>
