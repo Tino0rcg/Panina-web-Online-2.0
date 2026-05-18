@@ -49,6 +49,8 @@ function ContactForm() {
         }
       } else if (serviceParam === "Solicitar Diagnóstico 360°" || serviceParam.includes("Diagnóstico")) {
         setSelectedService("Solicitar Diagnóstico 360°");
+      } else if (serviceParam.toLowerCase() === "otros" || serviceParam.toLowerCase() === "otro") {
+        setSelectedService("otros");
       }
 
       const messageParam = searchParams.get("message");

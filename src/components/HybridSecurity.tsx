@@ -231,9 +231,6 @@ export function HybridSecurity() {
                   <p className="text-[clamp(14px,1.5vw,20px)] text-white/60 max-w-[700px] mx-auto leading-[1.7] mb-10">
                     {slides[current].sub}
                   </p>
-                  <div className="font-black text-6xl tracking-[-3px] mb-8 drop-shadow-[0_0_20px_rgba(0,169,224,0.3)]">
-                    ONLINE <span className="text-[#00A9E0]">System</span>
-                  </div>
                   <div className="flex gap-5 justify-center flex-wrap">
                     <BookingModal>
                       <button className="px-8 py-4 bg-gradient-to-br from-[#00A9E0] to-[#0082b3] hover:shadow-[0_0_25px_rgba(0,169,224,0.4)] text-white font-bold text-sm rounded-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.03] cursor-pointer">
@@ -243,7 +240,7 @@ export function HybridSecurity() {
                     </BookingModal>
                     
                     <a 
-                      href="/#contact?service=Otros&message=Hola%20equipo%20de%20ONLINE%20System,%0A%0ASolicito%20ser%20contactado%20por%20un%20Especialista%20del%20Sistema%20de%20Gestión%20de%20Acceso%20para%20nuestra%20organización.%0A%0AQuedo%20atento."
+                      href="/?service=otros&message=Especialista%20Sistema%20Gestión%20de%20Acceso#contact"
                       className="px-8 py-4 bg-white/5 border border-white/15 hover:border-[#00A9E0]/40 hover:bg-white/10 text-white font-semibold text-sm rounded-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.03]"
                     >
                       <MessageSquare className="w-4 h-4 text-[#00A9E0]" />
