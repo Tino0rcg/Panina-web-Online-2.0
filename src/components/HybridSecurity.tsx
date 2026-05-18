@@ -11,9 +11,9 @@ export function HybridSecurity() {
     {
       id: "s0",
       type: "portada",
-      tag: "Sistema de Gestión de Accesos",
-      title: "ONLINE Access",
-      titleAccent: "System",
+      tag: "",
+      title: "",
+      titleAccent: "",
       sub: "Plataforma integral de control de visitantes, seguridad perimetral y trazabilidad operativa para sus instalaciones.",
     },
     {
@@ -153,32 +153,32 @@ export function HybridSecurity() {
   }, []);
 
   return (
-    <section id="plataforma-offline" className="py-24 bg-[#0a1628] relative overflow-hidden flex flex-col justify-center min-h-screen">
+    <section id="plataforma-offline" className="py-10 md:py-16 bg-[#0a1628] relative overflow-hidden flex flex-col justify-center min-h-screen">
       {/* Elementos de diseño global (Glows y marcas de agua) */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none z-0">
-        <span className="text-[150px] font-black text-[#00A9E0] rotate-[-15deg] whitespace-nowrap tracking-[-5px]">
+        <span className="text-[120px] md:text-[150px] font-black text-[#00A9E0] rotate-[-15deg] whitespace-nowrap tracking-[-5px]">
           ONLINE System
         </span>
       </div>
-      
+
       {/* Contenedor Principal */}
       <div className="container mx-auto px-6 relative z-10 w-full max-w-6xl">
-        
+
         {/* Cabecera Fija de la Sección (Requerimientos del Sitio Web) */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-6">
+        <div className="text-center mb-8 md:mb-12">
+          <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
             <span className="text-[#00A9E0] font-bold text-[10px] tracking-[0.3em] uppercase">
               Sistema de Control de Accesos
             </span>
             <div className="h-[1px] w-12 md:w-20 bg-[#00A9E0]/20"></div>
           </div>
-          
-          <h2 className="text-5xl md:text-7xl font-headline font-extrabold text-white tracking-tighter leading-[1] mb-6">
+
+          <h2 className="text-4xl md:text-6xl font-headline font-extrabold text-white tracking-tighter leading-[1] mb-4">
             Seguridad <span className="text-[#00A9E0] italic">Inteligente.</span>
           </h2>
-          
-          <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed max-w-4xl mx-auto">
+
+          <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-4xl mx-auto">
             Transforma el control de accesos en una ventaja competitiva: <br className="hidden md:block" />
             <span className="text-white/80 font-normal">más seguro, más eficiente, más rápido y sin costos recurrentes.</span>
           </p>
@@ -191,18 +191,22 @@ export function HybridSecurity() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="w-full flex items-center min-h-[600px]"
+            className="w-full flex items-center min-h-[450px] md:min-h-[500px]"
           >
             <div className="w-full">
               {/* LAYOUT: PORTADA */}
               {slides[current].type === "portada" && (
                 <div className="text-center">
-                  <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-5">
-                    {slides[current].tag}
-                  </span>
-                  <h1 className="text-[clamp(36px,5vw,64px)] font-black leading-[1.1] mb-4 bg-gradient-to-br from-white to-[#00A9E0] bg-clip-text text-transparent">
-                    {slides[current].title}<br />{slides[current].titleAccent}
-                  </h1>
+                  {slides[current].tag && (
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-5">
+                      {slides[current].tag}
+                    </span>
+                  )}
+                  {slides[current].title && (
+                    <h1 className="text-[clamp(36px,5vw,64px)] font-black leading-[1.1] mb-4 bg-gradient-to-br from-white to-[#00A9E0] bg-clip-text text-transparent">
+                      {slides[current].title}<br />{slides[current].titleAccent}
+                    </h1>
+                  )}
                   <p className="text-[clamp(14px,1.5vw,20px)] text-white/60 max-w-[700px] mx-auto leading-[1.7]">
                     {slides[current].sub}
                   </p>
@@ -279,7 +283,7 @@ export function HybridSecurity() {
                     <p className="text-[clamp(14px,1.5vw,20px)] text-white/60 leading-[1.7] text-left">
                       {slides[current].sub}
                     </p>
-                    
+
                     {/* Lista (Hoja 3) */}
                     {slides[current].list && (
                       <ul className="flex flex-col gap-3 mt-6">
@@ -329,7 +333,7 @@ export function HybridSecurity() {
                     <p className="text-[clamp(14px,1.5vw,20px)] text-white/60 leading-[1.7] text-left">
                       {slides[current].sub}
                     </p>
-                    
+
                     {/* Timeline (Hoja 5) */}
                     {slides[current].timeline && (
                       <div className="flex flex-col gap-5 max-w-[800px] w-full mt-7">
@@ -392,29 +396,28 @@ export function HybridSecurity() {
             <button
               key={idx}
               onClick={() => setCurrent(idx)}
-              className={`transition-all duration-300 rounded-full cursor-pointer ${
-                current === idx ? "w-8 h-2.5 bg-[#00A9E0]" : "w-2.5 h-2.5 bg-white/20"
-              }`}
+              className={`transition-all duration-300 rounded-full cursor-pointer ${current === idx ? "w-8 h-2.5 bg-[#00A9E0]" : "w-2.5 h-2.5 bg-white/20"
+                }`}
             />
           ))}
         </div>
 
         {/* Flechas de Navegación Flotantes */}
         <div className="absolute right-0 -bottom-16 flex gap-2 z-50">
-          <button 
+          <button
             onClick={prevSlide}
             className="w-10 h-10 rounded-xl border border-white/15 bg-white/5 text-white flex items-center justify-center hover:bg-[#00A9E0] hover:border-[#00A9E0] transition-colors"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button 
+          <button
             onClick={nextSlide}
             className="w-10 h-10 rounded-xl border border-white/15 bg-white/5 text-white flex items-center justify-center hover:bg-[#00A9E0] hover:border-[#00A9E0] transition-colors"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
-        
+
         {/* Contador */}
         <div className="absolute left-0 -bottom-14 text-[12px] text-white/30 font-semibold tracking-[2px] z-50">
           {current + 1} / {slides.length}
