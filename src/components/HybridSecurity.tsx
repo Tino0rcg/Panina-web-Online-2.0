@@ -257,7 +257,7 @@ export function HybridSecurity() {
                   <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-5">
                     {slides[current].tag}
                   </span>
-                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold mb-8">
+                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold text-white mb-8">
                     {slides[current].title}<br />
                     <span className="text-[#00A9E0]">{slides[current].titleAccent}</span>
                   </h2>
@@ -285,7 +285,7 @@ export function HybridSecurity() {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-5">
                       {slides[current].tag}
                     </span>
-                    <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold mb-3">
+                    <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold text-white mb-3">
                       {slides[current].title}<br />
                       <span className="text-[#00A9E0]">{slides[current].titleAccent}</span>
                     </h2>
@@ -336,7 +336,7 @@ export function HybridSecurity() {
                     <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-5">
                       {slides[current].tag}
                     </span>
-                    <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold mb-3">
+                    <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold text-white mb-3">
                       {slides[current].title} <span className="text-[#00A9E0]">{slides[current].titleAccent}</span>
                     </h2>
                     <p className="text-[clamp(14px,1.5vw,20px)] text-white/60 leading-[1.7] text-left">
@@ -369,7 +369,7 @@ export function HybridSecurity() {
                   <span className="inline-block px-4 py-1.5 rounded-full bg-[#00A9E0]/15 border border-[#00A9E0]/30 text-[#00A9E0] font-bold text-[11px] tracking-[2px] uppercase mb-5">
                     {slides[current].tag}
                   </span>
-                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold mb-8">
+                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold text-white mb-8">
                     {slides[current].title} <span className="text-[#00A9E0]">{slides[current].titleAccent}</span>
                   </h2>
                   <div className="grid md:grid-cols-2 gap-10 max-w-[900px]">
