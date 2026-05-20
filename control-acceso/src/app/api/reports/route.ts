@@ -76,7 +76,7 @@ export async function GET(req: Request) {
     })
     const byArea = Object.entries(areaMap)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 8)
+      .slice(0, 25)
       .map(([area, count]) => ({ area, count }))
 
     // Por puerta

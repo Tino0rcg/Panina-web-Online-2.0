@@ -145,7 +145,7 @@ export default function ReportesPage() {
         <div className="bg-[#111e35] border border-[#00A9E0]/15 rounded-2xl p-6">
           <h2 className="text-white font-semibold mb-4">Visitas por área</h2>
           {loading ? <div className="h-48 flex items-center justify-center text-slate-500">Cargando...</div> : (
-            <div className="space-y-3">
+            <div className="space-y-3 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
               {byArea.map(a => (
                 <div key={a.area}>
                   <div className="flex justify-between text-sm mb-1">
