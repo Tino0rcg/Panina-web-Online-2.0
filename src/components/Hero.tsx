@@ -170,7 +170,9 @@ export function Hero() {
       <div className="absolute inset-0 z-0 brand-texture opacity-20"></div>
 
       <div className="container mx-auto px-6 relative z-10 pt-4 md:pt-10">
-        <div className="max-w-4xl space-y-6 md:space-y-10 relative min-h-[400px] md:min-h-[450px] flex flex-col justify-center">
+        <div className="max-w-4xl space-y-4 md:space-y-6 relative flex flex-col justify-center">
+          {/* Stable height container to prevent layout shifts */}
+          <div className="relative w-full min-h-[820px] sm:min-h-[760px] md:min-h-[720px] lg:min-h-[680px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide.id}
@@ -178,10 +180,10 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="space-y-6 md:space-y-10"
+                className="space-y-4 md:space-y-5"
               >
                 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {/* Semantic H1 for SEO */}
                   <h1 className="sr-only">Consultoría en Ingeniería TI, Ciberseguridad y Transformación Digital en Chile | ONLINE System</h1>
                   
@@ -222,10 +224,10 @@ export function Hero() {
                     )}
                     
                     <motion.h2 
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.8 }}
-                      className="text-4xl sm:text-6xl md:text-7xl font-headline font-bold leading-[0.95] tracking-tighter text-white relative z-10"
+                      className="text-3xl sm:text-5xl md:text-6xl font-headline font-bold leading-[0.95] tracking-tighter text-white relative z-10"
                       dangerouslySetInnerHTML={{ __html: currentSlide.title }}
                     />
                   </div>
@@ -233,8 +235,8 @@ export function Hero() {
                     <motion.p 
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: 0.45 }}
-                      className="text-primary text-base md:text-xl font-medium"
+                      transition={{ delay: 0.4 }}
+                      className="text-primary text-sm sm:text-base md:text-lg font-medium"
                       dangerouslySetInnerHTML={{ __html: currentSlide.subtitle }}
                     />
                   )}
@@ -242,8 +244,8 @@ export function Hero() {
                   <motion.p 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                    className="text-base md:text-xl text-slate-200/80 max-w-2xl leading-relaxed font-light"
+                    transition={{ delay: 0.45, duration: 0.8 }}
+                    className="text-sm sm:text-base md:text-lg text-slate-200/80 max-w-2xl leading-relaxed font-light"
                     dangerouslySetInnerHTML={{ __html: currentSlide.description }}
                   />
 
@@ -252,10 +254,10 @@ export function Hero() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.55 }}
-                      className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 sm:gap-y-3 gap-x-6 max-w-3xl pt-2 border-l-2 border-primary/20 pl-4 sm:pl-6"
+                      className="grid grid-cols-2 gap-y-2 sm:gap-y-3 gap-x-4 sm:gap-x-6 max-w-3xl pt-2 border-l-2 border-primary/20 pl-4 sm:pl-6"
                     >
                       {currentSlide.features.map((feature, i) => (
-                        <div key={i} className="flex items-center gap-3 text-slate-200/90 text-sm md:text-base">
+                        <div key={i} className="flex items-center gap-3 text-slate-200/90 text-xs sm:text-sm md:text-base">
                           <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
                             <ShieldCheck className="w-3 h-3 text-primary" />
                           </div>
@@ -267,18 +269,18 @@ export function Hero() {
                 </div>
 
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="flex flex-col sm:flex-row gap-4 sm:gap-5 pt-2"
+                  transition={{ delay: 0.5 }}
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1"
                 >
                   {/* Action 1: Booking or Link */}
                   {currentSlide.isBooking ? (
                     <BookingModal>
-                      <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-8 h-14 rounded-2xl text-lg font-bold shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group relative overflow-hidden">
+                      <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-6 h-12 rounded-xl text-base font-bold shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95 group relative overflow-hidden">
                         <span className="relative z-10 flex items-center">
                           {currentSlide.primaryButtonText}
-                          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                          <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                         </span>
                         
                         {/* Shimmer Effect for Slide 1 */}
@@ -294,16 +296,16 @@ export function Hero() {
                     </BookingModal>
                   ) : (
                     <Link href={currentSlide.primaryButtonHref} passHref>
-                      <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-8 h-14 rounded-2xl text-lg font-bold shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 group">
+                      <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-6 h-12 rounded-xl text-base font-bold shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95 group">
                         {currentSlide.primaryButtonText}
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                       </Button>
                     </Link>
                   )}
 
                   {/* Action 2: Secondary Info */}
                   <Link href={currentSlide.secondaryButtonHref} passHref>
-                    <Button size="lg" className="w-full sm:w-auto bg-white hover:bg-slate-100 text-primary px-8 h-14 rounded-2xl text-lg font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+                    <Button size="lg" className="w-full sm:w-auto bg-white hover:bg-slate-100 text-primary px-6 h-12 rounded-xl text-base font-bold transition-all hover:scale-105 active:scale-95 shadow-md">
                       {currentSlide.secondaryButtonText}
                     </Button>
                   </Link>
@@ -313,15 +315,15 @@ export function Hero() {
                 <motion.div 
                    initial={{ opacity: 0 }}
                    animate={{ opacity: 1 }}
-                   transition={{ delay: 0.7 }}
-                   className="flex flex-wrap items-center gap-6 md:gap-10 pt-6 md:pt-8 border-t border-white/10"
+                   transition={{ delay: 0.6 }}
+                   className="flex flex-wrap items-center gap-4 md:gap-8 pt-4 md:pt-5 border-t border-white/10"
                 >
                   <div className="flex flex-col gap-0.5 group">
-                    <div className="flex items-center gap-2">
-                      {currentSlide.id === 4 ? <Target className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" /> : <Shield className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />}
-                      <span className="text-xl font-bold text-white tracking-tight">{currentSlide.statValue}</span>
+                    <div className="flex items-center gap-1.5">
+                      {currentSlide.id === 4 ? <Target className="w-3.5 h-3.5 text-primary group-hover:scale-110 transition-transform" /> : <Shield className="w-3.5 h-3.5 text-primary group-hover:scale-110 transition-transform" />}
+                      <span className="text-lg sm:text-xl font-bold text-white tracking-tight">{currentSlide.statValue}</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-300 uppercase tracking-widest">{currentSlide.statLabel}</span>
+                    <span className="text-[8px] sm:text-[9px] font-bold text-slate-300 uppercase tracking-widest">{currentSlide.statLabel}</span>
                   </div>
                   <div className="h-8 w-px bg-white/10 hidden sm:block"></div>
                   <div className="flex flex-col gap-0.5 group">
@@ -354,8 +356,9 @@ export function Hero() {
                 </motion.div>
               </motion.div>
             </AnimatePresence>
+          </div>
 
-            {/* Navigation Controls */}
+          {/* Navigation Controls */}
             <div className="flex items-center gap-4 pt-8">
               <button 
                 onClick={prevSlide} 
