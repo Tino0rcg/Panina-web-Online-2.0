@@ -21,6 +21,7 @@ model Company {
   users      UserProfile[]
   visits     Visit[]
   departments Department[]
+  provenances Provenance[]
 }
 
 model Door {
@@ -89,10 +90,21 @@ model Visit {
   photo_url        String?
   notes            String?
   
+  visitor_type     String?  // 'INTERNO' or 'EXTERNO'
+  provenance       String?  // For external visits: 'Seguridad', 'Jardines', 'Aseo', etc.
+  
   is_active        Boolean  @default(true)
   created_at       DateTime @default(now())
 }
 model Department {
+  id         String   @id @default(uuid())
+  company_id String
+  company    Company  @relation(fields: [company_id], references: [id])
+  name       String   @unique
+  active     Boolean  @default(true)
+  created_at DateTime @default(now())
+}
+model Provenance {
   id         String   @id @default(uuid())
   company_id String
   company    Company  @relation(fields: [company_id], references: [id])

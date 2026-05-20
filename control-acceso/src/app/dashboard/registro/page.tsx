@@ -1,7 +1,7 @@
 'use client'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { ScanLine, Clock, User, Building2, MapPin, FileText, CheckCircle, Search, Camera, Keyboard, UserCheck, AlertCircle, DoorOpen } from 'lucide-react'
+import { ScanLine, Clock, User, Building2, MapPin, FileText, CheckCircle, Search, Camera, Keyboard, UserCheck, AlertCircle, DoorOpen, Users, Truck, Plus } from 'lucide-react'
 
 interface PersonData { rut: string; full_name: string; birth_date?: string; sex?: string }
 interface Door { id: string; name: string; company_id: string }
@@ -83,8 +83,13 @@ function RegistroContent() {
   const [conflictNotes, setConflictNotes] = useState('')
   const [doors, setDoors] = useState<Door[]>([])
   const [departments, setDepartments] = useState<{id: string, name: string}[]>([])
+  const [provenances, setProvenances] = useState<{id: string|null, name: string}[]>([])
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [form, setForm] = useState({ door_id: '', visited_person: '', area: '', reason: '', visitor_company: '', vehicle_plate: '', notes: '' })
+  const [visitorType, setVisitorType] = useState<'INTERNO' | 'EXTERNO' | ''>('')
+  const [provenance, setProvenance] = useState('')
+  const [newProvenance, setNewProvenance] = useState('')
+  const [showNewProvenance, setShowNewProvenance] = useState(false)
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [statusMsg, setStatusMsg] = useState('')
   const [loading, setLoading] = useState(false)
@@ -98,14 +103,16 @@ function RegistroContent() {
       if (p) {
         setProfile(p)
         
-        const [resDoors, resDepts] = await Promise.all([
+        const [resDoors, resDepts, resProv] = await Promise.all([
           fetch(`/api/doors?company_id=${p.company_id || ''}`),
-          fetch(`/api/departments?company_id=${p.company_id || ''}`)
+          fetch(`/api/departments?company_id=${p.company_id || ''}`),
+          fetch(`/api/provenances?company_id=${p.company_id || ''}`)
         ])
         
         const availableDoors = await resDoors.json()
         setDoors(availableDoors)
         setDepartments(await resDepts.json())
+        setProvenances(await resProv.json())
 
         if (p.door_id) {
           setForm(f => ({ ...f, door_id: p.door_id! }))
@@ -288,6 +295,10 @@ function RegistroContent() {
     setIsConflictive(false)
     setConflictNotes('')
     setForm(f => ({ ...f, visited_person: '', area: '', reason: '', visitor_company: '', vehicle_plate: '', notes: '' }))
+    setVisitorType('')
+    setProvenance('')
+    setNewProvenance('')
+    setShowNewProvenance(false)
     setStatus('idle'); setStatusMsg('')
     setTimeout(() => scanRef.current?.focus(), 100)
   }
@@ -321,15 +332,35 @@ function RegistroContent() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!person || !form.door_id) { setStatus('error'); setStatusMsg('Seleccione una puerta.'); return }
+    if (!visitorType) { setStatus('error'); setStatusMsg('Seleccione si es Personal Interno o Externo.'); return }
+    if (visitorType === 'EXTERNO' && !provenance && !newProvenance) {
+      setStatus('error'); setStatusMsg('Indique la procedencia del visitante externo.'); return
+    }
     setLoading(true)
 
     try {
+      // Si hay nueva procedencia, guardarla primero
+      let finalProvenance = provenance
+      if (visitorType === 'EXTERNO' && showNewProvenance && newProvenance.trim()) {
+        const resProv = await fetch('/api/provenances', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: newProvenance.trim(), company_id: profile?.company_id })
+        })
+        const savedProv = await resProv.json()
+        finalProvenance = savedProv.name
+        // Actualizar lista de procedencias localmente
+        setProvenances(prev => [...prev.filter(p => p.name !== savedProv.name), savedProv])
+      }
+
       const res = await fetch('/api/visits', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...person,
           ...form,
+          visitor_type: visitorType,
+          provenance: visitorType === 'EXTERNO' ? finalProvenance : null,
           guard_id: profile?.id,
           company_id: profile?.role === 'superadmin' ? (doors.find(d => d.id === form.door_id)?.company_id) : profile?.company_id
         })
@@ -560,6 +591,88 @@ function RegistroContent() {
               {person.birth_date && <p className="text-slate-400 text-xs">Nacimiento: {person.birth_date} {person.sex ? `· ${person.sex === 'M' ? 'Masculino' : 'Femenino'}` : ''}</p>}
             </div>
             <button onClick={resetForm} className="text-slate-400 hover:text-red-400 text-sm underline transition">Cambiar</button>
+          </div>
+        )}
+
+        {/* Selector Interno / Externo */}
+        {person && (
+          <div className="bg-[#111e35] border border-[#00A9E0]/15 rounded-2xl p-5 mb-4">
+            <p className="text-slate-300 text-sm font-semibold mb-3 flex items-center gap-2">
+              <Users className="w-4 h-4 text-[#00A9E0]" /> Tipo de personal *
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => { setVisitorType('INTERNO'); setProvenance(''); setShowNewProvenance(false) }}
+                className={`flex flex-col items-center gap-2 py-4 px-3 rounded-xl border-2 transition font-semibold text-sm ${
+                  visitorType === 'INTERNO'
+                    ? 'border-green-400 bg-green-400/10 text-green-300'
+                    : 'border-slate-700 bg-slate-800/50 text-slate-400 hover:border-slate-500'
+                }`}
+              >
+                <Users className="w-5 h-5" />
+                Personal Interno
+              </button>
+              <button
+                type="button"
+                onClick={() => setVisitorType('EXTERNO')}
+                className={`flex flex-col items-center gap-2 py-4 px-3 rounded-xl border-2 transition font-semibold text-sm ${
+                  visitorType === 'EXTERNO'
+                    ? 'border-orange-400 bg-orange-400/10 text-orange-300'
+                    : 'border-slate-700 bg-slate-800/50 text-slate-400 hover:border-slate-500'
+                }`}
+              >
+                <Truck className="w-5 h-5" />
+                Personal Externo
+              </button>
+            </div>
+
+            {/* Procedencia (solo para externos) */}
+            {visitorType === 'EXTERNO' && (
+              <div className="mt-4 space-y-3">
+                <label className="block text-sm font-medium text-slate-300">Procedencia *</label>
+                {!showNewProvenance ? (
+                  <>
+                    <select
+                      value={provenance}
+                      onChange={e => {
+                        if (e.target.value === '__nueva__') {
+                          setShowNewProvenance(true)
+                          setProvenance('')
+                        } else {
+                          setProvenance(e.target.value)
+                        }
+                      }}
+                      className="w-full bg-[#0a1628] border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-orange-400 transition text-sm"
+                    >
+                      <option value="">Seleccionar procedencia...</option>
+                      {provenances.map(p => (
+                        <option key={p.name} value={p.name}>{p.name}</option>
+                      ))}
+                      <option value="__nueva__">+ Crear nueva procedencia...</option>
+                    </select>
+                  </>
+                ) : (
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={newProvenance}
+                      onChange={e => setNewProvenance(e.target.value)}
+                      placeholder="Escriba la nueva procedencia..."
+                      className="flex-1 bg-[#0a1628] border border-orange-400/60 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-orange-400 transition text-sm"
+                      autoFocus
+                    />
+                    <button
+                      type="button"
+                      onClick={() => { setShowNewProvenance(false); setNewProvenance('') }}
+                      className="px-3 py-2 bg-slate-700 text-slate-300 rounded-xl text-sm hover:bg-slate-600 transition"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 

@@ -152,7 +152,9 @@ export async function POST(req: Request) {
         visitor_company: data.visitor_company || null,
         vehicle_plate: data.vehicle_plate || null,
         photo_url: data.photo_url || null,
-        notes: data.notes || null
+        notes: data.notes || null,
+        visitor_type: data.visitor_type || null,
+        provenance: data.provenance || null
       }
     })
 

@@ -1,13 +1,14 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Search, Download, ChevronLeft, ChevronRight, Clock, CheckCircle, Building2, DoorOpen, Trash2, AlertTriangle } from 'lucide-react'
+import { Search, Download, ChevronLeft, ChevronRight, Clock, CheckCircle, Building2, DoorOpen, Trash2, AlertTriangle, Users, Truck } from 'lucide-react'
 import * as XLSX from 'xlsx'
 
 interface Visit {
   id: string; entry_time: string; exit_time: string | null
   visited_person: string; area: string; reason: string
   visitor_company: string | null; vehicle_plate: string | null; notes: string | null
+  visitor_type: string | null; provenance: string | null
   person: { id: string; full_name: string; rut: string; is_conflictive?: boolean }
   door: { name: string; companies?: { name: string } }
 }
@@ -116,6 +117,8 @@ export default function HistorialPage() {
       return {
         'Nombre Visitante': (v.person as any)?.full_name,
         'RUT': (v.person as any)?.rut,
+        'Tipo Personal': v.visitor_type || '',
+        'Procedencia': v.provenance || '',
         'Empresa Visitante': v.visitor_company || '',
         'Visita a': v.visited_person,
         'Área': v.area,
@@ -179,16 +182,16 @@ export default function HistorialPage() {
           <table className="w-full text-[13px]">
             <thead>
               <tr className="border-b border-slate-800 bg-[#0d1f3a]">
-                {['Visitante / RUT', 'Empresa', 'Visita a / Área', 'Puerta', 'Entrada', 'Salida', 'Duración', 'Acciones'].map(h => (
+                {['Visitante / RUT', 'Tipo / Procedencia', 'Empresa', 'Visita a / Área', 'Puerta', 'Entrada', 'Salida', 'Duración', 'Acciones'].map(h => (
                   <th key={h} className="px-3 py-2.5 text-left text-[10px] font-semibold text-slate-400 uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/50">
               {loading ? (
-                <tr><td colSpan={7} className="px-4 py-12 text-center text-slate-500">Cargando registros...</td></tr>
+                <tr><td colSpan={9} className="px-4 py-12 text-center text-slate-500">Cargando registros...</td></tr>
               ) : visits.length === 0 ? (
-                <tr><td colSpan={7} className="px-4 py-12 text-center text-slate-500">No se encontraron registros con los filtros actuales</td></tr>
+                <tr><td colSpan={9} className="px-4 py-12 text-center text-slate-500">No se encontraron registros con los filtros actuales</td></tr>
               ) : visits.map(v => {
                 const entrada = fmtDateTime(v.entry_time)
                 const dur = duracion(v.entry_time, v.exit_time)
@@ -197,6 +200,22 @@ export default function HistorialPage() {
                     <td className="px-3 py-2">
                       <p className="text-white font-semibold truncate max-w-[140px]">{(v.person as any)?.full_name}</p>
                       <p className="text-[#00A9E0] text-[11px] font-mono">{(v.person as any)?.rut}</p>
+                    </td>
+                    <td className="px-3 py-2">
+                      {v.visitor_type === 'INTERNO' && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-500/15 text-green-300 text-[11px] rounded-full border border-green-500/25 whitespace-nowrap">
+                          <Users className="w-2.5 h-2.5" /> Interno
+                        </span>
+                      )}
+                      {v.visitor_type === 'EXTERNO' && (
+                        <div className="space-y-0.5">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-orange-500/15 text-orange-300 text-[11px] rounded-full border border-orange-500/25 whitespace-nowrap">
+                            <Truck className="w-2.5 h-2.5" /> Externo
+                          </span>
+                          {v.provenance && <p className="text-slate-400 text-[11px] mt-0.5">{v.provenance}</p>}
+                        </div>
+                      )}
+                      {!v.visitor_type && <span className="text-slate-600 text-[11px]">—</span>}
                     </td>
                     <td className="px-3 py-2">
                       <p className="text-slate-300 truncate max-w-[100px]">{v.visitor_company || <span className="text-slate-600 italic">—</span>}</p>
