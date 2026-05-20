@@ -83,7 +83,13 @@ function RegistroContent() {
   const [conflictNotes, setConflictNotes] = useState('')
   const [doors, setDoors] = useState<Door[]>([])
   const [departments, setDepartments] = useState<{id: string, name: string}[]>([])
-  const [provenances, setProvenances] = useState<{id: string|null, name: string}[]>([])
+  const DEFAULT_PROVENANCES = [
+    { id: null, name: 'Seguridad' }, { id: null, name: 'Jardines' },
+    { id: null, name: 'Aseo' }, { id: null, name: 'Redes' },
+    { id: null, name: 'El\u00e9ctrico' }, { id: null, name: 'Obras Civiles' },
+    { id: null, name: 'Limpieza' },
+  ]
+  const [provenances, setProvenances] = useState<{id: string|null, name: string}[]>(DEFAULT_PROVENANCES)
   const [profile, setProfile] = useState<UserProfile | null>(null)
   const [form, setForm] = useState({ door_id: '', visited_person: '', area: '', reason: '', visitor_company: '', vehicle_plate: '', notes: '' })
   const [visitorType, setVisitorType] = useState<'INTERNO' | 'EXTERNO' | ''>('')
@@ -112,7 +118,15 @@ function RegistroContent() {
         const availableDoors = await resDoors.json()
         setDoors(availableDoors)
         setDepartments(await resDepts.json())
-        setProvenances(await resProv.json())
+        try {
+          const provData = await resProv.json()
+          if (Array.isArray(provData) && provData.length > 0) {
+            setProvenances(provData)
+          }
+        } catch (e) {
+          // Si falla la API de procedencias, se usan los valores por defecto ya cargados en el state
+          console.warn('Usando procedencias por defecto')
+        }
 
         if (p.door_id) {
           setForm(f => ({ ...f, door_id: p.door_id! }))

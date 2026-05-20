@@ -1,15 +1,9 @@
 import { prisma } from '@/lib/db'
 import { NextResponse } from 'next/server'
 
-// Procedencias predeterminadas del sistema
 const DEFAULT_PROVENANCES = [
-  'Seguridad',
-  'Jardines',
-  'Aseo',
-  'Redes',
-  'Eléctrico',
-  'Obras Civiles',
-  'Limpieza',
+  'Seguridad', 'Jardines', 'Aseo', 'Redes',
+  'Eléctrico', 'Obras Civiles', 'Limpieza',
 ]
 
 export async function GET(req: Request) {
@@ -17,24 +11,30 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url)
     const company_id = searchParams.get('company_id')
 
-    const where = company_id ? { company_id, active: true } : { active: true }
-    const dbProvenances = await prisma.provenance.findMany({
-      where,
-      orderBy: { name: 'asc' }
-    })
+    let dbProvenances: { id: string; name: string }[] = []
+    try {
+      const where = company_id ? { company_id, active: true } : { active: true }
+      dbProvenances = await prisma.provenance.findMany({ where, orderBy: { name: 'asc' } })
+    } catch (dbErr) {
+      // La tabla puede no existir aún si la migración no se ejecutó todavía
+      console.warn('[provenances] DB query failed, using defaults only:', dbErr)
+    }
 
-    // Combinar las predeterminadas con las de la BD (sin duplicados)
-    const dbNames = dbProvenances.map(p => p.name)
+    // Unir defaults + personalizadas (sin duplicados)
+    const customNames = dbProvenances.map(p => p.name)
     const merged = [
-      ...DEFAULT_PROVENANCES.map(name => ({ id: null, name, isDefault: true })),
+      ...DEFAULT_PROVENANCES.map(name => ({ id: null, name })),
       ...dbProvenances
         .filter(p => !DEFAULT_PROVENANCES.includes(p.name))
-        .map(p => ({ id: p.id, name: p.name, isDefault: false }))
+        .map(p => ({ id: p.id, name: p.name }))
     ]
 
     return NextResponse.json(merged)
   } catch (error) {
-    return NextResponse.json({ error: 'Error al obtener procedencias' }, { status: 500 })
+    // En caso de error total, devolver siempre un array con los defaults
+    return NextResponse.json(
+      DEFAULT_PROVENANCES.map(name => ({ id: null, name }))
+    )
   }
 }
 
