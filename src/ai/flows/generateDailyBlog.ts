@@ -66,7 +66,7 @@ export const generateDailyBlogFlow = ai.defineFlow(
         .replace(/(^-|-$)+/g, ""); // Remove leading/trailing dashes
 
       const dateStr = new Date().toISOString();
-      const excerpt = blogContent.substring(0, 150).replace(/\n/g, ' ') + '...';
+      const excerpt = blogContent.substring(0, 150).replace(/\n/g, ' ').replace(/"/g, "'") + '...';
       const tag = topNews[0]?.tag || "Actualidad";
 
       const markdownFile = `---
@@ -85,6 +85,63 @@ ${blogContent}
         fs.mkdirSync(blogDir, { recursive: true });
       }
       fs.writeFileSync(path.join(blogDir, `${slug}.md`), markdownFile);
+
+      // 5b. Push to GitHub if GITHUB_TOKEN is available (for serverless environments like Vercel)
+      if (process.env.GITHUB_TOKEN) {
+        try {
+          const owner = process.env.GITHUB_OWNER || 'Tino0rcg';
+          const repo = process.env.GITHUB_REPO || 'Panina-web-Online-2.0';
+          const branch = process.env.GITHUB_BRANCH || 'main';
+          const filePath = `src/content/blog/${slug}.md`;
+          const githubUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+          console.log(`Intentando subir post a GitHub: ${filePath}`);
+
+          // Check if file already exists to get its SHA (needed for updates)
+          let sha: string | undefined;
+          const getRes = await fetch(githubUrl, {
+            headers: {
+              'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+              'Accept': 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28',
+            }
+          });
+
+          if (getRes.status === 200) {
+            const fileData = await getRes.json();
+            sha = fileData.sha;
+            console.log(`El archivo ya existe en GitHub (sha: ${sha}). Se actualizará.`);
+          }
+
+          const contentBase64 = Buffer.from(markdownFile).toString('base64');
+          const putRes = await fetch(githubUrl, {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+              'Accept': 'application/vnd.github+json',
+              'X-GitHub-Api-Version': '2022-11-28',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: `Añadir artículo de blog generado por IA: ${title}`,
+              content: contentBase64,
+              branch,
+              ...(sha ? { sha } : {})
+            }),
+          });
+
+          if (!putRes.ok) {
+            const errText = await putRes.text();
+            console.error(`Error al subir a GitHub: ${putRes.status} - ${errText}`);
+          } else {
+            console.log(`Archivo subido exitosamente a GitHub en la rama ${branch}.`);
+          }
+        } catch (gitError) {
+          console.error("Error inesperado al intentar subir a GitHub:", gitError);
+        }
+      } else {
+        console.log("No se detectó GITHUB_TOKEN. Saltando subida a GitHub.");
+      }
 
       // 6. Send Email using Resend
       if (process.env.RESEND_API_KEY) {
